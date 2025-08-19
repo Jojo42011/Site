@@ -9,7 +9,7 @@ interface AuthContextType {
   session: Session | null
   loading: boolean
   isConfigured: boolean
-  signUp: (email: string, password: string, firstName: string, lastName: string, company: string) => Promise<{ error: any } | { error: null, requiresManualSignIn: boolean } | { error: null, user: User }>
+  signUp: (email: string, password: string, firstName: string, lastName: string, company: string) => Promise<{ error: any } | { error: null, requiresEmailConfirmation: boolean } | { error: null, user: User }>
   signIn: (email: string, password: string) => Promise<{ error: any }>
   signOut: () => Promise<void>
   resetPassword: (email: string) => Promise<{ error: any }>

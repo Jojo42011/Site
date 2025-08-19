@@ -82,12 +82,24 @@ export default function LoginPage() {
       
       if (result.error) {
         setError(result.error.message);
-      } else if (result.user) {
+      } else if ('user' in result && result.user) {
         // Account created and user is automatically signed in
         setSuccess("Account created successfully! Redirecting to dashboard...");
         
         // Redirect immediately since user is already signed in
         router.push('/dashboard');
+        
+        // Clear form
+        setSignupForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          company: ""
+        });
+      } else if ('requiresEmailConfirmation' in result && result.requiresEmailConfirmation) {
+        // Email confirmation required
+        setSuccess("Account created successfully! Please check your email to confirm your account before signing in.");
         
         // Clear form
         setSignupForm({
