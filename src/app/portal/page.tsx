@@ -311,16 +311,16 @@ export default function PortalDashboard() {
                       </div>
                     ))}
                   </div>
-                  <Button
-                    variant="outline"
-                    className="w-full mt-4"
-                    onClick={() => {
-                      const tabsTrigger = document.querySelector('[value="leads"]');
-                      tabsTrigger?.click();
-                    }}
-                  >
-                    View All Leads
-                  </Button>
+                                     <Button
+                     variant="outline"
+                     className="w-full mt-4"
+                     onClick={() => {
+                       const tabsTrigger = document.querySelector('[value="leads"]') as HTMLElement;
+                       tabsTrigger?.click();
+                     }}
+                   >
+                     View All Leads
+                   </Button>
                 </CardContent>
               </Card>
             </div>
