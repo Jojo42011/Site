@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Player } from "@lottiefiles/react-lottie-player";
+
 import { 
   Eye, EyeOff, Mail, Lock, User, ArrowLeft, Sparkles, 
   Activity, TrendingUp, Users, Target, Globe,
@@ -270,33 +270,12 @@ export default function Dashboard() {
                        </div>
                      </CardHeader>
                      <CardContent className="space-y-6">
-                       {/* Lottie Animation */}
+                       {/* Agent Icon */}
                        <div className="flex justify-center">
-                         <div className="w-32 h-32">
-                           {selectedAgent === 'scout' && (
-                             <Player
-                               autoplay
-                               loop
-                               src="/assets/scout.json"
-                               style={{ height: '100%', width: '100%' }}
-                             />
-                           )}
-                           {selectedAgent === 'eve' && (
-                             <Player
-                               autoplay
-                               loop
-                               src="/assets/Nova.json"
-                               style={{ height: '100%', width: '100%' }}
-                             />
-                           )}
-                           {selectedAgent === 'shadow' && (
-                             <Player
-                               autoplay
-                               loop
-                               src="/assets/shadow.json"
-                               style={{ height: '100%', width: '100%' }}
-                             />
-                           )}
+                         <div className="w-32 h-32 flex items-center justify-center text-6xl">
+                           {selectedAgent === 'scout' && '🔍'}
+                           {selectedAgent === 'eve' && '💬'}
+                           {selectedAgent === 'shadow' && '⚡'}
                          </div>
                        </div>
 
