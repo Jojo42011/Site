@@ -62,7 +62,8 @@ export function useUserProfile(user: User | null) {
         .eq('id', user.id)
         .single()
 
-      const { data, error: fetchError } = await Promise.race([fetchPromise, timeoutPromise])
+      const result = await Promise.race([fetchPromise, timeoutPromise])
+      const { data, error: fetchError } = result
 
       if (fetchError) {
         throw fetchError

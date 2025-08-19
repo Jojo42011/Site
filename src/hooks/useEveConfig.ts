@@ -82,7 +82,8 @@ export function useEveConfig(user: User | null) {
         .eq('user_id', user.id)
         .single()
 
-      const { data, error: fetchError } = await Promise.race([fetchPromise, timeoutPromise])
+      const result = await Promise.race([fetchPromise, timeoutPromise])
+      const { data, error: fetchError } = result
 
       console.log('Eve config fetch result:', { data, error: fetchError })
 
