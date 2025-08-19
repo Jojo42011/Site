@@ -122,11 +122,11 @@ export default function PortalDashboard() {
     ],
   };
 
-  const chartOptions = {
+  const chartOptions: any = {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "top" as const,
         labels: {
           color: "hsl(210, 40%, 98%)",
         },
