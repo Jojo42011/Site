@@ -79,19 +79,11 @@ export function useScoutConfig(user: User | null) {
       
       console.log('Fetching Scout config for user:', user.id)
 
-      // Add timeout to prevent hanging
-      const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Request timeout')), 10000)
-      })
-
-      const fetchPromise = supabase
+      const { data, error: fetchError } = await supabase
         .from('scout_configurations')
         .select('*')
         .eq('user_id', user.id)
         .single()
-
-      const result = await Promise.race([fetchPromise, timeoutPromise])
-      const { data, error: fetchError } = result
 
       console.log('Scout config fetch result:', { data, error: fetchError })
 
