@@ -17,33 +17,11 @@ import {
   Building,
   Star,
   Activity,
-  Calendar,
   Filter,
-  Search,
   LogOut,
   Home,
 } from "lucide-react";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 export default function PortalDashboard() {
   const router = useRouter();
@@ -102,60 +80,7 @@ export default function PortalDashboard() {
     router.push("/");
   };
 
-  const chartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [
-      {
-        label: "Revenue ($)",
-        data: [400000, 420000, 380000, 450000, 480000, 520000],
-        borderColor: "#00FF6A", // bright green
-        backgroundColor: "rgba(0,255,106,0.1)",
-        tension: 0.4,
-      },
-      {
-        label: "New Leads",
-        data: [65, 72, 58, 80, 85, 92],
-        borderColor: "#FFFFFF", // bright white
-        backgroundColor: "rgba(255,255,255,0.1)",
-        tension: 0.4,
-      },
-    ],
-  };
 
-  const chartOptions: any = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-        labels: {
-          color: "hsl(210, 40%, 98%)",
-        },
-      },
-      title: {
-        display: true,
-        text: "Performance Overview",
-        color: "hsl(210, 40%, 98%)",
-      },
-    },
-    scales: {
-      x: {
-        ticks: {
-          color: "hsl(215, 20.2%, 65.1%)",
-        },
-        grid: {
-          color: "hsl(217.2, 32.6%, 17.5%)",
-        },
-      },
-      y: {
-        ticks: {
-          color: "hsl(215, 20.2%, 65.1%)",
-        },
-        grid: {
-          color: "hsl(217.2, 32.6%, 17.5%)",
-        },
-      },
-    },
-  };
 
   if (loading) {
     return (
@@ -274,12 +199,25 @@ export default function PortalDashboard() {
             </div>
             {/* Charts and Recent Leads */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card>
+              <Card className="bg-white/10 backdrop-blur-lg border border-orange-400/30 shadow-lg">
                 <CardHeader>
-                  <CardTitle>Performance Metrics</CardTitle>
+                  <CardTitle className="text-white">Performance Metrics</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Line data={chartData} options={chartOptions} />
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/80">Conversion Rate</span>
+                      <span className="text-white font-semibold">24.5%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/80">Avg Response Time</span>
+                      <span className="text-white font-semibold">2.3 hrs</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/80">Pipeline Velocity</span>
+                      <span className="text-white font-semibold">$45K/week</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
               <Card>
