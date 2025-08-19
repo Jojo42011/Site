@@ -1010,7 +1010,7 @@ export default function AethonLanding() {
 }
 
 
-function Feature({icon, title, children}:{icon:React.ReactNode,title:string,children:React.ReactNode}){
+function Feature({icon, title, children}:{icon:React.ReactElement,title:string,children:React.ReactNode}){
   return (
     <div className="relative">
       {/* Gradient background box with higher brightness */}
@@ -1021,10 +1021,9 @@ function Feature({icon, title, children}:{icon:React.ReactNode,title:string,chil
       <Card className="relative bg-transparent backdrop-blur border border-white/10 rounded-2xl p-6 md:p-7">
         <CardHeader className="flex-row items-center gap-3">
           <div className="h-9 w-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-            {React.cloneElement(icon as React.ReactElement, {
-              className: "h-5 w-5 text-white/90",
-              "aria-label": title
-            })}
+            <div className="h-5 w-5 text-white/90" aria-label={title}>
+              {icon}
+            </div>
           </div>
           <div>
             <CardTitle className="text-lg font-semibold text-white">{title}</CardTitle>
@@ -1037,7 +1036,7 @@ function Feature({icon, title, children}:{icon:React.ReactNode,title:string,chil
   );
 }
 
-function IndustryCard({title, bullets, icon}:{title:string, bullets:string[], icon:React.ReactNode}){
+function IndustryCard({title, bullets, icon}:{title:string, bullets:string[], icon:React.ReactElement}){
   return (
     <div className="relative transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(255,106,0,.08)] group">
       {/* Match gradient brightness to top boxes */}
@@ -1046,7 +1045,9 @@ function IndustryCard({title, bullets, icon}:{title:string, bullets:string[], ic
       <Card className="relative bg-transparent backdrop-blur border border-white/10 rounded-2xl p-6 md:p-7">
         <CardHeader className="flex-row items-center gap-3">
           <div className="h-9 w-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-            {React.cloneElement(icon as React.ReactElement, { className: "h-5 w-5 text-white/90 transition-colors duration-300 group-hover:text-[#FF6A00]", "aria-label": title })}
+            <div className="h-5 w-5 text-white/90 transition-colors duration-300 group-hover:text-[#FF6A00]" aria-label={title}>
+              {icon}
+            </div>
           </div>
           <div>
             <CardTitle
