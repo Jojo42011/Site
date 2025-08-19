@@ -82,18 +82,6 @@ export default function LoginPage() {
       
       if (result.error) {
         setError(result.error.message);
-      } else if (result.requiresEmailConfirmation) {
-        // Account created but email confirmation required
-        setSuccess("Account created successfully! Please check your email to confirm your account, then sign in.");
-        setActiveTab("login");
-        // Clear form
-        setSignupForm({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          company: ""
-        });
       } else if (result.user) {
         // Account created and user is automatically signed in
         setSuccess("Account created successfully! Redirecting to dashboard...");
