@@ -166,109 +166,187 @@ export default function Dashboard() {
 
           {/* Main Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-slate-800/30 border border-slate-700/30 mb-6 backdrop-blur-sm">
-              <TabsTrigger 
-                value="overview" 
-                className="text-white data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
-              >
-                Overview
-              </TabsTrigger>
-              <TabsTrigger 
-                value="agents" 
-                className="text-white data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
-              >
-                AI Agents
-              </TabsTrigger>
-              <TabsContent value="analytics" className="space-y-6">
-                Analytics
-              </TabsContent>
-              <TabsContent value="leads" className="space-y-6">
-                Opportunities
-              </TabsContent>
-            </TabsList>
+                         <TabsList className="w-full bg-slate-900/80 border-2 border-orange-500/50 mb-6 rounded-xl p-1 shadow-2xl shadow-orange-500/20">
+               <TabsTrigger 
+                 value="overview" 
+                 className="flex-1 text-slate-300 font-bold text-lg py-4 px-6 rounded-lg transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-orange-500/50 data-[state=active]:scale-105 hover:bg-slate-800/80 hover:text-white"
+               >
+                 Overview
+               </TabsTrigger>
+               <TabsTrigger 
+                 value="agents" 
+                 className="flex-1 text-slate-300 font-bold text-lg py-4 px-6 rounded-lg transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-orange-500/50 data-[state=active]:scale-105 hover:bg-slate-800/80 hover:text-white"
+               >
+                 AI Agents
+               </TabsTrigger>
+             </TabsList>
 
-            {/* Overview Tab */}
-            <TabsContent value="overview" className="space-y-6">
-              <Card className="border-orange-500/20 bg-slate-900/40 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-white">AI Agent Status</CardTitle>
-                  <CardDescription className="text-slate-400">
-                    {subscription ? `Your ${subscription.plan_type} plan agents` : 'Subscribe to access AI agents'}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-center py-12">
-                    <div className="text-6xl mb-4">🚀</div>
-                    <h3 className="text-xl font-bold text-white mb-2">Dashboard Working!</h3>
-                    <p className="text-slate-400 mb-6">
-                      The dashboard has been restored and is now working properly.
-                    </p>
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                      Continue
-                    </Button>
+                         {/* Overview Tab */}
+             <TabsContent value="overview" className="space-y-6">
+                               <Card className="border-orange-500/20 bg-slate-900/40 backdrop-blur-sm hover:bg-slate-900/60 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20">
+                  <CardHeader>
+                    <CardTitle className="text-white text-2xl font-bold">AI Agent Status</CardTitle>
+                    <CardDescription className="text-slate-300 text-lg">
+                      {subscription ? `Your ${subscription.plan_type} plan agents` : 'Subscribe to access AI agents'}
+                    </CardDescription>
+                  </CardHeader>
+                 <CardContent>
+                   <div className="text-center py-8">
+                     {subscription ? (
+                       <>
+                         <div className="text-6xl mb-4">🎉</div>
+                         <h3 className="text-xl font-bold text-white mb-2">Subscription Active!</h3>
+                         <p className="text-slate-400 mb-4">
+                           You have access to {subscription.plan_type === 'enterprise' ? 'all 3' : subscription.plan_type === 'professional' ? '2' : '1'} AI agent(s)
+                         </p>
+                         <Badge className="bg-green-500/20 text-green-300 border-green-500/30 mb-4">
+                           {subscription.status.toUpperCase()}
+                         </Badge>
+                         <div className="text-sm text-slate-400">
+                           Plan: {subscription.plan_type.charAt(0).toUpperCase() + subscription.plan_type.slice(1)}
+                         </div>
+                       </>
+                     ) : (
+                       <>
+                         <div className="text-6xl mb-4">🔒</div>
+                         <h3 className="text-xl font-bold text-white mb-2">No Active Subscription</h3>
+                         <p className="text-slate-400 mb-6">
+                           Subscribe to unlock AI agent access and automation features
+                         </p>
+                         <Link href="/pricing">
+                           <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                             View Pricing Plans
+                           </Button>
+                         </Link>
+                       </>
+                     )}
+                   </div>
+                 </CardContent>
+               </Card>
+               
+               {/* Agent Status Cards */}
+               {subscription && (
+                 <div className="grid md:grid-cols-3 gap-6">
+                   {subscription.plan_type === 'enterprise' || subscription.plan_type === 'professional' ? (
+                     <Card className="border-emerald-500/30 bg-slate-900/60 hover:bg-slate-900/80 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+                       <CardHeader className="text-center">
+                         <div className="w-16 h-16 mx-auto mb-4 bg-emerald-500/20 rounded-full flex items-center justify-center border border-emerald-500/30">
+                           <span className="text-3xl">🔍</span>
+                         </div>
+                         <CardTitle className="text-white text-lg font-bold">Scout</CardTitle>
+                         <CardDescription className="text-emerald-300 font-medium">Lead Intelligence</CardDescription>
+                       </CardHeader>
+                       <CardContent className="text-center">
+                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2 text-sm font-medium">
+                           Active
+                         </Badge>
+                       </CardContent>
+                     </Card>
+                   ) : null}
+                   
+                   {subscription.plan_type === 'enterprise' || subscription.plan_type === 'professional' ? (
+                     <Card className="border-pink-500/30 bg-slate-900/60 hover:bg-slate-900/80 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
+                       <CardHeader className="text-center">
+                         <div className="w-16 h-16 mx-auto mb-4 bg-pink-500/20 rounded-full flex items-center justify-center border border-pink-500/30">
+                           <span className="text-3xl">💬</span>
+                         </div>
+                         <CardTitle className="text-white text-lg font-bold">Eve</CardTitle>
+                         <CardDescription className="text-pink-300 font-medium">Customer Service</CardDescription>
+                       </CardHeader>
+                       <CardContent className="text-center">
+                         <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30 px-4 py-2 text-sm font-medium">
+                           Active
+                         </Badge>
+                       </CardContent>
+                     </Card>
+                   ) : null}
+                   
+                   {subscription.plan_type === 'enterprise' && (
+                     <Card className="border-purple-500/30 bg-slate-900/60 hover:bg-slate-900/80 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+                       <CardHeader className="text-center">
+                         <div className="w-16 h-16 mx-auto mb-4 bg-purple-500/20 rounded-full flex items-center justify-center border border-purple-500/30">
+                           <span className="text-3xl">⚡</span>
+                         </div>
+                         <CardTitle className="text-white text-lg font-bold">Shadow</CardTitle>
+                         <CardDescription className="text-purple-300 font-medium">Workflow Automation</CardDescription>
+                       </CardHeader>
+                       <CardContent className="text-center">
+                         <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm font-medium">
+                           Active
+                         </Badge>
+                       </CardContent>
+                     </Card>
+                   )}
+                 </div>
+               )}
+             </TabsContent>
+
+                         {/* AI Agents Tab */}
+             <TabsContent value="agents" className="space-y-6">
+                               {/* Agent Selection */}
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">Your AI Agents</h2>
+                    <p className="text-slate-300 text-lg">Manage and configure your specialized AI team</p>
                   </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* AI Agents Tab */}
-            <TabsContent value="agents" className="space-y-6">
-              {/* Agent Selection */}
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-2xl font-bold text-white">Your AI Agents</h2>
-                  <p className="text-slate-400">Manage and configure your specialized AI team</p>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant={selectedAgent === "scout" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedAgent("scout")}
-                    className={selectedAgent === "scout" ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
-                  >
-                    Scout
-                  </Button>
-                  <Button
-                    variant={selectedAgent === "eve" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedAgent("eve")}
-                    className={selectedAgent === "eve" ? 'bg-pink-500 hover:bg-pink-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
-                  >
-                    Eve
-                  </Button>
-                  <Button
-                    variant={selectedAgent === "shadow" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedAgent("shadow")}
-                    className={selectedAgent === "shadow" ? 'bg-purple-500 hover:bg-purple-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
-                  >
-                    Shadow
-                  </Button>
-                </div>
-              </div>
+                 {subscription && (
+                   <div className="flex gap-2">
+                     {subscription.plan_type === 'enterprise' || subscription.plan_type === 'professional' ? (
+                       <>
+                         <Button
+                           variant={selectedAgent === "scout" ? "default" : "outline"}
+                           size="sm"
+                           onClick={() => setSelectedAgent("scout")}
+                           className={selectedAgent === "scout" ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
+                         >
+                           Scout
+                         </Button>
+                         <Button
+                           variant={selectedAgent === "eve" ? "default" : "outline"}
+                           size="sm"
+                           onClick={() => setSelectedAgent("eve")}
+                           className={selectedAgent === "eve" ? 'bg-pink-500 hover:bg-pink-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
+                         >
+                           Eve
+                         </Button>
+                       </>
+                     ) : null}
+                     {subscription.plan_type === 'enterprise' && (
+                       <Button
+                         variant={selectedAgent === "shadow" ? "default" : "outline"}
+                         size="sm"
+                         onClick={() => setSelectedAgent("shadow")}
+                         className={selectedAgent === "shadow" ? 'bg-purple-500 hover:bg-purple-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
+                       >
+                         Shadow
+                       </Button>
+                     )}
+                   </div>
+                 )}
+               </div>
 
               {/* Selected Agent Configuration */}
               {selectedAgent && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                      {/* Agent Profile Card */}
-                   <Card className="border-orange-500/30 bg-slate-900/60">
-                     <CardHeader>
-                       <div className="flex items-center gap-4">
-                         <div className="text-4xl">
-                           {selectedAgent === 'scout' ? '🔍' : selectedAgent === 'eve' ? '💬' : '⚡'}
-                         </div>
-                         <div>
-                           <CardTitle className="text-white text-2xl">
-                             {selectedAgent === 'scout' ? 'Scout' : selectedAgent === 'eve' ? 'Eve' : 'Shadow'}
-                           </CardTitle>
-                           <CardDescription className="text-slate-300 text-lg">
-                             {selectedAgent === 'scout' ? 'Lead Intelligence Specialist' : 
-                              selectedAgent === 'eve' ? 'Customer Service Specialist' : 
-                              'Workflow Automation Specialist'}
-                           </CardDescription>
-                         </div>
-                       </div>
-                     </CardHeader>
+                                       <Card className="border-orange-500/30 bg-slate-900/60 hover:bg-slate-900/80 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20">
+                      <CardHeader>
+                        <div className="flex items-center gap-4">
+                          <div className="text-4xl">
+                            {selectedAgent === 'scout' ? '🔍' : selectedAgent === 'eve' ? '💬' : '⚡'}
+                          </div>
+                          <div>
+                            <CardTitle className="text-white text-2xl font-bold">
+                              {selectedAgent === 'scout' ? 'Scout' : selectedAgent === 'eve' ? 'Eve' : 'Shadow'}
+                            </CardTitle>
+                            <CardDescription className="text-slate-300 text-lg">
+                              {selectedAgent === 'scout' ? 'Lead Intelligence Specialist' : 
+                               selectedAgent === 'eve' ? 'Customer Service Specialist' : 
+                               'Workflow Automation Specialist'}
+                            </CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
                      <CardContent className="space-y-6">
                        {/* Agent Icon */}
                        <div className="flex justify-center">
@@ -380,13 +458,13 @@ export default function Dashboard() {
                    </Card>
 
                   {/* Agent Configuration */}
-                  <Card className="border-orange-500/30 bg-slate-900/60">
-                    <CardHeader>
-                      <CardTitle className="text-white">Configuration</CardTitle>
-                      <CardDescription className="text-slate-400">
-                        Customize {selectedAgent === 'scout' ? 'Scout' : selectedAgent === 'eve' ? 'Eve' : 'Shadow'}'s behavior and targeting
-                      </CardDescription>
-                    </CardHeader>
+                                     <Card className="border-orange-500/30 bg-slate-900/60 hover:bg-slate-900/80 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20">
+                     <CardHeader>
+                       <CardTitle className="text-white text-xl font-bold">Configuration</CardTitle>
+                       <CardDescription className="text-slate-300">
+                         Customize {selectedAgent === 'scout' ? 'Scout' : selectedAgent === 'eve' ? 'Eve' : 'Shadow'}'s behavior and targeting
+                       </CardDescription>
+                     </CardHeader>
                                          <CardContent className="space-y-6">
                        {/* Scout Configuration */}
                        {selectedAgent === 'scout' && (

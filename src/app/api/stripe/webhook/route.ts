@@ -4,7 +4,8 @@ import { supabase } from '@/lib/supabase';
 import Stripe from 'stripe';
 
 export async function POST(request: NextRequest) {
-  console.log('Webhook received');
+  console.log('=== STRIPE WEBHOOK RECEIVED ===');
+  console.log('Headers:', Object.fromEntries(request.headers.entries()));
   
   // Check if Stripe is configured
   if (!isStripeConfigured() || !stripe) {
@@ -14,6 +15,8 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+  
+  console.log('Stripe is configured, processing webhook...');
 
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
@@ -29,10 +32,19 @@ export async function POST(request: NextRequest) {
 
   try {
     // Verify webhook signature
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    if (!webhookSecret) {
+      console.error('STRIPE_WEBHOOK_SECRET is not configured');
+      return NextResponse.json(
+        { error: 'Webhook secret not configured' },
+        { status: 500 }
+      );
+    }
+    
     event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test'
+      webhookSecret
     );
   } catch (err) {
     console.error('Webhook signature verification failed:', err);
@@ -82,12 +94,17 @@ export async function POST(request: NextRequest) {
 }
 
 async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
+  console.log('=== HANDLING SUBSCRIPTION CREATED ===');
+  console.log('Subscription ID:', subscription.id);
   console.log('Subscription metadata:', subscription.metadata);
+  console.log('Customer ID:', subscription.customer);
+  console.log('Status:', subscription.status);
   
   const { user_id, company, plan_type } = subscription.metadata;
   
   if (!user_id) {
     console.error('No user_id in subscription metadata');
+    console.error('Available metadata keys:', Object.keys(subscription.metadata));
     return;
   }
   
