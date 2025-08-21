@@ -9,6 +9,7 @@ interface UserProfile {
   company: string
   subscription_tier: 'starter' | 'professional' | 'enterprise'
   subscription_status: 'active' | 'cancelled' | 'past_due'
+  selected_bots?: string[] // Array of bot IDs the user selected during setup
   created_at: string
   updated_at: string
 }

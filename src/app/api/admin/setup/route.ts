@@ -27,6 +27,7 @@ export async function POST(request: NextRequest) {
         .update({
           subscription_tier: 'enterprise',
           subscription_status: 'active',
+          selected_bots: ['scout', 'eve', 'shadow'], // Admin gets all bots
         })
         .eq('email', adminEmail);
 
@@ -68,6 +69,7 @@ export async function POST(request: NextRequest) {
         company: 'Aethon Admin',
         subscription_tier: 'enterprise',
         subscription_status: 'active',
+        selected_bots: ['scout', 'eve', 'shadow'], // Admin gets all bots
       })
       .select()
       .single();

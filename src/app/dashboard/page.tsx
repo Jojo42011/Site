@@ -21,11 +21,17 @@ import { useUserProfile } from "@/hooks/useUserProfile";
 import { useScoutConfig } from "@/hooks/useScoutConfig";
 import { useEveConfig } from "@/hooks/useEveConfig";
 import { useSubscription } from "@/hooks/useSubscription";
+import dynamic from "next/dynamic";
+
+const Player = dynamic(() => import("@lottiefiles/react-lottie-player").then(mod => ({ default: mod.Player })), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-slate-700/30 rounded-full animate-pulse" />
+});
 
 export default function Dashboard() {
   const { user, signOut } = useAuth();
   const [activeTab, setActiveTab] = useState("overview");
-  const [selectedAgent, setSelectedAgent] = useState("scout");
+  const [selectedAgent, setSelectedAgent] = useState<string | null>(null);
   
   // Real user data hooks
   const { profile: userProfile, loading: profileLoading } = useUserProfile(user);
@@ -40,6 +46,45 @@ export default function Dashboard() {
     getSubscriptionStatus,
     isAdmin 
   } = useSubscription();
+
+    // Check what bots were actually selected during setup and pre-select the first available one
+  useEffect(() => {
+    if (subscription && !selectedAgent) {
+      console.log('=== AGENT SELECTION DEBUG ===');
+      console.log('User Profile:', userProfile);
+      console.log('User Profile selected_bots:', userProfile?.selected_bots);
+      console.log('Scout Config:', scoutConfig);
+      console.log('Eve Config:', eveConfig);
+      console.log('Subscription:', subscription);
+      console.log('Current selectedAgent:', selectedAgent);
+      
+      // Use the user's stored bot selection preference from setup
+      if (userProfile?.selected_bots && userProfile.selected_bots.length > 0) {
+        // Use the first agent the user selected during setup
+        const firstSelectedBot = userProfile.selected_bots[0];
+        console.log('🎯 Using user\'s stored bot preference:', firstSelectedBot, 'from:', userProfile.selected_bots);
+        
+        // Validate that the selected agent is valid
+        if (['scout', 'eve', 'shadow'].includes(firstSelectedBot)) {
+          console.log('✅ Valid agent selected, setting to:', firstSelectedBot);
+          setSelectedAgent(firstSelectedBot);
+        } else {
+          console.warn('❌ Invalid agent in user preference:', firstSelectedBot);
+          // Fallback to first available agent based on plan
+          const fallbackAgent = subscription.plan_type === 'enterprise' ? 'scout' : 'eve';
+          console.log('🔄 Using fallback agent:', fallbackAgent);
+          setSelectedAgent(fallbackAgent);
+        }
+      } else {
+        console.log('⚠️ No selected_bots found in user profile, using plan-based default');
+        // Simple fallback based on plan type
+        const defaultAgent = subscription.plan_type === 'enterprise' ? 'scout' : 'eve';
+        console.log('🔄 Using plan-based default:', defaultAgent);
+        setSelectedAgent(defaultAgent);
+      }
+      console.log('=== END AGENT SELECTION DEBUG ===');
+    }
+  }, [subscription, selectedAgent, userProfile]);
 
   return (
     <ProtectedRoute>
@@ -254,7 +299,7 @@ export default function Dashboard() {
                          <CardDescription className="text-pink-300 font-medium">Customer Service</CardDescription>
                        </CardHeader>
                        <CardContent className="text-center">
-                         <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30 px-4 py-2 text-sm font-medium">
+                         <Badge className="bg-green-500/20 text-green-300 border-green-500/30 px-4 py-2 text-sm font-medium">
                            Active
                          </Badge>
                        </CardContent>
@@ -291,42 +336,31 @@ export default function Dashboard() {
                   </div>
                  {subscription && (
                    <div className="flex gap-2">
-                     {subscription.plan_type === 'enterprise' || subscription.plan_type === 'professional' ? (
-                       <>
-                         <Button
-                           variant={selectedAgent === "scout" ? "default" : "outline"}
-                           size="sm"
-                           onClick={() => setSelectedAgent("scout")}
-                           className={selectedAgent === "scout" ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
-                         >
-                           Scout
-                         </Button>
-                         <Button
-                           variant={selectedAgent === "eve" ? "default" : "outline"}
-                           size="sm"
-                           onClick={() => setSelectedAgent("eve")}
-                           className={selectedAgent === "eve" ? 'bg-pink-500 hover:bg-pink-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
-                         >
-                           Eve
-                         </Button>
-                       </>
-                     ) : null}
-                     {subscription.plan_type === 'enterprise' && (
+                     {/* Dynamically show only the bots the user actually selected during setup */}
+                     {userProfile?.selected_bots?.map((botId) => (
                        <Button
-                         variant={selectedAgent === "shadow" ? "default" : "outline"}
+                         key={botId}
+                         variant={selectedAgent === botId ? "default" : "outline"}
                          size="sm"
-                         onClick={() => setSelectedAgent("shadow")}
-                         className={selectedAgent === "shadow" ? 'bg-purple-500 hover:bg-purple-600 text-white' : 'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'}
+                         onClick={() => setSelectedAgent(botId)}
+                         className={selectedAgent === botId ? 
+                           (botId === 'scout' ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 
+                            botId === 'eve' ? 'bg-pink-500 hover:bg-pink-600 text-white' : 
+                            'bg-purple-500 hover:bg-purple-600 text-white') : 
+                           'border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-800/50'
+                         }
                        >
-                         Shadow
+                         {botId === 'scout' ? 'Scout' : 
+                          botId === 'eve' ? 'Eve' : 
+                          botId === 'shadow' ? 'Shadow' : botId}
                        </Button>
-                     )}
+                     ))}
                    </div>
                  )}
                </div>
 
-              {/* Selected Agent Configuration */}
-              {selectedAgent && (
+                             {/* Selected Agent Configuration */}
+               {selectedAgent ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                      {/* Agent Profile Card */}
                                        <Card className="border-orange-500/30 bg-slate-900/60 hover:bg-slate-900/80 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20">
@@ -350,10 +384,40 @@ export default function Dashboard() {
                      <CardContent className="space-y-6">
                        {/* Agent Icon */}
                        <div className="flex justify-center">
-                         <div className="w-32 h-32 flex items-center justify-center text-6xl">
-                           {selectedAgent === 'scout' && '🔍'}
-                           {selectedAgent === 'eve' && '💬'}
-                           {selectedAgent === 'shadow' && '⚡'}
+                         <div className="w-32 h-32 flex items-center justify-center relative">
+                           {selectedAgent === 'scout' && (
+                             <div className="w-full h-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border-2 border-emerald-400/50 rounded-full flex items-center justify-center overflow-hidden">
+                               <Player
+                                 src="/assets/scout.json"
+                                 autoplay
+                                 loop
+                                 style={{ width: '100%', height: '100%' }}
+                                 renderer="svg"
+                               />
+                             </div>
+                           )}
+                           {selectedAgent === 'eve' && (
+                             <div className="w-full h-full bg-gradient-to-br from-pink-500/20 to-purple-500/20 border-2 border-pink-400/50 rounded-full flex items-center justify-center overflow-hidden">
+                               <Player
+                                 src="/assets/Nova.json"
+                                 autoplay
+                                 loop
+                                 style={{ width: '100%', height: '100%' }}
+                                 renderer="svg"
+                               />
+                             </div>
+                           )}
+                           {selectedAgent === 'shadow' && (
+                             <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-orange-500/20 border-2 border-purple-400/50 rounded-full flex items-center justify-center overflow-hidden">
+                               <Player
+                                 src="/assets/shadow.json"
+                                 autoplay
+                                 loop
+                                 style={{ width: '100%', height: '100%' }}
+                                 renderer="svg"
+                               />
+                             </div>
+                           )}
                          </div>
                        </div>
 
@@ -817,10 +881,18 @@ export default function Dashboard() {
                            </div>
                          </div>
                        )}
-                    </CardContent>
-                  </Card>
-                </div>
-              )}
+                     </CardContent>
+                   </Card>
+                 </div>
+               ) : (
+                 <div className="text-center py-12">
+                   <div className="text-6xl mb-6">🤖</div>
+                   <h3 className="text-2xl font-bold text-white mb-4">Select an AI Agent</h3>
+                   <p className="text-slate-300 text-lg mb-6">
+                     Choose an AI agent from the buttons above to view its configuration and capabilities.
+                   </p>
+                 </div>
+               )}
             </TabsContent>
           </Tabs>
         </div>

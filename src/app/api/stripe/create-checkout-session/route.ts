@@ -18,6 +18,15 @@ export async function POST(request: NextRequest) {
 
     const { priceId, billingInterval, userId, userEmail, userName, company, plan } = await request.json();
     console.log('Request data:', { priceId, billingInterval, userId, userEmail, userName, company, plan });
+    
+    // Validate plan parameter
+    if (!plan || plan === '') {
+      console.error('Plan parameter is missing or empty');
+      return NextResponse.json(
+        { error: 'Plan parameter is required' },
+        { status: 400 }
+      );
+    }
 
     if (!priceId || !billingInterval || !userId || !userEmail) {
       return NextResponse.json(
@@ -74,6 +83,10 @@ export async function POST(request: NextRequest) {
 
     console.log('Creating Stripe checkout session with customer:', customer.id);
     
+    // Create success URL with plan parameter
+    const successUrl = `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/success?success=true&session_id={CHECKOUT_SESSION_ID}&plan=${plan}`;
+    console.log('Success URL:', successUrl);
+    
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
       customer: customer.id,
@@ -85,7 +98,7 @@ export async function POST(request: NextRequest) {
         },
       ],
       mode: 'subscription',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/success?success=true&session_id={CHECKOUT_SESSION_ID}&plan=${plan}`,
+      success_url: successUrl,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/pricing?canceled=true`,
       subscription_data: {
         trial_period_days: 14,

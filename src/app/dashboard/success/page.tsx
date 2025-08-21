@@ -28,7 +28,37 @@ function SuccessPageContent() {
   
   const sessionId = searchParams.get('session_id');
   const isSuccess = searchParams.get('success') === 'true';
-  const plan = searchParams.get('plan') || 'professional';
+  let plan = searchParams.get('plan') || 'professional';
+  
+  console.log('Success page debug:', { sessionId, isSuccess, plan, searchParams: Object.fromEntries(searchParams.entries()) });
+  
+  // If plan is missing, try to get it from Stripe session metadata
+  useEffect(() => {
+    const getPlanFromStripe = async () => {
+      if (sessionId && (!plan || plan === '')) {
+        try {
+          console.log('Plan parameter missing, fetching from Stripe session...');
+          const response = await fetch('/api/stripe/get-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId }),
+          });
+          
+          if (response.ok) {
+            const { plan: stripePlan } = await response.json();
+            if (stripePlan) {
+              plan = stripePlan;
+              console.log('Retrieved plan from Stripe:', plan);
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching plan from Stripe:', error);
+        }
+      }
+    };
+    
+    getPlanFromStripe();
+  }, [sessionId, plan]);
   
   // Plan-based bot limits
   const planLimits = {
@@ -87,33 +117,81 @@ function SuccessPageContent() {
   const handleCompleteSetup = async () => {
     if (!user || selectedBots.length === 0) return;
     
+    console.log('Starting setup completion with:', { user: user.id, selectedBots, plan, sessionId });
     setIsUpdating(true);
     
     try {
-             // Update user subscription status
-       const { error: userError } = await supabase
-         .from('users')
-         .update({ 
-           subscription_tier: plan, // Use actual plan from Stripe
-           subscription_status: 'active'
-         })
-         .eq('id', user.id);
+      // Validate plan parameter
+      if (!plan || plan === '') {
+        throw new Error('Plan parameter is missing or empty');
+      }
+      
+      // Check if subscription already exists (from webhook)
+      const { data: existingSubscription } = await supabase
+        .from('subscriptions')
+        .select('*')
+        .eq('user_id', user.id)
+        .eq('stripe_subscription_id', sessionId)
+        .single();
+      
+      console.log('Existing subscription check:', existingSubscription);
+      
+      // Update user subscription status (without selected_bots to avoid schema issues)
+      const { error: userError } = await supabase
+        .from('users')
+        .update({ 
+          subscription_tier: plan, // Use actual plan from Stripe
+          subscription_status: 'active'
+        })
+        .eq('id', user.id);
 
-      if (userError) throw userError;
+      if (userError) {
+        console.error('User update error:', userError);
+        throw userError;
+      }
 
-             // Create subscription record if it doesn't exist
-       const { error: subError } = await supabase
-         .from('subscriptions')
-         .upsert({
-           user_id: user.id,
-           stripe_subscription_id: sessionId,
-           plan_type: plan, // Use actual plan from Stripe
-           status: 'active',
-           current_period_start: new Date().toISOString(),
-           current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-         });
+      console.log('User updated successfully');
 
-      if (subError) throw subError;
+      // Store the user's bot selection preference
+      try {
+        const { error: selectedBotsError } = await supabase
+          .from('users')
+          .update({ selected_bots: selectedBots })
+          .eq('id', user.id);
+        
+        if (selectedBotsError) {
+          console.warn('Could not update selected_bots:', selectedBotsError);
+          // This is not critical, continue with setup
+        } else {
+          console.log('Selected bots stored successfully:', selectedBots);
+        }
+      } catch (selectedBotsError) {
+        console.warn('Error updating selected_bots:', selectedBotsError);
+        // Continue with setup even if this fails
+      }
+
+      // Only create subscription record if it doesn't exist (webhook might have already created it)
+      if (!existingSubscription) {
+        console.log('Creating new subscription record...');
+        const { error: subError } = await supabase
+          .from('subscriptions')
+          .insert({
+            user_id: user.id,
+            stripe_subscription_id: sessionId,
+            plan_type: plan, // Use actual plan from Stripe
+            status: 'active',
+            current_period_start: new Date().toISOString(),
+            current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+          });
+
+        if (subError) {
+          console.error('Subscription creation error:', subError);
+          throw subError;
+        }
+        console.log('Subscription created successfully');
+      } else {
+        console.log('Subscription already exists, skipping creation');
+      }
 
       // Create bot configurations for selected bots
       for (const botId of selectedBots) {
@@ -287,6 +365,14 @@ function SuccessPageContent() {
                   Please select at least one AI agent to continue
                 </p>
               )}
+              
+              {/* Debug Info */}
+              <div className="mt-4 p-3 bg-slate-800/30 rounded-lg text-left">
+                <p className="text-xs text-slate-400 mb-2">Debug Info:</p>
+                <p className="text-xs text-slate-300">Session ID: {sessionId}</p>
+                <p className="text-xs text-slate-300">Plan: {plan}</p>
+                <p className="text-xs text-slate-300">Selected Bots: {selectedBots.join(', ')}</p>
+              </div>
             </div>
           </m.div>
         ) : (
