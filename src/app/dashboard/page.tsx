@@ -13,13 +13,16 @@ import {
   Activity, TrendingUp, Users, Target, Globe,
   Building2, DollarSign, Clock, CheckCircle2, AlertCircle, 
   Play, Pause, RotateCcw, BarChart3, Zap, Shield,
-  Wifi, Hammer, Sun, Wrench, Database, Cpu, Crown, LogOut
+  Wifi, Hammer, Sun, Wrench, Database, Cpu, Crown, LogOut,
+  MessageCircle
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useUserProfile } from "@/hooks/useUserProfile";
 import { useScoutConfig } from "@/hooks/useScoutConfig";
 import { useEveConfig } from "@/hooks/useEveConfig";
+import { EveOnboarding } from "@/components/EveOnboarding";
+import { ScoutOnboarding } from "@/components/ScoutOnboarding";
 import { useSubscription } from "@/hooks/useSubscription";
 import dynamic from "next/dynamic";
 
@@ -35,8 +38,35 @@ export default function Dashboard() {
   
   // Real user data hooks
   const { profile: userProfile, loading: profileLoading } = useUserProfile(user);
-  const { config: scoutConfig, loading: scoutLoading, saveConfig: saveScoutConfig } = useScoutConfig(user);
-  const { config: eveConfig, loading: eveLoading, saveConfig: saveEveConfig } = useEveConfig(user);
+  const { 
+    config: scoutConfig, 
+    loading: scoutLoading, 
+    saveConfig: saveScoutConfig,
+    currentStep: scoutCurrentStep,
+    currentStepIndex: scoutCurrentStepIndex,
+    totalSteps: scoutTotalSteps,
+    progress: scoutProgress,
+    onboardingComplete: scoutOnboardingComplete,
+    onNext: scoutOnNext,
+    onPrevious: scoutOnPrevious,
+    onSave: scoutOnSave,
+    onComplete: scoutOnComplete,
+    onBack: scoutOnBack
+  } = useScoutConfig(user);
+  const { 
+    config: eveConfig, 
+    loading: eveLoading, 
+    saveConfig: saveEveConfig,
+    onboardingMode,
+    onboardingComplete,
+    currentStepIndex,
+    startOnboarding,
+    nextStep,
+    previousStep,
+    getCurrentStep,
+    getProgress,
+    onboardingSteps
+  } = useEveConfig(user);
   const { 
     subscription, 
     loading: subLoading, 
@@ -556,133 +586,58 @@ export default function Dashboard() {
                                  </div>
                                ) : scoutConfig ? (
                                  <>
-                                   {/* Business Information */}
-                                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                     <div>
-                                       <label className="block text-sm font-medium text-slate-200 mb-2">Business Name</label>
-                                       <Input
-                                         placeholder="Your Business Name"
-                                         value={scoutConfig.business_name || ''}
-                                         onChange={(e) => saveScoutConfig({ business_name: e.target.value })}
-                                         className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                       />
+                                   {/* Show onboarding if not complete, otherwise show configuration summary */}
+                                   {!scoutOnboardingComplete ? (
+                                     <ScoutOnboarding
+                                       config={scoutConfig}
+                                       onSave={(field, value) => scoutOnSave(field, value)}
+                                       onComplete={() => scoutOnComplete()}
+                                       onBack={() => setActiveTab('overview')}
+                                       currentStep={scoutCurrentStep}
+                                       currentStepIndex={scoutCurrentStepIndex}
+                                       totalSteps={scoutTotalSteps}
+                                       onNext={() => scoutOnNext()}
+                                       onPrevious={() => scoutOnPrevious()}
+                                       progress={scoutProgress}
+                                     />
+                                   ) : (
+                                     <div className="space-y-6">
+                                       {/* Configuration Summary */}
+                                       <div className="bg-slate-800/30 rounded-lg p-6 border border-slate-700/50">
+                                         <h3 className="text-lg font-semibold text-white mb-4">Configuration Complete! 🎯</h3>
+                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                           <div>
+                                             <span className="text-slate-400">Business:</span> {scoutConfig.business_name}
+                                           </div>
+                                           <div>
+                                             <span className="text-slate-400">Strategy:</span> {scoutConfig.outreach_strategy}
+                                           </div>
+                                           <div>
+                                             <span className="text-slate-400">Frequency:</span> {scoutConfig.scraping_frequency}
+                                           </div>
+                                           <div>
+                                             <span className="text-slate-400">Target Areas:</span> {scoutConfig.target_addresses?.length || 0} locations
+                                           </div>
+                                         </div>
+                                       </div>
+                                       
+                                       {/* Quick Actions */}
+                                       <div className="flex gap-3">
+                                         <Button
+                                           onClick={() => scoutOnBack()}
+                                           variant="outline"
+                                           className="border-orange-500/50 text-orange-300 hover:bg-orange-500/10 hover:border-orange-500/70"
+                                         >
+                                           Edit Configuration
+                                         </Button>
+                                         <Button
+                                           className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold"
+                                         >
+                                           Start Lead Generation
+                                         </Button>
+                                       </div>
                                      </div>
-                                     <div>
-                                       <label className="block text-sm font-medium text-slate-200 mb-2">Business Email</label>
-                                       <Input
-                                         type="email"
-                                         placeholder="business@example.com"
-                                         value={scoutConfig.business_email || ''}
-                                         onChange={(e) => saveScoutConfig({ business_email: e.target.value })}
-                                         className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                       />
-                                     </div>
-                                   </div>
-                                   
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Business Phone</label>
-                                     <Input
-                                       type="tel"
-                                       placeholder="(555) 123-4567"
-                                       value={scoutConfig.business_phone || ''}
-                                       onChange={(e) => saveScoutConfig({ business_phone: e.target.value })}
-                                       className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     />
-                                   </div>
-
-                                   {/* Lead Scraping Frequency */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Lead Scraping Frequency</label>
-                                     <select 
-                                       value={scoutConfig.scraping_frequency || 'daily'}
-                                       onChange={(e) => saveScoutConfig({ scraping_frequency: e.target.value as any })}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-md px-3 py-2 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     >
-                                       <option value="hourly">Hourly (High Volume)</option>
-                                       <option value="daily">Daily (Recommended)</option>
-                                       <option value="weekly">Weekly (Conservative)</option>
-                                       <option value="monthly">Monthly (Low Volume)</option>
-                                     </select>
-                                   </div>
-
-                                   {/* Outreach Strategy */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Outreach Strategy</label>
-                                     <select 
-                                       value={scoutConfig.outreach_strategy || 'moderate'}
-                                       onChange={(e) => saveScoutConfig({ outreach_strategy: e.target.value as any })}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-md px-3 py-2 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     >
-                                       <option value="aggressive">Aggressive (High Volume)</option>
-                                       <option value="moderate">Moderate (Balanced)</option>
-                                       <option value="conservative">Conservative (High Quality)</option>
-                                     </select>
-                                   </div>
-
-                                   {/* Target Addresses */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Target Locations</label>
-                                     <div className="space-y-2">
-                                       {scoutConfig.target_addresses?.map((address, index) => (
-                                         <Input
-                                           key={index}
-                                           placeholder={`Target location ${index + 1}`}
-                                           value={address}
-                                           onChange={(e) => {
-                                             const newAddresses = [...(scoutConfig.target_addresses || [])]
-                                             newAddresses[index] = e.target.value
-                                             saveScoutConfig({ target_addresses: newAddresses })
-                                           }}
-                                           className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                         />
-                                       ))}
-                                     </div>
-                                   </div>
-
-                                   {/* Custom Messages */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Initial Contact Message</label>
-                                     <textarea
-                                       placeholder="Hi [Company], I noticed your business in [Industry] and wanted to connect..."
-                                       value={scoutConfig.initial_message || ''}
-                                       onChange={(e) => saveScoutConfig({ initial_message: e.target.value })}
-                                       rows={3}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-md px-3 py-2 resize-none"
-                                     />
-                                   </div>
-
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Follow-up Message</label>
-                                     <textarea
-                                       placeholder="Hi [Name], I wanted to follow up on my previous message..."
-                                       value={scoutConfig.follow_up_message || ''}
-                                       onChange={(e) => saveScoutConfig({ follow_up_message: e.target.value })}
-                                       rows={3}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-md px-3 py-2 resize-none"
-                                     />
-                                   </div>
-
-                                   {/* Outreach Keywords */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Outreach Keywords</label>
-                                     <Input
-                                       placeholder="growth, expansion, efficiency, ROI"
-                                       value={scoutConfig.outreach_keywords || ''}
-                                       onChange={(e) => saveScoutConfig({ outreach_keywords: e.target.value })}
-                                       className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     />
-                                   </div>
-
-                                   {/* Save Button */}
-                                   <div className="pt-4">
-                                     <Button 
-                                       onClick={() => saveScoutConfig(scoutConfig)}
-                                       className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3"
-                                       disabled={scoutLoading}
-                                     >
-                                       {scoutLoading ? 'Saving...' : 'Save Scout Configuration'}
-                                     </Button>
-                                   </div>
+                                   )}
                                  </>
                                ) : (
                                  <div className="text-center py-8">
@@ -720,119 +675,90 @@ export default function Dashboard() {
                                  </div>
                                ) : eveConfig ? (
                                  <>
-                                   {/* Business Information */}
-                                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                     <div>
-                                       <label className="block text-sm font-medium text-slate-200 mb-2">Business Name</label>
-                                       <Input
-                                         placeholder="Your Business Name"
-                                         value={eveConfig.business_name || ''}
-                                         onChange={(e) => saveEveConfig({ business_name: e.target.value })}
-                                         className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                       />
-                                     </div>
-                                     <div>
-                                       <label className="block text-sm font-medium text-slate-200 mb-2">Business Email</label>
-                                       <Input
-                                         type="email"
-                                         placeholder="business@example.com"
-                                         value={eveConfig.business_email || ''}
-                                         onChange={(e) => saveEveConfig({ business_email: e.target.value })}
-                                         className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                       />
-                                     </div>
-                                   </div>
-                                   
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Business Phone</label>
-                                     <Input
-                                       type="tel"
-                                       placeholder="(555) 123-4567"
-                                       value={eveConfig.business_phone || ''}
-                                       onChange={(e) => saveEveConfig({ business_phone: e.target.value })}
-                                       className="bg-slate-800/50 border-slate-700/50 text-white placeholder:text-slate-400 focus:border-orange-500/50 focus:ring-orange-500/20"
+                                   {/* Conversational Onboarding */}
+                                   {onboardingMode ? (
+                                     <EveOnboarding
+                                       config={eveConfig}
+                                       onSave={(field, value) => saveEveConfig({ [field]: value })}
+                                       onComplete={() => {
+                                         // Save final config and exit onboarding
+                                         saveEveConfig(eveConfig)
+                                       }}
+                                       onBack={() => {
+                                         // Exit onboarding mode
+                                         window.location.reload()
+                                       }}
+                                       currentStep={getCurrentStep()}
+                                       currentStepIndex={currentStepIndex}
+                                       totalSteps={onboardingSteps.length}
+                                       onNext={nextStep}
+                                       onPrevious={previousStep}
+                                       progress={getProgress()}
                                      />
-                                   </div>
+                                   ) : (
+                                     <>
+                                       {/* Onboarding Status */}
+                                       {!onboardingComplete ? (
+                                         <div className="text-center py-12">
+                                           <div className="text-6xl mb-6">🤖</div>
+                                           <h3 className="text-2xl font-bold text-white mb-4">Welcome to Eve Configuration!</h3>
+                                           <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
+                                             Instead of filling out a long form, let me ask you a few questions about your business. 
+                                             I'll explain why I need each piece of information and help you configure Eve for optimal customer service.
+                                           </p>
+                                           <Button 
+                                             onClick={startOnboarding}
+                                             className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold py-4 px-8 text-lg"
+                                           >
+                                             <MessageCircle className="h-6 w-6 mr-3" />
+                                             Start Conversational Setup
+                                           </Button>
+                                           <p className="text-slate-400 text-sm mt-4">
+                                             Takes about 5-10 minutes • You can skip optional questions
+                                           </p>
+                                         </div>
+                                       ) : (
+                                         <div className="text-center py-8">
+                                           <div className="text-6xl mb-4">✅</div>
+                                           <h3 className="text-xl font-bold text-white mb-2">Eve Configuration Complete!</h3>
+                                           <p className="text-slate-300 mb-6">
+                                             Your Eve AI assistant is now configured and ready to provide excellent customer service.
+                                           </p>
+                                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-6">
+                                             <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                               <div className="text-2xl mb-2">🏢</div>
+                                               <div className="font-semibold text-white">{eveConfig.business_name}</div>
+                                               <div className="text-slate-400 text-sm">{eveConfig.company_industry?.replace(/_/g, ' ')}</div>
+                                             </div>
+                                             <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                               <div className="text-2xl mb-2">🎭</div>
+                                               <div className="font-semibold text-white">{eveConfig.voice_tone?.replace(/_/g, ' ')}</div>
+                                               <div className="text-slate-400 text-sm">Voice & Tone</div>
+                                             </div>
+                                             <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                               <div className="text-2xl mb-2">⏰</div>
+                                               <div className="font-semibold text-white">{eveConfig.operating_hours?.replace(/_/g, ' ')}</div>
+                                               <div className="text-slate-400 text-sm">Operating Hours</div>
+                                             </div>
+                                           </div>
+                                           <Button 
+                                             onClick={startOnboarding}
+                                             variant="outline"
+                                             className="border-pink-500/50 text-pink-300 hover:bg-pink-500/10 hover:border-pink-500/70"
+                                           >
+                                             <MessageCircle className="h-4 w-4 mr-2" />
+                                             Reconfigure Eve
+                                           </Button>
+                                         </div>
+                                       )}
+                                     </>
+                                   )}
+                                   
 
-                                   {/* Voice and Tone */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Voice & Tone</label>
-                                     <select 
-                                       value={eveConfig.voice_tone || 'professional'}
-                                       onChange={(e) => saveEveConfig({ voice_tone: e.target.value as any })}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-md px-3 py-2 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     >
-                                       <option value="professional">Professional & Formal</option>
-                                       <option value="friendly">Friendly & Approachable</option>
-                                       <option value="casual">Casual & Conversational</option>
-                                       <option value="enthusiastic">Enthusiastic & Energetic</option>
-                                       <option value="empathetic">Empathetic & Caring</option>
-                                     </select>
-                                   </div>
 
-                                   {/* Operating Hours */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Operating Hours</label>
-                                     <select 
-                                       value={eveConfig.operating_hours || '24-7'}
-                                       onChange={(e) => saveEveConfig({ operating_hours: e.target.value as any })}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-md px-3 py-2 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     >
-                                       <option value="24-7">24/7 (Always Available)</option>
-                                       <option value="business-hours">Business Hours Only</option>
-                                       <option value="extended-hours">Extended Hours (6 AM - 10 PM)</option>
-                                       <option value="custom">Custom Schedule</option>
-                                     </select>
-                                   </div>
 
-                                   {/* Response Time Priority */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Response Time Priority</label>
-                                     <select 
-                                       value={eveConfig.response_time_priority || 'immediate'}
-                                       onChange={(e) => saveEveConfig({ response_time_priority: e.target.value as any })}
-                                       className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-md px-3 py-2 focus:border-orange-500/50 focus:ring-orange-500/20"
-                                     >
-                                       <option value="immediate">Immediate (Under 30 seconds)</option>
-                                       <option value="fast">Fast (Under 2 minutes)</option>
-                                       <option value="standard">Standard (Under 5 minutes)</option>
-                                       <option value="relaxed">Relaxed (Under 15 minutes)</option>
-                                     </select>
-                                   </div>
 
-                                   {/* Language Support */}
-                                   <div>
-                                     <label className="block text-sm font-medium text-slate-200 mb-2">Language Support</label>
-                                     <div className="space-y-2">
-                                       {['English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese'].map((language) => (
-                                         <label key={language} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-800/30 transition-colors cursor-pointer">
-                                           <input
-                                             type="checkbox"
-                                             checked={eveConfig.languages?.includes(language) || false}
-                                             onChange={(e) => {
-                                               const newLanguages = e.target.checked 
-                                                 ? [...(eveConfig.languages || []), language]
-                                                 : (eveConfig.languages || []).filter(l => l !== language)
-                                               saveEveConfig({ languages: newLanguages })
-                                             }}
-                                             className="rounded border-slate-600 bg-slate-800 text-orange-500 focus:ring-orange-500/20 focus:ring-offset-slate-900"
-                                           />
-                                           <span className="text-sm text-slate-200">{language}</span>
-                                         </label>
-                                       ))}
-                                     </div>
-                                   </div>
 
-                                   {/* Save Button */}
-                                   <div className="pt-4">
-                                     <Button 
-                                       onClick={() => saveEveConfig(eveConfig)}
-                                       className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3"
-                                       disabled={eveLoading}
-                                     >
-                                       {eveLoading ? 'Saving...' : 'Save Eve Configuration'}
-                                     </Button>
-                                   </div>
                                  </>
                                ) : (
                                  <div className="text-center py-8">

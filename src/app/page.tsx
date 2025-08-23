@@ -798,9 +798,9 @@ export default function AethonLanding() {
                 
                 <div className="text-center mb-8">
                   <div className="text-4xl font-bold text-white mb-2">
-                    $99<span className="text-lg text-slate-400">/month</span>
+                    $79<span className="text-lg text-slate-400">/month</span>
                   </div>
-                  <p className="text-slate-400">or $990/year (save 17%)</p>
+                  <p className="text-slate-400">or $948/year (save 17%)</p>
                 </div>
 
                 <div className="space-y-4 mb-8">
@@ -861,9 +861,9 @@ export default function AethonLanding() {
                 
                 <div className="text-center mb-8">
                   <div className="text-4xl font-bold text-white mb-2">
-                    $199<span className="text-lg text-slate-400">/month</span>
+                    $99<span className="text-lg text-slate-400">/month</span>
                   </div>
-                  <p className="text-slate-400">or $1,990/year (save 17%)</p>
+                  <p className="text-slate-400">or $1,188/year (save 17%)</p>
                 </div>
 
                 <div className="space-y-4 mb-8">
@@ -919,11 +919,11 @@ export default function AethonLanding() {
                   <p className="text-slate-400">Full AI workforce for established businesses</p>
                 </div>
                 
-                <div className="text-center mb-2">
+                <div className="text-center mb-8">
                   <div className="text-4xl font-bold text-white mb-2">
-                    $0.10<span className="text-lg text-slate-400">/month</span>
+                    $199<span className="text-lg text-slate-400">/month</span>
                   </div>
-                  <p className="text-slate-400">Test pricing - $0.10/month</p>
+                  <p className="text-slate-400">or $2,388/year (save 17%)</p>
                 </div>
 
                 <div className="space-y-4 mb-8">

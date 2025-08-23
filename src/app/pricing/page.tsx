@@ -18,8 +18,8 @@ export default function PricingPage() {
   const plans = {
     starter: {
       name: "Starter",
-      monthlyPrice: 0.10,
-      yearlyPrice: 0.10,
+      monthlyPrice: 79,
+      yearlyPrice: 948,
       icon: Sparkles,
       color: "emerald",
       description: "Perfect for small businesses getting started with AI",
@@ -39,8 +39,8 @@ export default function PricingPage() {
     },
     professional: {
       name: "Professional",
-      monthlyPrice: 0.10,
-      yearlyPrice: 0.10,
+      monthlyPrice: 99,
+      yearlyPrice: 1188,
       icon: Zap,
       color: "orange",
       description: "Ideal for growing businesses with multiple AI needs",
@@ -61,8 +61,8 @@ export default function PricingPage() {
     },
     enterprise: {
       name: "Enterprise",
-      monthlyPrice: 0.10,
-      yearlyPrice: 0.10,
+      monthlyPrice: 199,
+      yearlyPrice: 2388,
       icon: Crown,
       color: "purple",
       description: "Full AI workforce for established businesses",

@@ -58,16 +58,16 @@ export interface StripeCustomer {
 // Price IDs for our subscription tiers
 export const STRIPE_PRICE_IDS = {
   starter: {
-    monthly: 'price_1RxvxLGRDGTw7FIEbXo4MKvs',
-    yearly: 'price_1RxvxLGRDGTw7FIEbXo4MKvs',
+    monthly: 'price_1Rz7WGGRDGTw7FIEKTPxq827', // $79/month plan
+    yearly: 'price_NEEDED_FOR_79_PLAN',          // TODO: Replace with actual Stripe price ID for $79/year
   },
   professional: {
-    monthly: 'price_1RxvxLGRDGTw7FIEbXo4MKvs',
-    yearly: 'price_1RxvxLGRDGTw7FIEbXo4MKvs',
+    monthly: 'price_1Rz7VoGRDGTw7FIE4l5i4Haf', // $99/month plan
+    yearly: 'price_NEEDED_FOR_99_PLAN',          // TODO: Replace with actual Stripe price ID for $99/year
   },
   enterprise: {
-    monthly: 'price_1RxvxLGRDGTw7FIEbXo4MKvs',
-    yearly: 'price_1RxvxLGRDGTw7FIEbXo4MKvs',
+    monthly: 'price_1Rz7UgGRDGTw7FIEfJeB0b7P', // $199/month plan
+    yearly: 'price_NEEDED_FOR_199_PLAN',        // TODO: Replace with actual Stripe price ID for $199/year
   },
 } as const;
 

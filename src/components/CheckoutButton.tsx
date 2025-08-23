@@ -103,6 +103,11 @@ export function CheckoutButton({ plan, billingInterval, className }: CheckoutBut
   };
 
   const getButtonText = () => {
+    // If no user, show sign up text
+    if (!user) {
+      return `Get Started - ${billingInterval === 'monthly' ? 'Monthly' : 'Annual'}`;
+    }
+    
     if (subLoading) return 'Loading...';
     
     if (subscription?.status === 'active') {
@@ -125,7 +130,7 @@ export function CheckoutButton({ plan, billingInterval, className }: CheckoutBut
   return (
     <Button
       onClick={handleCheckout}
-      disabled={isLoading || subLoading || isCurrentPlan}
+      disabled={isLoading || (user && subLoading) || (user && isCurrentPlan)}
       className={`w-full py-3 text-lg font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${buttonColor} ${className}`}
     >
       {isLoading ? (

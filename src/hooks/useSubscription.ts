@@ -31,7 +31,12 @@ export function useSubscription() {
   const [error, setError] = useState<string | null>(null);
 
   const fetchSubscription = useCallback(async () => {
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      setSubscription(null);
+      setError(null);
+      return;
+    }
 
     try {
       setLoading(true);
