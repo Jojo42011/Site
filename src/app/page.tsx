@@ -214,7 +214,7 @@ export default function AethonConsultingLanding() {
             <a href="#results" className="text-gray-300 hover:text-white transition-colors font-medium">Results</a>
             <Link href="/spa" className="text-gray-300 hover:text-white transition-colors font-medium">Spas</Link>
             <Button 
-              onClick={() => window.open('https://calendly.com/jahanfraction/15-minute-demo', '_blank')}
+              onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
               className="bg-white text-black hover:bg-gray-100 font-semibold shadow-lg shadow-white/20 transition-all duration-200 hover:scale-105"
             >
               Schedule Call
@@ -248,7 +248,7 @@ export default function AethonConsultingLanding() {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                 <Button 
-                  onClick={() => window.open('https://calendly.com/jahanfraction/15-minute-demo', '_blank')}
+                  onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
                   size="lg"
                   className="bg-white text-black hover:bg-gray-100 font-light px-8 py-4 text-lg shadow-xl shadow-white/25 transition-all duration-200 hover:scale-105"
                 >
@@ -548,7 +548,7 @@ export default function AethonConsultingLanding() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
-                onClick={() => window.open('https://calendly.com/jahanfraction/15-minute-demo', '_blank')}
+                onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
                 size="lg"
                 className="bg-white text-black hover:bg-gray-200 font-light px-8 py-4 text-lg transition-all duration-200 hover:scale-105"
               >
