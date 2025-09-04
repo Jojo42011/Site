@@ -11,10 +11,11 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
         className
       )}
       style={{
-        background: 'linear-gradient(135deg, #1a0000 0%, #8B0000 60%, #000 100%)',
+        background: 'white',
         borderRadius: '12px',
-        boxShadow: '0 4px 24px 0 rgba(139,0,0,0.5), 0 1.5px 6px 0 rgba(0,0,0,0.25)',
-        color: 'white',
+        boxShadow: '0 4px 20px 0 rgba(0,0,0,0.1), 0 2px 8px 0 rgba(0,0,0,0.05)',
+        color: '#1f2937',
+        border: '1px solid rgba(0,0,0,0.1)',
       }}
       {...props}
     />

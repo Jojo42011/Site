@@ -123,3 +123,56 @@ body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
 }
+
+/* Ultra-Modern Sleek Background */
+.hero-background {
+  background: 
+    radial-gradient(ellipse at top left, rgba(255,255,255,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(255,255,255,0.02) 0%, transparent 50%),
+    linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #000000 50%, #0f0f0f 75%, #000000 100%);
+  background-size: 100% 100%, 100% 100%, 200% 200%;
+  backdrop-filter: blur(10px);
+  background-blend-mode: overlay, overlay, normal;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.02) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(255,255,255,0.01) 50%, transparent 70%);
+  background-size: 100px 100px, 80px 80px;
+  animation: subtleFlow 20s infinite linear;
+  pointer-events: none;
+}
+
+.hero-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.01) 0%, transparent 70%);
+  animation: pulse 8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes subtleFlow {
+  0% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(25px) translateY(-25px); }
+  50% { transform: translateX(0) translateY(-50px); }
+  75% { transform: translateX(-25px) translateY(-25px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
