@@ -26,7 +26,8 @@ import {
   Wrench,
   TrendingUp,
   DollarSign,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -211,6 +212,7 @@ export default function AethonConsultingLanding() {
             <a href="#capabilities" className="text-gray-300 hover:text-white transition-colors font-medium">Features</a>
             <a href="#process" className="text-gray-300 hover:text-white transition-colors font-medium">Process</a>
             <a href="#results" className="text-gray-300 hover:text-white transition-colors font-medium">Results</a>
+            <Link href="/spa" className="text-gray-300 hover:text-white transition-colors font-medium">Spas</Link>
             <Button 
               onClick={() => window.open('https://calendly.com/jahanfraction/15-minute-demo', '_blank')}
               className="bg-white text-black hover:bg-gray-100 font-semibold shadow-lg shadow-white/20 transition-all duration-200 hover:scale-105"
@@ -528,8 +530,9 @@ export default function AethonConsultingLanding() {
                   </div>
       </section>
 
+
       {/* Schedule Call Section */}
-      <section className="relative z-10 py-24 bg-gradient-to-br from-slate-900 via-black to-slate-900">
+      <section className="relative z-10 py-24 bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="max-w-4xl mx-auto px-6 text-center">
             <m.div
             initial={{ opacity: 0, y: 20 }}
