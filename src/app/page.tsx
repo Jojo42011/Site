@@ -212,7 +212,7 @@ export default function AethonConsultingLanding() {
             <a href="#capabilities" className="text-gray-300 hover:text-white transition-colors font-medium">Features</a>
             <a href="#process" className="text-gray-300 hover:text-white transition-colors font-medium">Process</a>
             <a href="#results" className="text-gray-300 hover:text-white transition-colors font-medium">Results</a>
-            <Link href="/spa" className="text-gray-300 hover:text-white transition-colors font-medium">Spas</Link>
+            <Link href="/voiceagents" className="text-gray-300 hover:text-white transition-colors font-medium">Voice AI</Link>
             <Link href="/legal" className="text-gray-300 hover:text-white transition-colors font-medium">Legal</Link>
             <Button 
               onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
@@ -531,6 +531,116 @@ export default function AethonConsultingLanding() {
                   </div>
       </section>
 
+
+      {/* Industry Solutions Section */}
+      <section className="relative z-10 py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-tight text-white">
+              Industry-Specific <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">AI Solutions</span>
+            </h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light">
+              Explore our specialized AI solutions designed for your industry
+            </p>
+          </m.div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Voice AI Solution */}
+            <m.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Link href="/voiceagents">
+                <div className="group bg-gradient-to-br from-slate-900/60 to-slate-800/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center group-hover:from-emerald-500 group-hover:to-teal-500 transition-colors">
+                      <Phone className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-light text-white tracking-tight">AI Voice Receptionist</h3>
+                      <p className="text-sm text-emerald-400 font-light">Never miss a call again</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 mb-4 leading-relaxed font-light">
+                    24/7 call handling, appointment booking, and customer qualification for service businesses.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Auto Body</Badge>
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">HVAC</Badge>
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Dental</Badge>
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Medical Spas</Badge>
+                  </div>
+                  <div className="flex items-center text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                    <span className="text-sm font-light mr-2">Explore Voice AI</span>
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </m.div>
+
+            {/* Legal AI Solution */}
+            <m.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Link href="/legal">
+                <div className="group bg-gradient-to-br from-slate-900/60 to-slate-800/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center group-hover:from-blue-500 group-hover:to-indigo-500 transition-colors">
+                      <FileText className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-light text-white tracking-tight">Legal AI Assistant</h3>
+                      <p className="text-sm text-blue-400 font-light">Secure & private deployment</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 mb-4 leading-relaxed font-light">
+                    Private document processing, contract analysis, and legal research trained on your firm's data.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Corporate Law</Badge>
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Litigation</Badge>
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Immigration</Badge>
+                    <Badge variant="outline" className="text-gray-400 border-gray-600 text-xs">Criminal Defense</Badge>
+                  </div>
+                  <div className="flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
+                    <span className="text-sm font-light mr-2">Explore Legal AI</span>
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </m.div>
+          </div>
+
+          {/* Custom Solution CTA */}
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <div className="bg-gradient-to-r from-slate-800/40 to-slate-700/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 max-w-2xl mx-auto">
+              <h3 className="text-lg font-light text-white mb-2">Don't see your industry?</h3>
+              <p className="text-gray-400 text-sm mb-4 font-light">We build custom AI solutions for any business process.</p>
+              <Button 
+                onClick={() => setIsContactOpen(true)}
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 font-light transition-all duration-200 hover:scale-105"
+              >
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Get Custom Solution
+              </Button>
+            </div>
+          </m.div>
+        </div>
+      </section>
 
       {/* Schedule Call Section */}
       <section className="relative z-10 py-24 bg-gradient-to-br from-black via-gray-900 to-black">

@@ -220,7 +220,7 @@ export default function LegalLanding() {
             <a href="#features" className="text-gray-300 hover:text-white transition-colors font-medium">Features</a>
             <a href="#results" className="text-gray-300 hover:text-white transition-colors font-medium">Results</a>
             <a href="#process" className="text-gray-300 hover:text-white transition-colors font-medium">Process</a>
-            <Link href="/spa" className="text-gray-300 hover:text-white transition-colors font-medium">Spas</Link>
+            <Link href="/voiceagents" className="text-gray-300 hover:text-white transition-colors font-medium">Voice AI</Link>
             <Button 
               onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
               className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg shadow-blue-500/20 transition-all duration-200 hover:scale-105"

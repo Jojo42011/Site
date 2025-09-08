@@ -23,7 +23,8 @@ import {
   X,
   Send,
   Headphones,
-  UserCheck
+  UserCheck,
+  Play
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,120 +33,120 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 
-// Med Spa AI Receptionist Capabilities
-const medSpaCapabilities = [
+// Voice AI Receptionist Capabilities - Industry Neutral
+const voiceAgentCapabilities = [
   {
-    category: "24/7 Appointment Booking",
-    icon: <Calendar className="h-6 w-6" />,
+    category: "24/7 Call Handling",
+    icon: <Phone className="h-6 w-6" />,
     savings: "85% reduction in missed calls",
-    description: "Never miss a booking opportunity with round-the-clock appointment scheduling and instant confirmations",
-    features: ["Real-time availability", "Automated reminders", "Waitlist management", "Multi-location support"]
+    description: "Never miss another customer call with round-the-clock professional call answering and appointment scheduling",
+    features: ["After-hours coverage", "Holiday & weekend support", "Multiple phone line handling", "Call routing & transfers"]
   },
   {
-    category: "Treatment Consultation",
+    category: "Appointment Scheduling",
+    icon: <Calendar className="h-6 w-6" />,
+    savings: "200% increase in bookings", 
+    description: "Intelligent scheduling that checks availability, books appointments instantly, and sends confirmations",
+    features: ["Real-time calendar sync", "Automated confirmations", "Rescheduling & cancellations", "Waitlist management"]
+  },
+  {
+    category: "Customer Qualification",
+    icon: <UserCheck className="h-6 w-6" />,
+    savings: "60% better lead quality",
+    description: "Pre-qualify customers, collect project details, and ensure you only spend time on serious inquiries",
+    features: ["Lead scoring", "Project requirement gathering", "Budget qualification", "Urgency assessment"]
+  },
+  {
+    category: "Service Consultation",
     icon: <Headphones className="h-6 w-6" />,
-    savings: "60% faster intake process", 
-    description: "Intelligent pre-consultation screening and treatment recommendations based on client needs",
-    features: ["Treatment matching", "Pricing information", "Preparation instructions", "Contraindication screening"]
+    savings: "50% faster sales process",
+    description: "Explain your services, provide pricing information, and answer common questions professionally",
+    features: ["Service explanations", "Pricing information", "FAQ responses", "Process walkthroughs"]
   },
   {
-    category: "Client Retention & Follow-up",
+    category: "Follow-up & Retention",
     icon: <Heart className="h-6 w-6" />,
-    savings: "40% increase in retention",
-    description: "Automated post-treatment care, satisfaction surveys, and personalized follow-up sequences",
-    features: ["Post-care instructions", "Progress check-ins", "Loyalty program management", "Review requests"]
+    savings: "40% increase in repeat business",
+    description: "Automated follow-ups, satisfaction surveys, and customer retention campaigns",
+    features: ["Post-service follow-up", "Satisfaction surveys", "Maintenance reminders", "Loyalty programs"]
   },
   {
-    category: "Payment & Package Sales",
-    icon: <DollarSign className="h-6 w-6" />,
-    savings: "35% increase in package sales",
-    description: "Seamless payment processing and intelligent upselling of treatment packages and memberships",
-    features: ["Payment collection", "Package recommendations", "Membership enrollment", "Financing options"]
-  },
-  {
-    category: "Staff Coordination",
-    icon: <Users className="h-6 w-6" />,
-    savings: "50% reduction in admin tasks",
-    description: "Streamlined staff scheduling, client handoffs, and internal communication management",
-    features: ["Provider matching", "Schedule optimization", "Client notes sharing", "Task automation"]
-  },
-  {
-    category: "Compliance & Documentation",
-    icon: <ShieldCheck className="h-6 w-6" />,
-    savings: "100% HIPAA compliant",
-    description: "Automated consent forms, medical history collection, and secure documentation management",
-    features: ["Digital consent forms", "Medical history intake", "Photo documentation", "Secure file storage"]
+    category: "Business Intelligence",
+    icon: <BarChart3 className="h-6 w-6" />,
+    savings: "Complete call analytics",
+    description: "Track call volume, conversion rates, and customer insights to optimize your business",
+    features: ["Call volume tracking", "Conversion analytics", "Customer insights", "Performance reports"]
   }
 ];
 
-const medSpaStats = [
-  {
-    number: "$15.9B",
-    label: "Med Spa Market Size 2024",
-    growth: "+15.2% annually"
-  },
-  {
-    number: "73%",
-    label: "Clients Prefer Online Booking",
-    growth: "Up from 45% in 2020"
-  },
+const businessStats = [
   {
     number: "42%",
     label: "Revenue Lost to Missed Calls",
-    growth: "Industry average"
+    growth: "Across all service industries"
+  },
+  {
+    number: "73%",
+    label: "Customers Prefer Instant Response",
+    growth: "Up from 45% in 2020"
   },
   {
     number: "68%",
-    label: "Clients Want 24/7 Support",
+    label: "Businesses Want 24/7 Coverage",
     growth: "Post-pandemic shift"
+  },
+  {
+    number: "85%",
+    label: "Calls Outside Business Hours",
+    growth: "Go to voicemail"
   }
 ];
 
-const medSpaTestimonials = [
+const businessTestimonials = [
   {
-    name: "Dr. Amanda Richardson",
+    name: "Mike Rodriguez",
+    company: "Rodriguez Auto Body",
+    role: "Owner",
+    content: "We were losing thousands every month from missed calls while working on cars. Now our AI captures every insurance inquiry, schedules estimates instantly, and even follows up with customers. Our booking rate went from 30% to 85% overnight.",
+    savings: "200% booking increase",
+    industry: "Auto Body & Collision Repair"
+  },
+  {
+    name: "Dr. Amanda Richardson", 
     company: "Serenity Medical Spa",
     role: "Medical Director",
-    content: "Since implementing Aethon's AI receptionist, we've seen a 200% increase in bookings. The AI converts 3x more phone inquiries into actual appointments than our human staff ever did. It never sleeps, never takes breaks, and always gives perfect treatment explanations.",
-    savings: "200% booking increase",
-    treatments: "Botox, Fillers, Laser Hair Removal"
+    content: "The AI converts 3x more phone inquiries into actual appointments than our human staff ever did. It never sleeps, never takes breaks, and always gives perfect treatment explanations. Our revenue jumped 40% in just 2 months.",
+    savings: "300% better conversion",
+    industry: "Medical Spa & Wellness"
   },
   {
-    name: "Marcus Thompson", 
-    company: "Bliss Day Spa",
-    role: "Owner",
-    content: "We were losing $15,000 monthly from missed calls alone. Now our AI captures every single inquiry, books appointments instantly, and even upsells massage packages. Our revenue jumped 40% in just 2 months with zero additional staff costs.",
-    savings: "85% conversion rate",
-    treatments: "Massage Therapy, Facials, Body Treatments"
-  },
-  {
-    name: "Isabella Martinez",
-    company: "Rejuvenate Wellness Center", 
-    role: "Practice Manager",
-    content: "The AI is like having our best receptionist working 24/7. It pre-qualifies clients, explains our IV therapy and wellness programs perfectly, and has eliminated our no-show problem completely. Our consultation-to-treatment conversion rate hit 92%.",
-    savings: "60% staff efficiency gain",
-    treatments: "IV Therapy, Wellness Consultations, Hormone Therapy"
+    name: "Tom Chen",
+    company: "Elite HVAC Services", 
+    role: "Operations Manager",
+    content: "Emergency calls used to go to voicemail when our techs were busy. Now our AI handles everything - schedules service calls, explains pricing, and even upsells maintenance plans. We've never missed an emergency call since.",
+    savings: "100% call capture rate",
+    industry: "HVAC & Emergency Services"
   }
 ];
 
-const treatmentCategories = [
-  "Massage Therapy", "Facial Treatments", "Botox & Fillers", "Laser Hair Removal", 
-  "CoolSculpting", "HydraFacial", "Chemical Peels", "Microneedling", 
-  "Body Wraps", "Aromatherapy", "Hot Stone Therapy", "Deep Tissue Massage",
-  "IPL Photofacial", "Body Contouring", "IV Therapy", "Acne Treatment"
+const targetIndustries = [
+  "Auto Body Shops", "HVAC Services", "Dental Practices", "Medical Spas", 
+  "Plumbing Services", "Electrical Contractors", "Law Firms", "Veterinary Clinics", 
+  "Massage Therapy", "Home Services", "Roofing Companies", "Landscaping",
+  "Cleaning Services", "Wellness Centers", "Beauty Salons", "Repair Services"
 ];
 
-export default function MedSpaLanding() {
+export default function VoiceAgentLanding() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
     company: "",
     phone: "",
-    treatments: "",
+    industry: "",
     locations: "",
     message: "",
-    monthlyBookings: "",
+    monthlyCalls: "",
     currentSystem: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -169,10 +170,10 @@ export default function MedSpaLanding() {
         email: "",
         company: "",
         phone: "",
-        treatments: "",
+        industry: "",
         locations: "",
         message: "",
-        monthlyBookings: "",
+        monthlyCalls: "",
         currentSystem: ""
       });
       setIsContactOpen(false);
@@ -185,10 +186,10 @@ export default function MedSpaLanding() {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)]" />
       
-      {/* Floating Elements with Med Spa Theme */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-pink-500/5 to-purple-500/5 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-gradient-to-r from-emerald-500/3 to-teal-500/3 rounded-full blur-3xl animate-pulse delay-2000" />
+      {/* Floating Elements with Business Theme */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-cyan-500/5 to-emerald-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-gradient-to-r from-teal-500/3 to-green-500/3 rounded-full blur-3xl animate-pulse delay-2000" />
       
       {/* Navigation */}
       <nav className="relative z-50 border-b border-white/10 backdrop-blur-lg bg-black/95 shadow-2xl shadow-black/50">
@@ -217,7 +218,7 @@ export default function MedSpaLanding() {
             <a href="#process" className="text-gray-300 hover:text-white transition-colors font-medium">Process</a>
             <Button 
               onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
-              className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 font-semibold shadow-lg shadow-pink-500/20 transition-all duration-200 hover:scale-105"
+              className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 font-semibold shadow-lg shadow-emerald-500/20 transition-all duration-200 hover:scale-105"
             >
               Book Demo
             </Button>
@@ -240,24 +241,35 @@ export default function MedSpaLanding() {
                   Never Miss Another
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-                  Spa Booking Again
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  Customer Call Again
                 </span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto">
-                Transform your spa, wellness center, or medical practice with an AI receptionist that books appointments 24/7, pre-qualifies clients, and increases your revenue by 40% while your staff focuses on treatments.
+                Transform your business with an AI voice receptionist that handles calls 24/7, books appointments instantly, and increases your revenue by 40% while you focus on serving customers.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <Button 
+                  onClick={() => window.open('https://youtube.com/shorts/FyGV1ZXO5-U?si=rlHoy5AjcrK-yhAH', '_blank')}
+                  size="lg"
+                  className="bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 font-light px-8 py-4 text-lg shadow-xl shadow-red-500/25 transition-all duration-200 hover:scale-105"
+                >
+                  <Play className="h-5 w-5 mr-2" />
+                  Watch Live Demo
+                </Button>
                 <Button 
                   onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
                   size="lg"
-                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 font-light px-8 py-4 text-lg shadow-xl shadow-pink-500/25 transition-all duration-200 hover:scale-105"
+                  className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 font-light px-8 py-4 text-lg shadow-xl shadow-emerald-500/25 transition-all duration-200 hover:scale-105"
                 >
-                  <Calendar className="h-5 w-5 mr-2" />
-                  See Live Demo
+                  <Phone className="h-5 w-5 mr-2" />
+                  Book Consultation
                 </Button>
+              </div>
+              
+              <div className="flex justify-center mb-16">
                 <Button 
                   onClick={() => setIsContactOpen(true)}
                   variant="outline" 
@@ -269,18 +281,18 @@ export default function MedSpaLanding() {
                 </Button>
               </div>
 
-              {/* Industry Stats */}
+              {/* Business Stats */}
               <m.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
               >
-                {medSpaStats.map((stat, index) => (
-                  <div key={index} className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-pink-500/20 transition-all duration-300 hover:scale-105">
+                {businessStats.map((stat, index) => (
+                  <div key={index} className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-emerald-500/20 transition-all duration-300 hover:scale-105">
                     <div className="text-2xl md:text-3xl font-light text-white mb-2 tracking-tight">{stat.number}</div>
                     <div className="text-sm text-gray-300 font-light mb-1">{stat.label}</div>
-                    <div className="text-xs text-pink-400 font-light">{stat.growth}</div>
+                    <div className="text-xs text-emerald-400 font-light">{stat.growth}</div>
                   </div>
                 ))}
               </m.div>
@@ -299,33 +311,33 @@ export default function MedSpaLanding() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-900 tracking-tight">
-                Everything Your <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Spa Business Needs</span>
+                Everything Your <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Business Needs</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-                Built for spas, wellness centers, massage parlors, medical spas, and aesthetic clinics
+                Built for service businesses that rely on appointments and customer calls
               </p>
             </m.div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {medSpaCapabilities.map((capability, index) => (
+            {voiceAgentCapabilities.map((capability, index) => (
               <m.div
                 key={capability.category}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-white border-gray-200 hover:border-pink-300 transition-all duration-300 hover:shadow-xl group shadow-lg h-full">
+                <Card className="bg-white border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-xl group shadow-lg h-full">
                   <CardHeader>
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:from-pink-600 group-hover:to-purple-700 transition-colors">
+                      <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center group-hover:from-emerald-700 group-hover:to-teal-700 transition-colors">
                         <div className="text-white">
                           {capability.icon}
                         </div>
                       </div>
                       <div>
                         <CardTitle className="text-black text-xl font-light tracking-tight">{capability.category}</CardTitle>
-                        <Badge className="bg-gradient-to-r from-pink-500 to-purple-600 text-white border-none mt-1">
+                        <Badge className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-none mt-1">
                           {capability.savings}
                         </Badge>
                       </div>
@@ -338,7 +350,7 @@ export default function MedSpaLanding() {
                     <div className="space-y-2">
                       {capability.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-sm text-black font-light">
-                          <CheckCircle2 className="h-4 w-4 text-pink-500 flex-shrink-0" />
+                          <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -349,13 +361,13 @@ export default function MedSpaLanding() {
             ))}
           </div>
 
-          {/* Treatment Categories */}
+          {/* Target Industries */}
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-light text-gray-900 mb-8">Supports All Popular Spa & Wellness Treatments</h3>
+            <h3 className="text-2xl font-light text-gray-900 mb-8">Perfect for Service-Based Businesses</h3>
             <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-              {treatmentCategories.map((treatment, index) => (
-                <Badge key={index} variant="outline" className="text-gray-700 border-gray-300 hover:border-pink-400 hover:text-pink-600 transition-colors">
-                  {treatment}
+              {targetIndustries.map((industry, index) => (
+                <Badge key={index} variant="outline" className="text-gray-700 border-gray-300 hover:border-emerald-400 hover:text-emerald-600 transition-colors">
+                  {industry}
                 </Badge>
               ))}
             </div>
@@ -373,16 +385,16 @@ export default function MedSpaLanding() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
-                Real <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Med Spa Results</span>
+                Real <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Business Results</span>
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light">
-                See how med spas are transforming their business with our AI receptionist
+                See how businesses across industries are transforming with our AI voice receptionist
               </p>
             </m.div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {medSpaTestimonials.map((testimonial, index) => (
+            {businessTestimonials.map((testimonial, index) => (
               <m.div
                 key={testimonial.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -393,7 +405,7 @@ export default function MedSpaLanding() {
                   <CardContent className="p-8">
                     <div className="flex items-center gap-1 mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-pink-400 text-pink-400" />
+                        <Star key={i} className="h-4 w-4 fill-emerald-400 text-emerald-400" />
                       ))}
                     </div>
                     <p className="text-black mb-6 leading-relaxed font-light">"{testimonial.content}"</p>
@@ -401,8 +413,8 @@ export default function MedSpaLanding() {
                       <div className="font-light text-black">{testimonial.name}</div>
                       <div className="text-sm text-gray-600 font-light">{testimonial.role}</div>
                       <div className="text-sm text-gray-600 font-light">{testimonial.company}</div>
-                      <div className="text-xs text-pink-600 font-light mt-1">{testimonial.treatments}</div>
-                      <Badge className="bg-gradient-to-r from-pink-500 to-purple-600 text-white border-none mt-2">
+                      <div className="text-xs text-emerald-600 font-light mt-1">{testimonial.industry}</div>
+                      <Badge className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-none mt-2">
                         {testimonial.savings}
                       </Badge>
                     </div>
@@ -426,7 +438,7 @@ export default function MedSpaLanding() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-2">{stat.number}</div>
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-2">{stat.number}</div>
                 <div className="text-gray-400">{stat.label}</div>
               </m.div>
             ))}
@@ -444,10 +456,10 @@ export default function MedSpaLanding() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
-                Simple <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Setup Process</span>
+                Simple <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Setup Process</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-                Get your AI receptionist up and running in just 48 hours
+                Get your AI voice receptionist up and running in just 48 hours
               </p>
             </m.div>
           </div>
@@ -456,24 +468,24 @@ export default function MedSpaLanding() {
             {[
               {
                 number: "01",
-                title: "Treatment Menu Analysis",
-                description: "We analyze your current services, pricing, and booking patterns to customize the AI for your specific treatments and client flow.",
+                title: "Business Analysis & Setup",
+                description: "We analyze your current services, pricing, and call patterns to customize the AI for your specific business needs and customer flow.",
                 icon: <Award className="h-8 w-8" />,
                 features: [
                   "Service catalog integration",
                   "Pricing structure setup", 
-                  "Treatment duration mapping",
-                  "Provider availability sync"
+                  "Call flow mapping",
+                  "Staff availability sync"
                 ]
               },
               {
                 number: "02",
                 title: "AI Training & Integration", 
-                description: "Your AI receptionist learns your brand voice, treatment protocols, and client communication style for seamless integration.",
+                description: "Your AI receptionist learns your brand voice, service protocols, and customer communication style for seamless integration.",
                 icon: <Bot className="h-8 w-8" />,
                 features: [
                   "Brand voice customization",
-                  "Treatment consultation scripts",
+                  "Service consultation scripts",
                   "Booking system integration", 
                   "Staff workflow alignment"
                 ]
@@ -481,10 +493,10 @@ export default function MedSpaLanding() {
               {
                 number: "03",
                 title: "Launch & Optimization",
-                description: "Go live with 24/7 booking capabilities and continuous optimization based on client interactions and booking patterns.",
+                description: "Go live with 24/7 call handling capabilities and continuous optimization based on customer interactions and booking patterns.",
                 icon: <TrendingUp className="h-8 w-8" />,
                 features: [
-                  "24/7 booking activation",
+                  "24/7 call handling activation",
                   "Performance monitoring",
                   "Continuous AI improvement",
                   "ROI tracking & reporting"
@@ -505,8 +517,8 @@ export default function MedSpaLanding() {
                     <div className="text-8xl font-light text-gray-200 absolute -top-4 -left-4 tracking-tight">
                       {step.number}
                     </div>
-                    <div className="w-32 h-32 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full flex items-center justify-center relative z-10 border-4 border-white shadow-xl">
-                      <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-32 h-32 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full flex items-center justify-center relative z-10 border-4 border-white shadow-xl">
+                      <div className="w-20 h-20 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center">
                         <div className="text-white">
                           {step.icon}
                         </div>
@@ -526,7 +538,7 @@ export default function MedSpaLanding() {
                   <div className="grid md:grid-cols-2 gap-4">
                     {step.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-pink-500 flex-shrink-0" />
+                        <CheckCircle2 className="h-5 w-5 text-emerald-500 flex-shrink-0" />
                         <span className="text-gray-700 font-light">{feature}</span>
                       </div>
                     ))}
@@ -547,17 +559,17 @@ export default function MedSpaLanding() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">
-              Ready to Transform Your <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Med Spa</span>?
+              Ready to Transform Your <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Business</span>?
             </h2>
             <p className="text-xl text-gray-300 mb-12 leading-relaxed font-light">
-              Join hundreds of med spas already using AI to boost bookings, improve client experience, and increase revenue.
+              Join hundreds of businesses already using AI to boost bookings, improve customer experience, and increase revenue.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
                 size="lg"
-                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 font-light px-8 py-4 text-lg transition-all duration-200 hover:scale-105"
+                className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 font-light px-8 py-4 text-lg transition-all duration-200 hover:scale-105"
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Book Your Demo
@@ -588,8 +600,8 @@ export default function MedSpaLanding() {
           >
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h3 className="text-3xl font-bold text-white mb-2">Get Your Custom Spa AI Solution</h3>
-                <p className="text-gray-300">Tell us about your business and we'll create a tailored solution</p>
+                <h3 className="text-3xl font-bold text-white mb-2">Get Your Custom Voice AI Solution</h3>
+                <p className="text-gray-300">Tell us about your business and we'll create a tailored voice receptionist</p>
               </div>
               <Button 
                 variant="ghost"
@@ -603,9 +615,9 @@ export default function MedSpaLanding() {
 
             {submitted ? (
               <div className="text-center py-12">
-                <CheckCircle2 className="h-16 w-16 text-pink-400 mx-auto mb-4" />
+                <CheckCircle2 className="h-16 w-16 text-emerald-400 mx-auto mb-4" />
                 <h4 className="text-xl font-semibold text-white mb-2">Request Sent!</h4>
-                <p className="text-gray-300">We'll analyze your med spa needs and get back to you within 24 hours with a custom proposal.</p>
+                <p className="text-gray-300">We'll analyze your business needs and get back to you within 24 hours with a custom proposal.</p>
               </div>
             ) : (
               <form onSubmit={handleContactSubmit} className="space-y-8">
@@ -616,7 +628,7 @@ export default function MedSpaLanding() {
                       value={contactForm.name}
                       onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
                       required
-                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
+                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200"
                       placeholder="Your full name"
                     />
                   </div>
@@ -627,7 +639,7 @@ export default function MedSpaLanding() {
                       value={contactForm.email}
                       onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
                       required
-                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
+                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200"
                       placeholder="your@spa.com"
                     />
                   </div>
@@ -639,8 +651,8 @@ export default function MedSpaLanding() {
                     <Input
                       value={contactForm.company}
                       onChange={(e) => setContactForm(prev => ({ ...prev, company: e.target.value }))}
-                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
-                      placeholder="Your spa/wellness center name"
+                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200"
+                      placeholder="Your business name"
                     />
                   </div>
                   <div className="space-y-2">
@@ -648,7 +660,7 @@ export default function MedSpaLanding() {
                     <Input
                       value={contactForm.phone}
                       onChange={(e) => setContactForm(prev => ({ ...prev, phone: e.target.value }))}
-                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
+                      className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -656,18 +668,18 @@ export default function MedSpaLanding() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-white mb-3">Monthly Bookings</label>
+                    <label className="block text-sm font-semibold text-white mb-3">Monthly Calls</label>
                     <select
-                      value={contactForm.monthlyBookings}
-                      onChange={(e) => setContactForm(prev => ({ ...prev, monthlyBookings: e.target.value }))}
-                      className="w-full bg-slate-800/60 border border-slate-600/60 text-white rounded-xl px-4 py-3 h-12 backdrop-blur-sm focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
+                      value={contactForm.monthlyCalls}
+                      onChange={(e) => setContactForm(prev => ({ ...prev, monthlyCalls: e.target.value }))}
+                      className="w-full bg-slate-800/60 border border-slate-600/60 text-white rounded-xl px-4 py-3 h-12 backdrop-blur-sm focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200"
                     >
-                      <option value="">How many appointments/month?</option>
-                      <option value="0-100">0-100 appointments</option>
-                      <option value="100-300">100-300 appointments</option>
-                      <option value="300-500">300-500 appointments</option>
-                      <option value="500-1000">500-1000 appointments</option>
-                      <option value="1000+">1000+ appointments</option>
+                      <option value="">How many calls/month?</option>
+                      <option value="0-100">0-100 calls</option>
+                      <option value="100-500">100-500 calls</option>
+                      <option value="500-1000">500-1000 calls</option>
+                      <option value="1000-2000">1000-2000 calls</option>
+                      <option value="2000+">2000+ calls</option>
                     </select>
                   </div>
                   <div className="space-y-2">
@@ -675,7 +687,7 @@ export default function MedSpaLanding() {
                     <select
                       value={contactForm.locations}
                       onChange={(e) => setContactForm(prev => ({ ...prev, locations: e.target.value }))}
-                      className="w-full bg-slate-800/60 border border-slate-600/60 text-white rounded-xl px-4 py-3 h-12 backdrop-blur-sm focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
+                      className="w-full bg-slate-800/60 border border-slate-600/60 text-white rounded-xl px-4 py-3 h-12 backdrop-blur-sm focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200"
                     >
                       <option value="">Number of locations</option>
                       <option value="1">Single location</option>
@@ -687,41 +699,41 @@ export default function MedSpaLanding() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-white mb-3">Top Treatments</label>
+                  <label className="block text-sm font-semibold text-white mb-3">Industry</label>
                   <Input
-                    value={contactForm.treatments}
-                    onChange={(e) => setContactForm(prev => ({ ...prev, treatments: e.target.value }))}
-                    className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
-                    placeholder="e.g. Botox, Fillers, Laser Hair Removal, CoolSculpting"
+                    value={contactForm.industry}
+                    onChange={(e) => setContactForm(prev => ({ ...prev, industry: e.target.value }))}
+                    className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-200"
+                    placeholder="e.g. Auto Body, HVAC, Dental, Legal, Spa, etc."
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-white mb-3">Current Booking System</label>
+                  <label className="block text-sm font-semibold text-white mb-3">Current Phone System</label>
                   <Input
                     value={contactForm.currentSystem}
                     onChange={(e) => setContactForm(prev => ({ ...prev, currentSystem: e.target.value }))}
-                    className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200"
-                    placeholder="e.g. Acuity, Schedulicity, phone calls, etc."
+                    className="bg-slate-800/60 border-slate-600/60 text-white backdrop-blur-sm h-12 rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-200"
+                    placeholder="e.g. Traditional phone, answering service, voicemail, etc."
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-white mb-3">What's your biggest booking challenge? *</label>
+                  <label className="block text-sm font-semibold text-white mb-3">What's your biggest phone/booking challenge? *</label>
                   <Textarea
                     value={contactForm.message}
                     onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
                     required
                     rows={4}
-                    className="bg-slate-800/60 border-slate-600/60 text-white rounded-xl px-4 py-3 backdrop-blur-sm focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition-all duration-200 resize-none"
-                    placeholder="e.g. Missed calls after hours, staff spending too much time on phone, clients not showing up, difficulty explaining treatments over phone..."
+                    className="bg-slate-800/60 border-slate-600/60 text-white rounded-xl px-4 py-3 backdrop-blur-sm focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all duration-200 resize-none"
+                    placeholder="e.g. Missed calls after hours, staff spending too much time on phone, customers not booking, difficulty explaining services over phone, emergency calls going to voicemail..."
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 font-semibold py-4 h-14 rounded-xl shadow-xl shadow-pink-500/25 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 font-semibold py-4 h-14 rounded-xl shadow-xl shadow-emerald-500/25 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <>
@@ -731,7 +743,7 @@ export default function MedSpaLanding() {
                   ) : (
                     <>
                       <Send className="h-5 w-5 mr-3" />
-                      Get My Custom AI Solution
+                      Get My Custom Voice AI Solution
                     </>
                   )}
                 </Button>
@@ -778,7 +790,7 @@ export default function MedSpaLanding() {
             </div>
             
             <div className="text-gray-400 text-sm font-light">
-              © 2024 Aethon. Spa & Wellness AI Solutions.
+              © 2024 Aethon. Voice AI Solutions.
             </div>
           </div>
         </div>
