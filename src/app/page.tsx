@@ -35,6 +35,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 // Aethon — Custom AI Automation Consulting Landing Page
 // Metallic black and white design focused on consulting funnel
@@ -132,27 +133,36 @@ export default function AethonConsultingLanding() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setContactForm({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        industry: "",
-        message: "",
-        budget: "",
-        timeline: ""
-      });
-      setIsContactOpen(false);
-    }, 3000);
+    try {
+      const { data, error } = await supabase
+        .from('contact_inquiries')
+        .insert([contactForm]);
+      
+      if (error) throw error;
+      
+      setIsSubmitting(false);
+      setSubmitted(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setContactForm({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          industry: "",
+          message: "",
+          budget: "",
+          timeline: ""
+        });
+        setIsContactOpen(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      // You could add error handling UI here
+    }
   };
 
   // Auto-scroll to modal when it opens
@@ -214,6 +224,7 @@ export default function AethonConsultingLanding() {
             <a href="#results" className="text-gray-300 hover:text-white transition-colors font-medium">Results</a>
             <Link href="/voiceagents" className="text-gray-300 hover:text-white transition-colors font-medium">Voice AI</Link>
             <Link href="/legal" className="text-gray-300 hover:text-white transition-colors font-medium">Legal</Link>
+            <Link href="/construction-dashboard" className="text-gray-300 hover:text-white transition-colors font-medium">Construction Dashboard</Link>
             <Button 
               onClick={() => window.open('https://calendly.com/aethonintelligence/15-minute-demo-of-ai-systems', '_blank')}
               className="bg-white text-black hover:bg-gray-100 font-semibold shadow-lg shadow-white/20 transition-all duration-200 hover:scale-105"
@@ -782,9 +793,9 @@ export default function AethonConsultingLanding() {
                     >
                       <option value="">When do you need this?</option>
                       <option value="asap">ASAP</option>
-                      <option value="1-month">Within 1 month</option>
-                      <option value="3-months">Within 3 months</option>
-                      <option value="6-months">Within 6 months</option>
+                      <option value="within-week">Within the week</option>
+                      <option value="within-two-weeks">Within 2 weeks</option>
+                      <option value="within-month">Within 1 month</option>
                       <option value="flexible">Flexible</option>
                     </select>
           </div>
@@ -798,11 +809,14 @@ export default function AethonConsultingLanding() {
                     className="w-full bg-slate-800/60 border border-slate-600/60 text-white rounded-xl px-4 py-3 h-12 backdrop-blur-sm focus:border-white/40 focus:ring-2 focus:ring-white/20 transition-all duration-200"
                   >
                     <option value="">Select budget range</option>
-                    <option value="10k-25k">$10,000 - $25,000</option>
-                    <option value="25k-50k">$25,000 - $50,000</option>
-                    <option value="50k-100k">$50,000 - $100,000</option>
-                    <option value="100k+">$100,000+</option>
-                    <option value="discuss">Let's discuss</option>
+                    <option value="0-1k">$0 - $1,000 - Small automations & simple tasks</option>
+                    <option value="1k-5k">$1,000 - $5,000 - Basic workflow automation</option>
+                    <option value="5k-15k">$5,000 - $15,000 - Medium business processes</option>
+                    <option value="15k-30k">$15,000 - $30,000 - Advanced multi-system integration</option>
+                    <option value="30k-50k">$30,000 - $50,000 - Complex enterprise solutions</option>
+                    <option value="50k-100k">$50,000 - $100,000 - Full business transformation</option>
+                    <option value="100k+">$100,000+ - Large-scale custom AI systems</option>
+                    <option value="discuss">Let's discuss - Custom pricing</option>
                   </select>
     </div>
 
