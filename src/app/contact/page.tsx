@@ -14,12 +14,12 @@ export default function ContactPage() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
-            <span className="text-white">Let's Build Your</span>{" "}
+            <span className="text-white">Let&apos;s Build Your</span>{" "}
             <span className="gradient-text">Private AI System</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Schedule a secure consultation to discuss your requirements and explore
-            how air-gapped AI can protect your institution's data.
+            how air-gapped AI can protect your institution&apos;s data.
           </p>
         </div>
       </section>

@@ -50,7 +50,7 @@ export default function ProcessPage() {
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             A proven 4-step process to deploy secure, air-gapped AI systems
-            tailored to your institution's needs.
+            tailored to your institution&apos;s needs.
           </p>
         </div>
       </section>
