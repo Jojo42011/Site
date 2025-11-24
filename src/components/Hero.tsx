@@ -19,7 +19,7 @@ const companies = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-24">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24 pb-12 sm:pb-0">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
 
@@ -30,38 +30,38 @@ export default function Hero() {
         style={{ animationDelay: "1.5s" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
         >
-          <div className="space-y-8 text-left">
+          <div className="space-y-6 sm:space-y-8 text-left">
             <div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
               >
                 Privatized AI infrastructure for Institutions
               </motion.h1>
-              <p className="mt-6 text-xl text-gray-300 max-w-xl">
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-xl">
                 Air-gapped AI systems powered by secure infrastructure. Zero cloud dependencies. Maximum security.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/contact"
-                className="group px-8 py-4 bg-gradient-to-r from-purple-glow to-blue-electric rounded-xl font-semibold text-lg hover:scale-105 transition-transform glow-purple flex items-center justify-center space-x-2 text-white"
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-glow to-blue-electric rounded-xl font-semibold text-base sm:text-lg hover:scale-105 transition-transform glow-purple flex items-center justify-center space-x-2 text-white"
               >
                 <span className="text-white">Schedule Demo</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-white" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform text-white" />
               </Link>
               <Link
                 href="/contact"
-                className="px-8 py-4 rounded-xl font-semibold text-lg border border-purple-glow/30 text-gray-200 hover:border-purple-glow/60 transition-colors text-center"
+                className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg border border-purple-glow/30 text-gray-200 hover:border-purple-glow/60 transition-colors text-center"
               >
                 Learn More
               </Link>
@@ -72,7 +72,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="relative glass-effect rounded-2xl p-6 border border-purple-glow/20"
+            className="relative glass-effect rounded-2xl p-4 sm:p-6 border border-purple-glow/20 mt-8 lg:mt-0"
           >
             <div className="flex items-center space-x-2 pb-4 border-b border-white/5">
               <div className="w-2 h-2 rounded-full bg-green-500" />
@@ -96,8 +96,8 @@ export default function Hero() {
         </motion.div>
 
         {/* Logo Carousel */}
-        <div className="mt-16 space-y-4">
-          <p className="text-xs uppercase tracking-[0.35em] text-gray-500">Trusted by privacy-first teams</p>
+        <div className="mt-12 sm:mt-16 space-y-4">
+          <p className="text-xs uppercase tracking-[0.35em] text-gray-500 text-center sm:text-left">Trusted by privacy-first teams</p>
           <div className="relative overflow-hidden logo-carousel">
             <div className="logo-track">
               {[...companies, ...companies].map((company, index) => (
