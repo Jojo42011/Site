@@ -5,6 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
+const navItems = [
+  { name: "Pricing", href: "/pricing" },
+  { name: "Risk Assessment", href: "/risk-assessment" },
+  { name: "AI Privacy Checklist", href: "/ai-privacy-checklist" },
+];
+
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,10 +41,20 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center space-x-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-white font-medium hover:text-purple-glow transition-colors relative group text-sm"
+              >
+                {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-glow group-hover:w-full transition-all duration-300" />
+              </Link>
+            ))}
             <Link
               href="/contact"
-              className="px-6 py-2.5 bg-gradient-to-r from-purple-glow to-blue-electric rounded-lg font-semibold hover:scale-105 transition-transform glow-purple text-white"
+              className="px-5 py-2 bg-gradient-to-r from-purple-glow to-blue-electric rounded-lg font-semibold hover:scale-105 transition-transform glow-purple text-white text-sm"
             >
               Get Started
             </Link>
@@ -68,6 +84,16 @@ export default function Navigation() {
             className="md:hidden glass-effect border-t border-purple-glow/20 mt-4"
           >
             <div className="px-6 py-4 space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-gray-200 hover:text-purple-glow transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
