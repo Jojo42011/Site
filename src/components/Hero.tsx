@@ -39,42 +39,36 @@ export default function Hero() {
         >
           <div className="space-y-6 sm:space-y-8 text-left">
             <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="inline-flex items-center px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 text-sm font-semibold mb-4"
-              >
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-                Save 80%+ on AI API Bills
-              </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
               >
-                Stop Burning Cash on{" "}
-                <span className="gradient-text">OpenAI Bills</span>
+                Cut Your AI Bills by{" "}
+                <span className="gradient-text">90%</span>
               </motion.h1>
-              <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed">
-                Run Claude-quality AI agents for <span className="text-green-400 font-bold">1/10th the cost</span> on your own servers.
-                Private, secure, and yours to control.
+              <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed font-light">
+                Deploy private LLMs on your infrastructure. Same quality, 1/10th the cost.
+                No vendor lock-in, complete data control.
               </p>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="mt-6 flex items-center gap-8 text-sm"
+                className="mt-8 inline-flex items-center gap-6 px-6 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl"
               >
                 <div>
-                  <div className="text-2xl sm:text-3xl font-bold text-white">$50K/mo</div>
-                  <div className="text-gray-400">Typical OpenAI Bill</div>
+                  <div className="text-3xl font-bold text-white">$50K</div>
+                  <div className="text-sm text-gray-400">Cloud APIs</div>
                 </div>
-                <div className="text-purple-glow text-3xl">→</div>
+                <div className="text-purple-glow text-2xl">→</div>
                 <div>
-                  <div className="text-2xl sm:text-3xl font-bold text-green-400">$5K/mo</div>
-                  <div className="text-gray-400">With Private LLMs</div>
+                  <div className="text-3xl font-bold text-green-400">$5K</div>
+                  <div className="text-sm text-gray-400">Self-Hosted</div>
+                </div>
+                <div className="ml-4 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <div className="text-xs font-semibold text-green-400">90% savings</div>
                 </div>
               </motion.div>
             </div>
@@ -106,40 +100,33 @@ export default function Hero() {
               <span className="text-xs text-green-400 font-semibold">Live Pricing</span>
             </div>
 
-            <div className="space-y-4">
-              {/* OpenAI Pricing */}
-              <div className="p-4 rounded-lg bg-red-500/5 border border-red-500/20">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-400">OpenAI GPT-4</span>
-                  <span className="text-xs text-red-400">Cloud API</span>
+            <div className="space-y-3">
+              {/* Cloud Pricing */}
+              <div className="p-5 rounded-xl bg-white/5 border border-white/10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-medium text-gray-300">Cloud AI APIs</span>
+                  <span className="text-xs px-2 py-1 bg-red-500/10 text-red-400 rounded-md">External</span>
                 </div>
-                <div className="text-2xl font-bold text-red-400">$3.00</div>
-                <div className="text-xs text-gray-500">per 1M tokens</div>
-              </div>
-
-              {/* Anthropic Pricing */}
-              <div className="p-4 rounded-lg bg-red-500/5 border border-red-500/20">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-400">Anthropic Claude</span>
-                  <span className="text-xs text-red-400">Cloud API</span>
-                </div>
-                <div className="text-2xl font-bold text-red-400">$3.00</div>
-                <div className="text-xs text-gray-500">per 1M tokens</div>
+                <div className="text-3xl font-bold text-white mb-1">$3.00</div>
+                <div className="text-xs text-gray-400">per 1M tokens</div>
               </div>
 
               {/* Your Pricing */}
-              <div className="p-4 rounded-lg bg-green-500/10 border-2 border-green-500/30 relative">
-                <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-green-500 rounded-full text-xs font-bold text-white">
-                  Best
+              <div className="p-5 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/20 relative">
+                <div className="absolute -top-2.5 -right-2.5 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg text-xs font-bold text-white shadow-lg">
+                  Your Infrastructure
                 </div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-white font-semibold">Aethon Private LLMs</span>
-                  <span className="text-xs text-green-400">Your Servers</span>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-semibold text-white">Private LLMs</span>
+                  <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-md font-medium">Self-Hosted</span>
                 </div>
-                <div className="text-3xl font-bold text-green-400">$0.30</div>
-                <div className="text-xs text-gray-400">per 1M tokens</div>
-                <div className="mt-2 pt-2 border-t border-green-500/20">
-                  <div className="text-xs text-green-400 font-bold">90% savings</div>
+                <div className="text-4xl font-bold text-green-400 mb-1">$0.30</div>
+                <div className="text-xs text-gray-400 mb-3">per 1M tokens</div>
+                <div className="pt-3 border-t border-green-500/20">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-400">Monthly savings</span>
+                    <span className="text-sm font-bold text-green-400">90%</span>
+                  </div>
                 </div>
               </div>
             </div>

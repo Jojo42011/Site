@@ -7,7 +7,7 @@ const features = [
   {
     icon: DollarSign,
     title: "Slash API Costs by 80-90%",
-    description: "Stop hemorrhaging money on OpenAI and Anthropic APIs. Run the same quality models on your own infrastructure for a fraction of the cost. What used to cost $50K/month now costs $5K. That's $540K saved annually - money that goes straight to your runway, not cloud providers. Break even in 1-2 months, then pure savings every month after.",
+    description: "Stop hemorrhaging money on cloud AI APIs. Run the same quality models on your own infrastructure for a fraction of the cost. What used to cost $50K/month now costs $5K. That's $540K saved annually - money that goes straight to your runway. Break even in 1-2 months, then pure savings every month after.",
     gradient: "from-green-500 to-emerald-600",
   },
   {
@@ -19,7 +19,7 @@ const features = [
   {
     icon: Shield,
     title: "Your Data Stays Yours",
-    description: "Run everything on your own servers - no data sent to OpenAI, Anthropic, or any third party. Perfect for SaaS companies handling sensitive customer data, legal firms with privileged information, or any business serious about data privacy. Air-gapped infrastructure means zero data leaks, complete compliance, and you own the IP on your fine-tuned models.",
+    description: "Run everything on your own servers - no data sent to third-party cloud providers. Perfect for SaaS companies handling sensitive customer data, legal firms with privileged information, or any business serious about data privacy. Air-gapped infrastructure means zero data leaks, complete compliance, and you own the IP on your fine-tuned models.",
     gradient: "from-purple-glow to-purple-dark",
   },
 ];
@@ -40,7 +40,7 @@ export default function Features() {
             <span className="gradient-text">Choose Aethon</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We help SaaS companies and legal firms deploy private LLMs and AI agents that cost 80-90% less than OpenAI/Anthropic.
+            We help SaaS companies and legal firms deploy private LLMs and AI agents that cost 80-90% less than cloud APIs.
             Same quality, drastically lower costs, and complete data privacy. Your servers, your models, your control.
           </p>
         </motion.div>

@@ -17,8 +17,8 @@ const tiers = [
       "Hardware recommendations for your scale",
       "Model selection guide (Llama, Mixtral, DeepSeek)",
       "Ollama + ChromaDB setup templates",
-      "OpenAI-compatible API configuration",
-      "Migration guides from OpenAI/Anthropic",
+      "Drop-in API replacement configuration",
+      "Migration guides from cloud providers",
       "Community Slack access",
     ],
     timeline: "Start immediately",
@@ -159,7 +159,7 @@ export default function ServiceTiers() {
                       <div className="mt-3 pt-3 border-t border-white/10">
                         <span className="text-gray-400 text-sm">Monthly Operating Cost</span>
                         <p className="text-green-400 font-bold text-lg">{tier.monthlyCost}</p>
-                        <p className="text-xs text-gray-500 mt-1">vs $10K-50K+ on OpenAI/Anthropic</p>
+                        <p className="text-xs text-gray-500 mt-1">vs $10K-50K+ on cloud APIs</p>
                       </div>
                     </div>
                     <div className="glass-effect rounded-xl p-4">

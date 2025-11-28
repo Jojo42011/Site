@@ -53,7 +53,7 @@ export default function APICostCalculator() {
             <span className="gradient-text">Calculate Your Savings</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            See how much you could save by switching from OpenAI/Anthropic to private LLMs
+            See how much you could save by switching from cloud APIs to private LLMs
           </p>
         </motion.div>
 
@@ -144,7 +144,7 @@ export default function APICostCalculator() {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Current (OpenAI/Anthropic)</span>
+                  <span className="text-gray-400">Current (Cloud APIs)</span>
                   <span className="text-red-400 font-bold text-xl line-through">
                     ${monthlyBill.toLocaleString()}
                   </span>

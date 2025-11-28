@@ -81,7 +81,7 @@ export default function PricingPage() {
             {[
               {
                 title: "No Cloud Markup",
-                description: "OpenAI/Anthropic charge $3/M tokens. Actual compute cost is ~$0.30. You keep the difference.",
+                description: "Cloud providers charge $3/M tokens. Actual compute cost is ~$0.30. You keep the difference.",
               },
               {
                 title: "Open Source Models",
