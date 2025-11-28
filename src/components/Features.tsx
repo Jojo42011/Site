@@ -1,26 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Network, Lock, Brain } from "lucide-react";
+import { DollarSign, Zap, Shield } from "lucide-react";
 
 const features = [
   {
-    icon: Network,
-    title: "Air-Gapped Architecture",
-    description: "Complete network isolation ensures your data never leaves your infrastructure. Every component operates within your secure environment with zero external dependencies. Your AI systems run entirely on-premises, completely disconnected from public networks, giving you absolute control over your data sovereignty and eliminating any risk of data leakage or unauthorized access.",
+    icon: DollarSign,
+    title: "Slash API Costs by 80-90%",
+    description: "Stop hemorrhaging money on OpenAI and Anthropic APIs. Run the same quality models on your own infrastructure for a fraction of the cost. What used to cost $50K/month now costs $5K. That's $540K saved annually - money that goes straight to your runway, not cloud providers. Break even in 1-2 months, then pure savings every month after.",
+    gradient: "from-green-500 to-emerald-600",
+  },
+  {
+    icon: Zap,
+    title: "Deploy in Weeks, Not Months",
+    description: "We handle everything: hardware recommendations, model selection, fine-tuning, deployment, and training your team. You're up and running with production-ready private LLMs in 2-4 weeks. No PhD required, no months of trial and error. Just a working system that cuts your costs immediately while giving you full control over your AI infrastructure.",
+    gradient: "from-blue-electric to-purple-glow",
+  },
+  {
+    icon: Shield,
+    title: "Your Data Stays Yours",
+    description: "Run everything on your own servers - no data sent to OpenAI, Anthropic, or any third party. Perfect for SaaS companies handling sensitive customer data, legal firms with privileged information, or any business serious about data privacy. Air-gapped infrastructure means zero data leaks, complete compliance, and you own the IP on your fine-tuned models.",
     gradient: "from-purple-glow to-purple-dark",
-  },
-  {
-    icon: Lock,
-    title: "End-to-End Encryption",
-    description: "Military-grade encryption protects your data at rest and in transit. Every AI conversation, every database query, and every model interaction is secured with advanced cryptographic protocols. Your sensitive information remains completely private, with encryption keys managed entirely within your infrastructure. No third party ever has access to your encrypted data.",
-    gradient: "from-blue-electric to-blue-navy",
-  },
-  {
-    icon: Brain,
-    title: "Custom Trained Private Models",
-    description: "We build and train private LLMs specifically for your institution using your own data, all within your air-gapped environment. These models are fine-tuned to understand your unique workflows, terminology, and requirements. With zero data leaks, your proprietary information stays within your walls. Each model is trained exclusively on your infrastructure, ensuring complete privacy and compliance with the strictest security standards.",
-    gradient: "from-purple-glow to-blue-electric",
   },
 ];
 
@@ -36,11 +36,12 @@ export default function Features() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-white">What is</span>{" "}
-            <span className="gradient-text">Aethon?</span>
+            <span className="text-white">Why SaaS Founders</span>{" "}
+            <span className="gradient-text">Choose Aethon</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Aethon is founded on one principle: privacy. We use private tools to create private LLMs and databases that are uniquely tailored for each institution. Every system we build operates entirely within your secure environment, ensuring your data never leaves your infrastructure. No compromises, no exceptions—just complete data sovereignty.
+            We help SaaS companies and legal firms deploy private LLMs and AI agents that cost 80-90% less than OpenAI/Anthropic.
+            Same quality, drastically lower costs, and complete data privacy. Your servers, your models, your control.
           </p>
         </motion.div>
 

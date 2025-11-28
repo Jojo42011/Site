@@ -1,50 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building2, Heart, DollarSign, Scale, GraduationCap, Briefcase } from "lucide-react";
+import { MessageSquare, FileText, Code, BarChart3, Mail, Search } from "lucide-react";
 
 const useCases = [
   {
-    icon: Building2,
-    title: "Government & Defense",
-    description: "Classified intelligence analysis, secure document processing, and confidential communications.",
-    color: "from-blue-electric to-blue-navy",
-  },
-  {
-    icon: Heart,
-    title: "Healthcare Systems",
-    description: "HIPAA-compliant patient data analysis, medical research, and clinical decision support.",
+    icon: MessageSquare,
+    title: "Customer Support Chatbots",
+    description: "80% ticket deflection at $0.10 per 1,000 messages. Handle customer queries 24/7 without burning through API credits.",
+    savings: "$15K/mo saved",
     color: "from-purple-glow to-purple-dark",
   },
   {
-    icon: DollarSign,
-    title: "Financial Institutions",
-    description: "Secure fraud detection, risk analysis, and regulatory compliance without data exposure.",
+    icon: FileText,
+    title: "Content Generation",
+    description: "Blog posts, marketing copy, product descriptions, and social media content. Same quality as GPT-4, 90% less cost.",
+    savings: "$8K/mo saved",
+    color: "from-blue-electric to-blue-navy",
+  },
+  {
+    icon: Code,
+    title: "Code Assistance",
+    description: "GitHub Copilot replacement that runs on your infrastructure. Code generation, review, and documentation at a fraction of the cost.",
+    savings: "$12K/mo saved",
     color: "from-blue-electric to-purple-glow",
   },
   {
-    icon: Scale,
-    title: "Legal & Compliance",
-    description: "Confidential case analysis, contract review, and privileged document processing.",
+    icon: BarChart3,
+    title: "Data Analysis & Insights",
+    description: "Analyze customer data, generate reports, and surface insights without exposing sensitive information to third-party APIs.",
+    savings: "$10K/mo saved",
     color: "from-purple-dark to-blue-navy",
   },
   {
-    icon: GraduationCap,
-    title: "Research Institutions",
-    description: "Private research data analysis, academic collaboration, and intellectual property protection.",
+    icon: Mail,
+    title: "Email Automation",
+    description: "Personalized outreach, follow-ups, and customer communications. Scale your email operations without scaling your API bill.",
+    savings: "$6K/mo saved",
     color: "from-purple-glow to-blue-electric",
   },
   {
-    icon: Briefcase,
-    title: "Enterprise Security",
-    description: "Internal knowledge bases, secure customer support, and confidential business intelligence.",
+    icon: Search,
+    title: "Document Search & RAG",
+    description: "Private knowledge base with ChromaDB. Search contracts, documents, and internal wikis with complete data privacy.",
+    savings: "$9K/mo saved",
     color: "from-blue-navy to-purple-glow",
   },
 ];
 
 export default function UseCases() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-transparent to-charcoal-950/50">
+    <section id="use-cases" className="relative py-32 bg-gradient-to-b from-transparent to-charcoal-950/50">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,11 +60,11 @@ export default function UseCases() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Trusted by</span>{" "}
-            <span className="text-white">Critical Industries</span>
+            <span className="text-white">Common</span>{" "}
+            <span className="gradient-text">Use Cases</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            When data privacy is non-negotiable, institutions choose Aethon.
+            Replace expensive cloud APIs with private LLMs for these high-volume workloads
           </p>
         </motion.div>
 
@@ -73,8 +79,13 @@ export default function UseCases() {
               className="group relative"
             >
               <div className="glass-effect rounded-xl p-6 h-full hover:border-purple-glow/60 transition-all duration-300 hover:scale-105">
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${useCase.color} flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform`}>
-                  <useCase.icon className="w-6 h-6 text-white" />
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${useCase.color} flex items-center justify-center group-hover:rotate-6 transition-transform`}>
+                    <useCase.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 text-xs font-bold">
+                    {useCase.savings}
+                  </span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{useCase.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{useCase.description}</p>

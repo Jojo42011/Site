@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const navItems = [
   { name: "Pricing", href: "/pricing" },
-  { name: "Risk Assessment", href: "/risk-assessment" },
-  { name: "AI Privacy Checklist", href: "/ai-privacy-checklist" },
+  { name: "Use Cases", href: "/#use-cases" },
+  { name: "Calculator", href: "/#calculator" },
 ];
 
 export default function Navigation() {
@@ -56,7 +56,7 @@ export default function Navigation() {
               href="/contact"
               className="px-5 py-2 bg-gradient-to-r from-purple-glow to-blue-electric rounded-lg font-semibold hover:scale-105 transition-transform glow-purple text-white text-sm"
             >
-              Get Started
+              Free Savings Audit
             </Link>
           </div>
 
@@ -99,7 +99,7 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-6 py-2.5 bg-gradient-to-r from-purple-glow to-blue-electric rounded-lg font-semibold text-center text-white"
               >
-                Get Started
+                Free Savings Audit
               </Link>
             </div>
           </motion.div>
