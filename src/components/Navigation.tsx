@@ -29,7 +29,7 @@ export default function Navigation() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "glass-effect py-4"
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-4 border-b border-gray-200"
           : "bg-transparent py-6"
       }`}
     >
@@ -37,7 +37,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <span className="text-2xl font-bold text-white group-hover:text-purple-glow transition-colors">Aethon</span>
+            <span className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">Aethon</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,15 +46,15 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-white font-medium hover:text-purple-glow transition-colors relative group text-sm"
+                className="text-gray-700 font-medium hover:text-purple-600 transition-colors relative group text-sm"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-glow group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
             <Link
               href="/contact"
-              className="px-5 py-2 bg-gradient-to-r from-purple-glow to-blue-electric rounded-lg font-semibold hover:scale-105 transition-transform glow-purple text-white text-sm"
+              className="px-5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg font-semibold hover:scale-105 transition-transform shadow-md hover:shadow-lg text-white text-sm"
             >
               Free Savings Audit
             </Link>
@@ -63,7 +63,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-gray-200 hover:text-purple-glow transition-colors"
+            className="md:hidden text-gray-700 hover:text-purple-600 transition-colors"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -81,7 +81,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-effect border-t border-purple-glow/20 mt-4"
+            className="md:hidden bg-white border-t border-gray-200 mt-4 shadow-lg"
           >
             <div className="px-6 py-4 space-y-4">
               {navItems.map((item) => (
@@ -89,7 +89,7 @@ export default function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-gray-200 hover:text-purple-glow transition-colors"
+                  className="block text-gray-700 hover:text-purple-600 transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -97,7 +97,7 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-6 py-2.5 bg-gradient-to-r from-purple-glow to-blue-electric rounded-lg font-semibold text-center text-white"
+                className="block px-6 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg font-semibold text-center text-white shadow-md"
               >
                 Free Savings Audit
               </Link>
@@ -108,4 +108,3 @@ export default function Navigation() {
     </motion.nav>
   );
 }
-

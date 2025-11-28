@@ -48,7 +48,7 @@ const technicalDetails = [
 
 export default function TechnicalProof() {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-charcoal-950/50 to-transparent">
+    <section className="relative py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,9 +59,9 @@ export default function TechnicalProof() {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">Technical</span>{" "}
-            <span className="text-white">Details</span>
+            <span className="text-gray-900">Details</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Production-grade infrastructure built on proven open-source tools
           </p>
         </motion.div>
@@ -74,16 +74,16 @@ export default function TechnicalProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass-effect rounded-xl p-6 hover:border-purple-glow/60 transition-all"
+              className="bg-white rounded-xl p-6 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all"
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-glow to-blue-electric flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center mb-4">
                 <detail.icon className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-white font-bold text-lg mb-4">{detail.title}</h3>
+              <h3 className="text-gray-900 font-bold text-lg mb-4">{detail.title}</h3>
               <ul className="space-y-2">
                 {detail.items.map((item, i) => (
-                  <li key={i} className="text-gray-300 text-sm flex items-start">
-                    <span className="text-purple-glow mr-2">•</span>
+                  <li key={i} className="text-gray-600 text-sm flex items-start">
+                    <span className="text-purple-600 mr-2">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -98,16 +98,16 @@ export default function TechnicalProof() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 glass-effect rounded-xl p-8 text-center"
+          className="mt-12 bg-white rounded-xl p-8 text-center border border-gray-200 shadow-md"
         >
-          <h3 className="text-white font-bold text-xl mb-4">
+          <h3 className="text-gray-900 font-bold text-xl mb-4">
             Migration Made Simple
           </h3>
-          <p className="text-gray-300 max-w-2xl mx-auto mb-6">
+          <p className="text-gray-600 max-w-2xl mx-auto mb-6">
             Our setup is OpenAI API-compatible. Just change your API endpoint - no code rewrites needed.
             We handle hardware selection, model deployment, fine-tuning, and training your team.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-green-500 rounded-full mr-2" />
               <span>2-4 week deployment</span>
