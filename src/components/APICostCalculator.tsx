@@ -35,9 +35,7 @@ export default function APICostCalculator() {
   const breakEvenMonths = Math.ceil(setupCost / monthlySavings);
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/50 to-transparent" />
-
+    <section id="calculator" className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-gray-50">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -46,13 +44,13 @@ export default function APICostCalculator() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-glow to-blue-electric mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 mb-6">
             <Calculator className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">Calculate Your Savings</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             See how much you could save by switching from cloud APIs to private LLMs
           </p>
         </motion.div>
@@ -64,10 +62,10 @@ export default function APICostCalculator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-effect rounded-2xl p-8 space-y-6"
+            className="bg-white rounded-2xl p-8 space-y-6 border border-gray-200 shadow-lg"
           >
             <div>
-              <label className="block text-white font-semibold mb-4">
+              <label className="block text-gray-900 font-semibold mb-4">
                 Current Monthly API Bill
               </label>
               <div className="relative">
@@ -76,7 +74,7 @@ export default function APICostCalculator() {
                   type="number"
                   value={monthlyBill}
                   onChange={(e) => setMonthlyBill(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full pl-12 pr-4 py-4 bg-charcoal-900/50 border border-purple-glow/30 rounded-xl text-white text-2xl font-bold focus:outline-none focus:border-purple-glow transition-colors"
+                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-2xl font-bold focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-colors"
                   placeholder="10000"
                 />
               </div>
@@ -87,41 +85,41 @@ export default function APICostCalculator() {
                 step="1000"
                 value={monthlyBill}
                 onChange={(e) => setMonthlyBill(parseInt(e.target.value))}
-                className="w-full mt-4 accent-purple-glow"
+                className="w-full mt-4 accent-purple-600"
               />
-              <div className="flex justify-between text-sm text-gray-400 mt-2">
+              <div className="flex justify-between text-sm text-gray-500 mt-2">
                 <span>$1K</span>
                 <span>$100K</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-white font-semibold mb-4">
+              <label className="block text-gray-900 font-semibold mb-4">
                 Primary Use Case
               </label>
               <select
                 value={useCase}
                 onChange={(e) => setUseCase(e.target.value)}
-                className="w-full px-4 py-4 bg-charcoal-900/50 border border-purple-glow/30 rounded-xl text-white font-medium focus:outline-none focus:border-purple-glow transition-colors cursor-pointer"
+                className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 font-medium focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-colors cursor-pointer"
               >
                 {Object.entries(useCaseLabels).map(([value, label]) => (
-                  <option key={value} value={value} className="bg-charcoal-900">
+                  <option key={value} value={value} className="bg-white">
                     {label}
                   </option>
                 ))}
               </select>
             </div>
 
-            <div className="pt-4 border-t border-white/10">
-              <div className="flex items-center justify-between text-sm text-gray-400 mb-2">
+            <div className="pt-4 border-t border-gray-200">
+              <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
                 <span>Cost Reduction Rate</span>
-                <span className="text-green-400 font-bold text-lg">
+                <span className="text-green-600 font-bold text-lg">
                   {Math.round(savingsRate * 100)}%
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-400">
+              <div className="flex items-center justify-between text-sm text-gray-600">
                 <span>Setup Cost (One-time)</span>
-                <span className="text-white font-semibold">
+                <span className="text-gray-900 font-semibold">
                   ${setupCost.toLocaleString()}
                 </span>
               </div>
@@ -137,21 +135,21 @@ export default function APICostCalculator() {
             className="space-y-4"
           >
             {/* Monthly Cost Comparison */}
-            <div className="glass-effect rounded-2xl p-6 border-2 border-purple-glow/30">
+            <div className="bg-white rounded-2xl p-6 border-2 border-purple-200 shadow-lg">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-white font-semibold">Monthly Cost</h3>
-                <TrendingDown className="w-5 h-5 text-green-400" />
+                <h3 className="text-gray-900 font-semibold">Monthly Cost</h3>
+                <TrendingDown className="w-5 h-5 text-green-600" />
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Current (Cloud APIs)</span>
-                  <span className="text-red-400 font-bold text-xl line-through">
+                  <span className="text-gray-600">Current (Cloud APIs)</span>
+                  <span className="text-red-500 font-bold text-xl line-through">
                     ${monthlyBill.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 font-semibold">With Aethon</span>
-                  <span className="text-green-400 font-bold text-3xl">
+                  <span className="text-gray-700 font-semibold">With Aethon</span>
+                  <span className="text-green-600 font-bold text-3xl">
                     ${newMonthlyCost.toLocaleString()}
                   </span>
                 </div>
@@ -159,52 +157,52 @@ export default function APICostCalculator() {
             </div>
 
             {/* Savings Highlight */}
-            <div className="glass-effect rounded-2xl p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200 shadow-lg">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-white font-semibold">Monthly Savings</h3>
-                <Zap className="w-5 h-5 text-yellow-400" />
+                <h3 className="text-gray-900 font-semibold">Monthly Savings</h3>
+                <Zap className="w-5 h-5 text-yellow-500" />
               </div>
-              <div className="text-green-400 font-bold text-4xl mb-1">
+              <div className="text-green-600 font-bold text-4xl mb-1">
                 ${monthlySavings.toLocaleString()}
               </div>
-              <div className="text-gray-300 text-sm">
+              <div className="text-gray-700 text-sm">
                 ${annualSavings.toLocaleString()} saved annually
               </div>
             </div>
 
             {/* Break-even */}
-            <div className="glass-effect rounded-2xl p-6">
-              <h3 className="text-white font-semibold mb-3">Break-Even Timeline</h3>
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-md">
+              <h3 className="text-gray-900 font-semibold mb-3">Break-Even Timeline</h3>
               <div className="flex items-baseline gap-2">
-                <span className="text-purple-glow font-bold text-4xl">
+                <span className="text-purple-600 font-bold text-4xl">
                   {breakEvenMonths}
                 </span>
-                <span className="text-gray-300">
+                <span className="text-gray-700">
                   {breakEvenMonths === 1 ? "month" : "months"}
                 </span>
               </div>
-              <div className="mt-4 h-2 bg-charcoal-900 rounded-full overflow-hidden">
+              <div className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${Math.min(100, (2 / breakEvenMonths) * 100)}%` }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, delay: 0.5 }}
-                  className="h-full bg-gradient-to-r from-purple-glow to-green-400"
+                  className="h-full bg-gradient-to-r from-purple-600 to-green-500"
                 />
               </div>
-              <p className="text-sm text-gray-400 mt-3">
+              <p className="text-sm text-gray-600 mt-3">
                 ROI achieved in {breakEvenMonths} {breakEvenMonths === 1 ? "month" : "months"} -
                 then pure savings every month after
               </p>
             </div>
 
             {/* 12-Month Projection */}
-            <div className="glass-effect rounded-2xl p-6 bg-gradient-to-br from-purple-glow/10 to-blue-electric/10">
-              <h3 className="text-white font-semibold mb-3">12-Month Net Savings</h3>
-              <div className="text-white font-bold text-3xl">
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-200 shadow-lg">
+              <h3 className="text-gray-900 font-semibold mb-3">12-Month Net Savings</h3>
+              <div className="text-gray-900 font-bold text-3xl">
                 ${(annualSavings - setupCost).toLocaleString()}
               </div>
-              <p className="text-sm text-gray-400 mt-2">
+              <p className="text-sm text-gray-600 mt-2">
                 After deducting ${setupCost.toLocaleString()} setup cost
               </p>
             </div>
@@ -219,12 +217,12 @@ export default function APICostCalculator() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-600 mb-6">
             Ready to cut your AI bills by {Math.round(savingsRate * 100)}%?
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-glow to-blue-electric rounded-xl font-semibold text-lg text-white hover:scale-105 transition-transform glow-purple"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-semibold text-lg text-white hover:scale-105 transition-transform shadow-md hover:shadow-lg"
           >
             Get Your Free Savings Audit
           </a>

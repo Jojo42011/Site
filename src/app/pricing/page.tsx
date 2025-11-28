@@ -8,22 +8,21 @@ import Link from "next/link";
 
 export default function PricingPage() {
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen bg-white">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 overflow-hidden">
+      <section className="relative pt-32 pb-12 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-glow rounded-full blur-3xl opacity-10" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 text-sm font-semibold mb-6"
+            className="inline-flex items-center px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-600 text-sm font-semibold mb-6"
           >
-            <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
+            <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
             Transparent Pricing, Massive Savings
           </motion.div>
           <motion.h1
@@ -32,13 +31,13 @@ export default function PricingPage() {
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
           >
             <span className="gradient-text">Simple Pricing</span>{" "}
-            <span className="text-white">for SaaS Founders</span>
+            <span className="text-gray-900">for SaaS Founders</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
+            className="text-xl text-gray-600 max-w-3xl mx-auto mb-8"
           >
             One-time setup fee, then just your monthly server costs. No hidden charges, no vendor lock-in.
             Cut your AI bills by 80-90% starting next month.
@@ -47,11 +46,11 @@ export default function PricingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center px-6 py-3 glass-effect rounded-full text-gray-300"
+            className="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-full text-gray-700 shadow-sm"
           >
-            <span className="text-green-400 font-bold mr-2">$2,500-7,500</span>
+            <span className="text-green-600 font-bold mr-2">$2,500-7,500</span>
             <span>setup cost + </span>
-            <span className="text-green-400 font-bold ml-2">$200-800/mo</span>
+            <span className="text-green-600 font-bold ml-2">$200-800/mo</span>
             <span className="ml-2">operating cost</span>
           </motion.div>
         </div>
@@ -61,7 +60,7 @@ export default function PricingPage() {
       <ServiceTiers />
 
       {/* Why This Works Section */}
-      <section className="relative py-24 bg-charcoal-950/30">
+      <section className="relative py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -69,10 +68,10 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Why Private LLMs are <span className="gradient-text">10x Cheaper</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Cloud AI providers charge for convenience and markup. You&apos;re paying for their profit margins, not compute costs.
             </p>
           </motion.div>
@@ -110,10 +109,10 @@ export default function PricingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-effect rounded-xl p-6 hover:border-purple-glow/60 transition-all"
+                className="bg-white rounded-xl p-6 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all"
               >
-                <h3 className="text-white font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm">{item.description}</p>
+                <h3 className="text-gray-900 font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -121,25 +120,25 @@ export default function PricingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24">
+      <section className="relative py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="glass-effect rounded-2xl p-8 sm:p-12 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 sm:p-12 text-center border border-purple-200">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Ready to Cut Your AI Bills by 80%?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-600 mb-8">
               Book a free 15-minute savings audit. We&apos;ll show you exactly how much you could save with private LLMs.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-glow to-blue-electric rounded-xl font-semibold text-lg text-white hover:scale-105 transition-transform glow-purple"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-semibold text-lg text-white hover:scale-105 transition-transform shadow-md hover:shadow-lg"
               >
                 Get Free Savings Audit
               </Link>
               <Link
                 href="/#calculator"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-purple-glow/30 rounded-xl font-semibold text-lg text-white hover:border-purple-glow/60 hover:bg-purple-glow/10 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 rounded-xl font-semibold text-lg text-gray-900 hover:border-purple-300 hover:bg-purple-50 transition-all"
               >
                 Calculate Your Savings
               </Link>

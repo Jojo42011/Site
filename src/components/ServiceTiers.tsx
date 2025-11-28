@@ -26,7 +26,7 @@ const tiers = [
     bestFor: "Technical founders who want to DIY and save the most money",
     cta: "Get Started",
     href: "/contact",
-    gradient: "from-purple-glow to-purple-dark",
+    gradient: "from-purple-600 to-indigo-600",
     monthlyCost: "$200-500/mo",
   },
   {
@@ -51,7 +51,7 @@ const tiers = [
     bestFor: "SaaS founders who want to cut costs without the technical headache",
     cta: "Book Free Audit",
     href: "/contact",
-    gradient: "from-blue-electric to-purple-glow",
+    gradient: "from-blue-500 to-purple-600",
     popular: true,
     monthlyCost: "$300-800/mo",
   },
@@ -78,14 +78,14 @@ const tiers = [
     bestFor: "Companies processing 100M+ tokens/month or needing SLA guarantees",
     cta: "Contact Sales",
     href: "/contact",
-    gradient: "from-purple-glow to-blue-electric",
+    gradient: "from-purple-600 to-blue-500",
     monthlyCost: "$2K-5K/mo",
   },
 ];
 
 export default function ServiceTiers() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-24 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -96,9 +96,9 @@ export default function ServiceTiers() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">Simple Pricing</span>{" "}
-            <span className="text-white">No Surprises</span>
+            <span className="text-gray-900">No Surprises</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Choose your setup path. All options include the same massive cost savings vs cloud APIs.
           </p>
         </motion.div>
@@ -111,12 +111,12 @@ export default function ServiceTiers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative glass-effect rounded-2xl p-6 sm:p-8 lg:p-10 ${
-                tier.popular ? "border-purple-glow/50 ring-2 ring-purple-glow/30" : ""
+              className={`relative bg-white rounded-2xl p-6 sm:p-8 lg:p-10 border ${
+                tier.popular ? "border-purple-300 ring-2 ring-purple-200 shadow-lg" : "border-gray-200 shadow-md"
               }`}
             >
               {tier.popular && (
-                <div className="absolute -top-4 left-6 px-4 py-1 bg-gradient-to-r from-purple-glow to-blue-electric rounded-full text-sm font-semibold text-white">
+                <div className="absolute -top-4 left-6 px-4 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-sm font-semibold text-white shadow-md">
                   Most Popular
                 </div>
               )}
@@ -130,18 +130,18 @@ export default function ServiceTiers() {
                     </div>
                     <div>
                       <span className="text-2xl mr-2">{tier.badge}</span>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white">{tier.title}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{tier.title}</h3>
                     </div>
                   </div>
-                  
-                  <p className="text-gray-300 mb-6 text-lg">{tier.subtitle}</p>
 
-                  <h4 className="text-white font-semibold mb-4">What&apos;s included:</h4>
+                  <p className="text-gray-600 mb-6 text-lg">{tier.subtitle}</p>
+
+                  <h4 className="text-gray-900 font-semibold mb-4">What&apos;s included:</h4>
                   <ul className="space-y-3">
                     {tier.features.map((feature) => (
                       <li key={feature} className="flex items-start space-x-3">
-                        <Check className="w-5 h-5 text-purple-glow flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300 text-sm sm:text-base">{feature}</span>
+                        <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600 text-sm sm:text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -150,25 +150,25 @@ export default function ServiceTiers() {
                 {/* Right Column - Details & CTA */}
                 <div className="flex flex-col justify-between">
                   <div className="space-y-4 mb-6">
-                    <div className="glass-effect rounded-xl p-6 border-2 border-purple-glow/30 bg-gradient-to-br from-purple-glow/5 to-blue-electric/5">
-                      <span className="text-gray-400 text-sm">Setup Cost</span>
+                    <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-200">
+                      <span className="text-gray-600 text-sm">Setup Cost</span>
                       <div className="flex items-baseline gap-2 mt-1">
-                        <span className="text-4xl font-bold text-white">{tier.price}</span>
-                        <span className="text-gray-400 text-sm">{tier.priceDetail}</span>
+                        <span className="text-4xl font-bold text-gray-900">{tier.price}</span>
+                        <span className="text-gray-600 text-sm">{tier.priceDetail}</span>
                       </div>
-                      <div className="mt-3 pt-3 border-t border-white/10">
-                        <span className="text-gray-400 text-sm">Monthly Operating Cost</span>
-                        <p className="text-green-400 font-bold text-lg">{tier.monthlyCost}</p>
+                      <div className="mt-3 pt-3 border-t border-purple-200">
+                        <span className="text-gray-600 text-sm">Monthly Operating Cost</span>
+                        <p className="text-green-600 font-bold text-lg">{tier.monthlyCost}</p>
                         <p className="text-xs text-gray-500 mt-1">vs $10K-50K+ on cloud APIs</p>
                       </div>
                     </div>
-                    <div className="glass-effect rounded-xl p-4">
-                      <span className="text-gray-400 text-sm">Timeline</span>
-                      <p className="text-white font-medium">{tier.timeline}</p>
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                      <span className="text-gray-600 text-sm">Timeline</span>
+                      <p className="text-gray-900 font-medium">{tier.timeline}</p>
                     </div>
-                    <div className="glass-effect rounded-xl p-4">
-                      <span className="text-gray-400 text-sm">Best for</span>
-                      <p className="text-white font-medium">{tier.bestFor}</p>
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                      <span className="text-gray-600 text-sm">Best for</span>
+                      <p className="text-gray-900 font-medium">{tier.bestFor}</p>
                     </div>
                   </div>
 
@@ -176,8 +176,8 @@ export default function ServiceTiers() {
                     href={tier.href}
                     className={`w-full py-4 rounded-xl font-semibold text-center transition-all block ${
                       tier.popular
-                        ? "bg-gradient-to-r from-purple-glow to-blue-electric text-white hover:scale-105 glow-purple"
-                        : "border border-purple-glow/30 text-white hover:border-purple-glow/60 hover:bg-purple-glow/10"
+                        ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:scale-105 shadow-md hover:shadow-lg"
+                        : "border-2 border-gray-300 text-gray-900 hover:border-purple-300 hover:bg-purple-50"
                     }`}
                   >
                     {tier.cta}
@@ -194,25 +194,25 @@ export default function ServiceTiers() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 glass-effect rounded-2xl p-8 sm:p-12 text-center"
+          className="mt-16 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 sm:p-12 text-center border border-purple-200"
         >
           <div className="text-3xl mb-4">💰</div>
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
             Not sure where to start?
           </h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
             Book a free 15-minute savings audit. We&apos;ll analyze your current API usage and show you exactly how much you could save.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-glow to-blue-electric rounded-xl font-semibold text-white hover:scale-105 transition-transform glow-purple"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-semibold text-white hover:scale-105 transition-transform shadow-md hover:shadow-lg"
             >
               Get Free Savings Audit
             </Link>
             <a
               href="#calculator"
-              className="w-full sm:w-auto px-8 py-4 border border-purple-glow/30 rounded-xl font-semibold text-white hover:border-purple-glow/60 hover:bg-purple-glow/10 transition-all"
+              className="w-full sm:w-auto px-8 py-4 border-2 border-gray-300 rounded-xl font-semibold text-gray-900 hover:border-purple-300 hover:bg-purple-50 transition-all"
             >
               Calculate Savings Now
             </a>
