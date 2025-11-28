@@ -62,7 +62,7 @@ export default function Testimonials() {
               <Quote className="w-10 h-10 text-purple-glow mb-4 opacity-50" />
 
               <p className="text-gray-300 text-base leading-relaxed mb-6">
-                "{testimonial.quote}"
+                &quot;{testimonial.quote}&quot;
               </p>
 
               <div className="border-t border-white/10 pt-4">

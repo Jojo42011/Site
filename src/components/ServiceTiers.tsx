@@ -201,7 +201,7 @@ export default function ServiceTiers() {
             Not sure where to start?
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Book a free 15-minute savings audit. We'll analyze your current API usage and show you exactly how much you could save.
+            Book a free 15-minute savings audit. We&apos;ll analyze your current API usage and show you exactly how much you could save.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

@@ -30,7 +30,7 @@ export default function CTA() {
           </h2>
 
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Join 47+ SaaS founders who've already made the switch. Book a free 15-minute savings audit
+            Join 47+ SaaS founders who&apos;ve already made the switch. Book a free 15-minute savings audit
             and see exactly how much you could save.
           </p>
 

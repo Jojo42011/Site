@@ -73,7 +73,7 @@ export default function PricingPage() {
               Why Private LLMs are <span className="gradient-text">10x Cheaper</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Cloud AI providers charge for convenience and markup. You're paying for their profit margins, not compute costs.
+              Cloud AI providers charge for convenience and markup. You&apos;re paying for their profit margins, not compute costs.
             </p>
           </motion.div>
 
@@ -128,7 +128,7 @@ export default function PricingPage() {
               Ready to Cut Your AI Bills by 80%?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Book a free 15-minute savings audit. We'll show you exactly how much you could save with private LLMs.
+              Book a free 15-minute savings audit. We&apos;ll show you exactly how much you could save with private LLMs.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
@@ -137,12 +137,12 @@ export default function PricingPage() {
               >
                 Get Free Savings Audit
               </Link>
-              <a
+              <Link
                 href="/#calculator"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-purple-glow/30 rounded-xl font-semibold text-lg text-white hover:border-purple-glow/60 hover:bg-purple-glow/10 transition-all"
               >
                 Calculate Your Savings
-              </a>
+              </Link>
             </div>
           </div>
         </div>
