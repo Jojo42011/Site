@@ -46,11 +46,13 @@ export default function Hero() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
               >
                 Cut Your AI Bills by{" "}
-                <span className="gradient-text">90%</span>
+                <span className="text-white">90%</span>
+                <br />
+                <span className="gradient-text">& Own Your Infrastructure</span>
               </motion.h1>
               <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed font-light">
-                Deploy private LLMs on your infrastructure. Same quality, 1/10th the cost.
-                No vendor lock-in, complete data control.
+                Deploy private LLMs and AI agents on your own servers. Same quality, 1/10th the cost.
+                Complete control, zero vendor lock-in.
               </p>
               <motion.div
                 initial={{ opacity: 0 }}
