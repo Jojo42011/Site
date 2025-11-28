@@ -1,9 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import TrustCredibility from "@/components/TrustCredibility";
+import Testimonials from "@/components/Testimonials";
+import APICostCalculator from "@/components/APICostCalculator";
 import ServiceTiers from "@/components/ServiceTiers";
 import UseCases from "@/components/UseCases";
+import TechnicalProof from "@/components/TechnicalProof";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -13,9 +15,13 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Features />
-      <TrustCredibility />
-      <ServiceTiers />
+      <Testimonials />
+      <div id="calculator">
+        <APICostCalculator />
+      </div>
       <UseCases />
+      <TechnicalProof />
+      <ServiceTiers />
       <CTA />
       <Footer />
     </main>

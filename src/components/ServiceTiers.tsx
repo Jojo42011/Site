@@ -7,69 +7,79 @@ import Link from "next/link";
 const tiers = [
   {
     icon: Search,
-    badge: "🔍",
-    title: "AI Privacy Assessment",
-    subtitle: "Understand your organization's AI data exposure risks",
+    badge: "🎯",
+    title: "DIY Starter",
+    subtitle: "For technical teams who want to self-deploy",
+    price: "$2,500",
+    priceDetail: "one-time",
     features: [
-      "Complete AI usage audit across your organization",
-      "Data flow mapping & vulnerability identification",
-      "Compliance gap analysis (HIPAA, SOC 2, GDPR, etc.)",
-      "Prioritized risk mitigation roadmap",
-      "Working demo: Pre-configured local LLM",
-      "AI usage policy templates customized for your industry",
+      "Complete deployment playbook & scripts",
+      "Hardware recommendations for your scale",
+      "Model selection guide (Llama, Mixtral, DeepSeek)",
+      "Ollama + ChromaDB setup templates",
+      "OpenAI-compatible API configuration",
+      "Migration guides from OpenAI/Anthropic",
+      "Community Slack access",
     ],
-    timeline: "5-14 days depending on organization size",
-    deliverable: "Comprehensive report + demo environment",
-    bestFor: "Organizations evaluating AI adoption or concerned about current AI tool usage",
-    cta: "Schedule Consultation",
+    timeline: "Start immediately",
+    deliverable: "Self-service setup kit + community support",
+    bestFor: "Technical founders who want to DIY and save the most money",
+    cta: "Get Started",
     href: "/contact",
     gradient: "from-purple-glow to-purple-dark",
+    monthlyCost: "$200-500/mo",
   },
   {
     icon: Zap,
     badge: "⚡",
-    title: "Proof of Concept Deployment",
-    subtitle: "Validate air-gapped AI in your environment with real data",
+    title: "Done-For-You",
+    subtitle: "We deploy everything for you",
+    price: "$7,500",
+    priceDetail: "one-time setup",
     features: [
-      "Everything in Assessment, PLUS:",
-      "Local LLM deployed on your infrastructure",
-      "Trained on your actual data (one use case)",
-      "Air-gapped configuration (zero external connections)",
-      "Performance benchmarking vs. cloud alternatives",
-      "Security validation & penetration testing",
-      "IT team training & documentation",
-      "90-day technical support",
+      "Everything in DIY Starter, PLUS:",
+      "Full deployment on your infrastructure",
+      "Hardware procurement assistance",
+      "Custom model fine-tuning (1 use case)",
+      "Team training (2 sessions)",
+      "API migration support",
+      "2 weeks white-glove setup",
+      "90-day priority support",
     ],
-    timeline: "4-8 weeks depending on complexity",
-    deliverable: "Working production-ready system + full documentation",
-    bestFor: "Organizations ready to prove ROI before full-scale implementation",
-    cta: "Schedule Consultation",
+    timeline: "2-4 weeks to production",
+    deliverable: "Production-ready system + full documentation",
+    bestFor: "SaaS founders who want to cut costs without the technical headache",
+    cta: "Book Free Audit",
     href: "/contact",
     gradient: "from-blue-electric to-purple-glow",
     popular: true,
+    monthlyCost: "$300-800/mo",
   },
   {
     icon: Building2,
-    badge: "🏢",
-    title: "Production Deployment",
-    subtitle: "Complete private AI infrastructure for your institution",
+    badge: "🚀",
+    title: "Enterprise",
+    subtitle: "For high-volume operations",
+    price: "Custom",
+    priceDetail: "contact us",
     features: [
-      "Multi-use case AI implementation",
-      "Enterprise-grade air-gapped infrastructure",
-      "Multiple LLM models optimized for different tasks",
-      "Custom model training on your complete datasets",
-      "High-availability architecture with failover",
-      "Security monitoring & incident response",
-      "Ongoing model optimization & updates",
-      "24/7 support & maintenance (Year 1 included)",
-      "Compliance documentation & audit support",
+      "Multi-region deployment",
+      "Multiple fine-tuned models",
+      "High-availability architecture",
+      "Dedicated infrastructure engineer",
+      "24/7 monitoring & support",
+      "SLA guarantees",
+      "Compliance documentation (SOC 2, HIPAA)",
+      "Quarterly optimization reviews",
+      "Priority feature development",
     ],
-    timeline: "12-24 weeks depending on scope",
-    deliverable: "Turnkey private AI infrastructure",
-    bestFor: "Institutions ready to scale private AI across departments",
-    cta: "Schedule Consultation",
+    timeline: "4-8 weeks to production",
+    deliverable: "Enterprise-grade private AI infrastructure",
+    bestFor: "Companies processing 100M+ tokens/month or needing SLA guarantees",
+    cta: "Contact Sales",
     href: "/contact",
     gradient: "from-purple-glow to-blue-electric",
+    monthlyCost: "$2K-5K/mo",
   },
 ];
 
@@ -85,11 +95,11 @@ export default function ServiceTiers() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">Our</span>{" "}
-            <span className="gradient-text">Services</span>
+            <span className="gradient-text">Simple Pricing</span>{" "}
+            <span className="text-white">No Surprises</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Every organization has unique needs. We offer customized solutions tailored to your specific security requirements, infrastructure, and goals.
+            Choose your setup path. All options include the same massive cost savings vs cloud APIs.
           </p>
         </motion.div>
 
@@ -140,13 +150,21 @@ export default function ServiceTiers() {
                 {/* Right Column - Details & CTA */}
                 <div className="flex flex-col justify-between">
                   <div className="space-y-4 mb-6">
+                    <div className="glass-effect rounded-xl p-6 border-2 border-purple-glow/30 bg-gradient-to-br from-purple-glow/5 to-blue-electric/5">
+                      <span className="text-gray-400 text-sm">Setup Cost</span>
+                      <div className="flex items-baseline gap-2 mt-1">
+                        <span className="text-4xl font-bold text-white">{tier.price}</span>
+                        <span className="text-gray-400 text-sm">{tier.priceDetail}</span>
+                      </div>
+                      <div className="mt-3 pt-3 border-t border-white/10">
+                        <span className="text-gray-400 text-sm">Monthly Operating Cost</span>
+                        <p className="text-green-400 font-bold text-lg">{tier.monthlyCost}</p>
+                        <p className="text-xs text-gray-500 mt-1">vs $10K-50K+ on OpenAI/Anthropic</p>
+                      </div>
+                    </div>
                     <div className="glass-effect rounded-xl p-4">
                       <span className="text-gray-400 text-sm">Timeline</span>
                       <p className="text-white font-medium">{tier.timeline}</p>
-                    </div>
-                    <div className="glass-effect rounded-xl p-4">
-                      <span className="text-gray-400 text-sm">Deliverable</span>
-                      <p className="text-white font-medium">{tier.deliverable}</p>
                     </div>
                     <div className="glass-effect rounded-xl p-4">
                       <span className="text-gray-400 text-sm">Best for</span>
@@ -178,26 +196,26 @@ export default function ServiceTiers() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-16 glass-effect rounded-2xl p-8 sm:p-12 text-center"
         >
-          <div className="text-3xl mb-4">💡</div>
+          <div className="text-3xl mb-4">💰</div>
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Not sure where to start?
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Take our free 5-minute AI Privacy Risk Assessment to understand your current exposure and get personalized recommendations.
+            Book a free 15-minute savings audit. We'll analyze your current API usage and show you exactly how much you could save.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/risk-assessment"
+              href="/contact"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-glow to-blue-electric rounded-xl font-semibold text-white hover:scale-105 transition-transform glow-purple"
             >
-              Start Free Assessment →
+              Get Free Savings Audit
             </Link>
-            <Link
-              href="/contact"
+            <a
+              href="#calculator"
               className="w-full sm:w-auto px-8 py-4 border border-purple-glow/30 rounded-xl font-semibold text-white hover:border-purple-glow/60 hover:bg-purple-glow/10 transition-all"
             >
-              Book Free Consultation →
-            </Link>
+              Calculate Savings Now
+            </a>
           </div>
         </motion.div>
       </div>
