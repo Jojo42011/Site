@@ -74,9 +74,12 @@ export default function APICostCalculator() {
   return (
     <section id="calculator" className="relative py-32 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50">
       <div className="absolute inset-0 grid-pattern opacity-10" />
-      {/* Light purple accents */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-3xl opacity-30" />
-      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-300/15 rounded-full blur-3xl opacity-25" />
+      {/* Premium luxurious purple background designs */}
+      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
+      <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -305,10 +308,10 @@ export default function APICostCalculator() {
               Get Free Savings Audit
             </a>
             <a
-              href="/pricing"
+              href="/products"
               className="px-10 py-5 border-2 border-black text-black rounded-xl font-bold text-lg hover:bg-black hover:text-white transition-all"
             >
-              View Pricing
+              See our Products
             </a>
           </div>
         </motion.div>
