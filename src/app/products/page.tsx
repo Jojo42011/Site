@@ -176,11 +176,13 @@ export default function ProductsPage() {
     <main className="relative min-h-screen">
       <Navigation />
       <section className="relative py-32 overflow-hidden bg-gradient-to-b from-white via-gray-50/50 to-white">
-        {/* Light purple background accents */}
+        {/* Premium luxurious purple background designs */}
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
           {/* Back button */}
@@ -249,9 +251,6 @@ export default function ProductsPage() {
                     </div>
 
                     <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Cost Comparison</span>
-                      </div>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <span className="text-xs text-gray-600">With Aethon</span>

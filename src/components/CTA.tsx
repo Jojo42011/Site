@@ -8,9 +8,12 @@ export default function CTA() {
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
       <div className="absolute inset-0 grid-pattern opacity-10" />
-      {/* Light purple accents */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-200/20 rounded-full blur-3xl opacity-30" />
-      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-300/15 rounded-full blur-3xl opacity-25" />
+      {/* Premium luxurious purple background designs */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 text-center">
         <motion.div
@@ -35,7 +38,7 @@ export default function CTA() {
               href="/products"
               className="group px-10 py-5 bg-black rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow flex items-center space-x-2 text-white"
             >
-              <span>See All Products</span>
+              <span>See our Products</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link

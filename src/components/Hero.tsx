@@ -10,10 +10,12 @@ export default function Hero() {
       {/* Subtle background pattern */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
 
-      {/* Premium geometric accents with light purple */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-3xl opacity-40" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-300/15 rounded-full blur-3xl opacity-30" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
+      {/* Premium luxurious purple background designs */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
+      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 w-full">
         <div className="max-w-5xl">
