@@ -2,128 +2,226 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { DollarSign, TrendingDown, Calculator, Zap } from "lucide-react";
+import { DollarSign, TrendingDown, Calculator, Zap, Info, ChevronDown, ChevronUp } from "lucide-react";
+
+// Real API pricing data (as of 2024)
+const apiPricing = {
+  "openai-gpt4": {
+    name: "OpenAI GPT-4",
+    inputCost: 30, // per 1M tokens
+    outputCost: 60, // per 1M tokens
+    avgCostPer1M: 45,
+  },
+  "openai-gpt4-turbo": {
+    name: "OpenAI GPT-4 Turbo",
+    inputCost: 10,
+    outputCost: 30,
+    avgCostPer1M: 20,
+  },
+  "anthropic-claude": {
+    name: "Anthropic Claude 3.5 Sonnet",
+    inputCost: 3,
+    outputCost: 15,
+    avgCostPer1M: 9,
+  },
+  "google-gemini": {
+    name: "Google Gemini Pro",
+    inputCost: 0.5,
+    outputCost: 1.5,
+    avgCostPer1M: 1,
+  },
+};
+
+// Aethon models (self-hosted costs)
+const aethonPricing = {
+  "llama-3.1-70b": {
+    name: "Llama 3.1 70B",
+    costPer1M: 0.15, // Approximate compute cost
+    quality: "GPT-4 quality",
+  },
+  "deepseek-v2": {
+    name: "DeepSeek V2",
+    costPer1M: 0.12,
+    quality: "Best cost/performance",
+  },
+  "mixtral-8x22b": {
+    name: "Mixtral 8x22B",
+    costPer1M: 0.18,
+    quality: "Production ready",
+  },
+};
 
 export default function APICostCalculator() {
-  const [monthlyBill, setMonthlyBill] = useState(10000);
-  const [useCase, setUseCase] = useState("customer-support");
+  const [monthlyTokens, setMonthlyTokens] = useState(10000000); // 10M tokens default
+  const [currentProvider, setCurrentProvider] = useState("openai-gpt4");
+  const [selectedModel, setSelectedModel] = useState("llama-3.1-70b");
+  const [showDetails, setShowDetails] = useState(false);
 
-  // Cost reduction percentages based on use case
-  const savingsRates = {
-    "customer-support": 0.85, // 85% savings
-    "content-generation": 0.82,
-    "code-assistance": 0.88,
-    "data-analysis": 0.80,
-    "email-automation": 0.87,
-  };
+  const currentAPI = apiPricing[currentProvider as keyof typeof apiPricing];
+  const aethonModel = aethonPricing[selectedModel as keyof typeof aethonPricing];
 
-  const useCaseLabels = {
-    "customer-support": "Customer Support Chatbots",
-    "content-generation": "Content Generation",
-    "code-assistance": "Code Assistance",
-    "data-analysis": "Data Analysis",
-    "email-automation": "Email Automation",
-  };
-
-  const savingsRate = savingsRates[useCase as keyof typeof savingsRates];
-  const newMonthlyCost = Math.round(monthlyBill * (1 - savingsRate));
-  const monthlySavings = monthlyBill - newMonthlyCost;
+  // Calculate costs
+  const currentMonthlyCost = Math.round((monthlyTokens / 1000000) * currentAPI.avgCostPer1M);
+  const aethonMonthlyCost = Math.round((monthlyTokens / 1000000) * aethonModel.costPer1M);
+  const monthlySavings = currentMonthlyCost - aethonMonthlyCost;
+  const savingsRate = currentMonthlyCost > 0 ? (monthlySavings / currentMonthlyCost) * 100 : 0;
   const annualSavings = monthlySavings * 12;
 
-  // Setup cost (one-time)
-  const setupCost = monthlyBill > 20000 ? 7500 : 2500;
-  const breakEvenMonths = Math.ceil(setupCost / monthlySavings);
+  // Setup cost
+  const setupCost = currentMonthlyCost > 20000 ? 7500 : currentMonthlyCost > 5000 ? 5000 : 2500;
+  const breakEvenMonths = monthlySavings > 0 ? Math.ceil(setupCost / monthlySavings) : 0;
 
   return (
-    <section id="calculator" className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <section id="calculator" className="relative py-32 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50">
+      <div className="absolute inset-0 grid-pattern opacity-10" />
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-black mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-black mb-6 premium-shadow">
             <Calculator className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
             <span className="gradient-text">Calculate Your Savings</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how much you could save by switching from cloud APIs to private LLMs
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Compare real API costs vs. self-hosted models. See exactly why Aethon saves 85-95% on AI infrastructure.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 items-start mb-12">
           {/* Calculator Input */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-8 space-y-6 border border-gray-200 shadow-lg"
+            className="bg-white rounded-3xl p-8 space-y-6 premium-border premium-shadow-lg"
           >
             <div>
-              <label className="block text-gray-900 font-semibold mb-4">
-                Current Monthly API Bill
+              <label className="block text-black font-bold mb-4 text-lg">
+                Monthly Token Usage
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="number"
-                  value={monthlyBill}
-                  onChange={(e) => setMonthlyBill(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-2xl font-bold focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition-colors"
-                  placeholder="10000"
+                  value={monthlyTokens}
+                  onChange={(e) => setMonthlyTokens(Math.max(0, parseInt(e.target.value) || 0))}
+                  className="w-full pl-4 pr-4 py-5 bg-gray-50 border-2 border-gray-200 rounded-xl text-black text-2xl font-bold focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition-all"
+                  placeholder="10000000"
                 />
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm font-medium">
+                  tokens
+                </div>
               </div>
               <input
                 type="range"
-                min="1000"
-                max="100000"
-                step="1000"
-                value={monthlyBill}
-                onChange={(e) => setMonthlyBill(parseInt(e.target.value))}
+                min="1000000"
+                max="100000000"
+                step="1000000"
+                value={monthlyTokens}
+                onChange={(e) => setMonthlyTokens(parseInt(e.target.value))}
                 className="w-full mt-4 accent-black"
               />
-              <div className="flex justify-between text-sm text-gray-500 mt-2">
-                <span>$1K</span>
-                <span>$100K</span>
+              <div className="flex justify-between text-xs text-gray-500 mt-2">
+                <span>1M</span>
+                <span>100M</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-gray-900 font-semibold mb-4">
-                Primary Use Case
+              <label className="block text-black font-bold mb-4 text-lg">
+                Current Cloud Provider
               </label>
               <select
-                value={useCase}
-                onChange={(e) => setUseCase(e.target.value)}
-                className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 font-medium focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition-colors cursor-pointer"
+                value={currentProvider}
+                onChange={(e) => setCurrentProvider(e.target.value)}
+                className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-black font-semibold focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition-all cursor-pointer"
               >
-                {Object.entries(useCaseLabels).map(([value, label]) => (
-                  <option key={value} value={value} className="bg-white">
-                    {label}
+                {Object.entries(apiPricing).map(([key, api]) => (
+                  <option key={key} value={key} className="bg-white">
+                    {api.name} (${api.avgCostPer1M}/1M tokens)
                   </option>
                 ))}
               </select>
             </div>
 
-            <div className="pt-4 border-t border-gray-200">
-              <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-                <span>Cost Reduction Rate</span>
-                <span className="text-black font-bold text-lg">
-                  {Math.round(savingsRate * 100)}%
-                </span>
-              </div>
-              <div className="flex items-center justify-between text-sm text-gray-600">
-                <span>Setup Cost (One-time)</span>
-                <span className="text-gray-900 font-semibold">
-                  ${setupCost.toLocaleString()}
-                </span>
-              </div>
+            <div>
+              <label className="block text-black font-bold mb-4 text-lg">
+                Aethon Model
+              </label>
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-black font-semibold focus:outline-none focus:border-black focus:ring-2 focus:ring-gray-200 transition-all cursor-pointer"
+              >
+                {Object.entries(aethonPricing).map(([key, model]) => (
+                  <option key={key} value={key} className="bg-white">
+                    {model.name} - {model.quality} (${model.costPer1M}/1M tokens)
+                  </option>
+                ))}
+              </select>
             </div>
+
+            <button
+              onClick={() => setShowDetails(!showDetails)}
+              className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl hover:bg-gray-100 transition-all"
+            >
+              <span className="text-sm font-semibold text-black flex items-center">
+                <Info className="w-4 h-4 mr-2" />
+                Why Aethon Saves More
+              </span>
+              {showDetails ? (
+                <ChevronUp className="w-5 h-5 text-gray-600" />
+              ) : (
+                <ChevronDown className="w-5 h-5 text-gray-600" />
+              )}
+            </button>
+
+            {showDetails && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 space-y-4"
+              >
+                <h4 className="font-bold text-black mb-3">Why Our Models Save 85-95%</h4>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <div className="font-semibold text-black mb-1">1. No Cloud Markup</div>
+                    <div className="text-gray-600">
+                      Cloud providers charge $3-60 per 1M tokens. Actual compute cost is $0.10-0.20. 
+                      You keep the difference.
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black mb-1">2. Open Source Models</div>
+                    <div className="text-gray-600">
+                      Llama 3.1 70B matches GPT-4 quality. DeepSeek V2 offers best cost/performance. 
+                      Zero licensing fees.
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black mb-1">3. Your Infrastructure</div>
+                    <div className="text-gray-600">
+                      $500/mo server handles what costs $10K+ on cloud APIs. Scale by adding servers, 
+                      not API credits.
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black mb-1">4. No Rate Limits</div>
+                    <div className="text-gray-600">
+                      Unlimited requests. No throttling. No surprise bills. Complete control over 
+                      your AI infrastructure.
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
 
           {/* Results */}
@@ -132,78 +230,91 @@ export default function APICostCalculator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4"
+            className="space-y-6"
           >
-            {/* Monthly Cost Comparison */}
-            <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-lg">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-black font-semibold">Monthly Cost</h3>
-                <TrendingDown className="w-5 h-5 text-black" />
+            {/* Cost Comparison */}
+            <div className="bg-white rounded-3xl p-8 premium-border premium-shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-black">Monthly Cost Comparison</h3>
+                <TrendingDown className="w-6 h-6 text-black" />
               </div>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Current (Cloud APIs)</span>
-                  <span className="text-gray-400 font-bold text-xl line-through">
-                    ${monthlyBill.toLocaleString()}
-                  </span>
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-gray-600 font-medium">Current ({currentAPI.name})</span>
+                    <span className="text-gray-400 font-bold text-2xl line-through">
+                      ${currentMonthlyCost.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    ${currentAPI.avgCostPer1M}/1M tokens × {(monthlyTokens / 1000000).toFixed(1)}M tokens
+                  </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-700 font-semibold">With Aethon</span>
-                  <span className="text-black font-bold text-3xl">
-                    ${newMonthlyCost.toLocaleString()}
-                  </span>
+                <div className="bg-black rounded-xl p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-white font-semibold">With Aethon ({aethonModel.name})</span>
+                    <span className="text-white font-bold text-3xl">
+                      ${aethonMonthlyCost.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-300">
+                    ${aethonModel.costPer1M}/1M tokens × {(monthlyTokens / 1000000).toFixed(1)}M tokens
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Savings Highlight */}
-            <div className="bg-gray-50 rounded-2xl p-6 border-2 border-gray-200 shadow-lg">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-black font-semibold">Monthly Savings</h3>
-                <Zap className="w-5 h-5 text-black" />
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 border-2 border-green-200 premium-shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-2xl font-bold text-black">Monthly Savings</h3>
+                <Zap className="w-6 h-6 text-green-600" />
               </div>
-              <div className="text-black font-bold text-4xl mb-1">
+              <div className="text-black font-bold text-5xl mb-2">
                 ${monthlySavings.toLocaleString()}
               </div>
-              <div className="text-gray-700 text-sm">
+              <div className="text-gray-700 font-semibold text-lg mb-1">
+                {savingsRate.toFixed(1)}% cost reduction
+              </div>
+              <div className="text-gray-600 text-sm">
                 ${annualSavings.toLocaleString()} saved annually
               </div>
             </div>
 
             {/* Break-even */}
-            <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-md">
-              <h3 className="text-black font-semibold mb-3">Break-Even Timeline</h3>
-              <div className="flex items-baseline gap-2">
-                <span className="text-black font-bold text-4xl">
+            <div className="bg-white rounded-3xl p-8 premium-border premium-shadow">
+              <h3 className="text-xl font-bold text-black mb-4">ROI Timeline</h3>
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-black font-bold text-5xl">
                   {breakEvenMonths}
                 </span>
-                <span className="text-gray-700">
+                <span className="text-gray-700 text-lg">
                   {breakEvenMonths === 1 ? "month" : "months"}
                 </span>
               </div>
-              <div className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="mb-4 h-3 bg-gray-200 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  whileInView={{ width: `${Math.min(100, (2 / breakEvenMonths) * 100)}%` }}
+                  whileInView={{ width: `${Math.min(100, (breakEvenMonths > 0 ? (setupCost / (monthlySavings * breakEvenMonths)) * 100 : 0))}%` }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, delay: 0.5 }}
-                  className="h-full bg-black"
+                  className="h-full bg-black rounded-full"
                 />
               </div>
-              <p className="text-sm text-gray-600 mt-3">
-                ROI achieved in {breakEvenMonths} {breakEvenMonths === 1 ? "month" : "months"} -
+              <p className="text-sm text-gray-600">
+                Break-even in {breakEvenMonths} {breakEvenMonths === 1 ? "month" : "months"}, 
                 then pure savings every month after
               </p>
             </div>
 
             {/* 12-Month Projection */}
-            <div className="bg-gray-50 rounded-2xl p-6 border-2 border-gray-200 shadow-lg">
-              <h3 className="text-black font-semibold mb-3">12-Month Net Savings</h3>
-              <div className="text-black font-bold text-3xl">
+            <div className="bg-white rounded-3xl p-8 premium-border premium-shadow">
+              <h3 className="text-xl font-bold text-black mb-4">12-Month Net Savings</h3>
+              <div className="text-black font-bold text-4xl mb-2">
                 ${(annualSavings - setupCost).toLocaleString()}
               </div>
-              <p className="text-sm text-gray-600 mt-2">
-                After deducting ${setupCost.toLocaleString()} setup cost
+              <p className="text-sm text-gray-600">
+                After ${setupCost.toLocaleString()} one-time setup cost
               </p>
             </div>
           </motion.div>
@@ -215,17 +326,25 @@ export default function APICostCalculator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 text-center"
+          className="mt-16 text-center"
         >
-          <p className="text-gray-600 mb-6">
-            Ready to cut your AI bills by {Math.round(savingsRate * 100)}%?
+          <p className="text-xl text-gray-600 mb-8 font-medium">
+            Ready to cut your AI bills by {savingsRate.toFixed(1)}%?
           </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-black rounded-xl font-semibold text-lg text-white hover:bg-gray-800 transition-all shadow-lg"
-          >
-            Get Your Free Savings Audit
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="/contact"
+              className="px-10 py-5 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow"
+            >
+              Get Free Savings Audit
+            </a>
+            <a
+              href="/pricing"
+              className="px-10 py-5 border-2 border-black text-black rounded-xl font-bold text-lg hover:bg-black hover:text-white transition-all"
+            >
+              View Pricing
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

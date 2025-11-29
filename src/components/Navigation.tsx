@@ -28,7 +28,7 @@ export default function Navigation() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-4 border-b border-gray-200"
+          ? "bg-white/98 backdrop-blur-lg premium-shadow py-4 border-b premium-border"
           : "bg-transparent py-6"
       }`}
     >
@@ -53,7 +53,7 @@ export default function Navigation() {
             ))}
             <Link
               href="/contact"
-              className="px-5 py-2 bg-black rounded-lg font-semibold hover:bg-gray-800 transition-all shadow-md text-white text-sm"
+              className="px-6 py-2.5 bg-black rounded-xl font-bold hover:bg-gray-800 transition-all premium-shadow text-white text-sm"
             >
               Get Started
             </Link>
@@ -96,7 +96,7 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-6 py-2.5 bg-black rounded-lg font-semibold text-center text-white shadow-md"
+                className="block px-6 py-2.5 bg-black rounded-xl font-bold text-center text-white premium-shadow"
               >
                 Get Started
               </Link>

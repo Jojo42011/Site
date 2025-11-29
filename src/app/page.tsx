@@ -1,8 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import ServiceTiers from "@/components/ServiceTiers";
-import TechnicalProof from "@/components/TechnicalProof";
+import Products from "@/components/Products";
 import CTA from "@/components/CTA";
 import APICostCalculator from "@/components/APICostCalculator";
 import Footer from "@/components/Footer";
@@ -13,8 +12,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Features />
-      <TechnicalProof />
-      <ServiceTiers />
+      <Products />
       <CTA />
       <div id="calculator">
         <APICostCalculator />
