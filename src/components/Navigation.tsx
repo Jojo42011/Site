@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const navItems = [
   { name: "Pricing", href: "/pricing" },
-  { name: "Use Cases", href: "/#use-cases" },
   { name: "Calculator", href: "/#calculator" },
 ];
 
@@ -29,7 +28,7 @@ export default function Navigation() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm py-4 border-b border-gray-200"
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-4 border-b border-gray-200"
           : "bg-transparent py-6"
       }`}
     >
@@ -37,7 +36,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <span className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">Aethon</span>
+            <span className="text-2xl font-bold text-black">Aethon</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,24 +45,24 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 font-medium hover:text-purple-600 transition-colors relative group text-sm"
+                className="text-gray-700 font-medium hover:text-black transition-colors relative group text-sm"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
             <Link
               href="/contact"
-              className="px-5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg font-semibold hover:scale-105 transition-transform shadow-md hover:shadow-lg text-white text-sm"
+              className="px-5 py-2 bg-black rounded-lg font-semibold hover:bg-gray-800 transition-all shadow-md text-white text-sm"
             >
-              Free Savings Audit
+              Get Started
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-gray-700 hover:text-purple-600 transition-colors"
+            className="md:hidden text-black transition-colors"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -89,7 +88,7 @@ export default function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-gray-700 hover:text-purple-600 transition-colors"
+                  className="block text-gray-700 hover:text-black transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -97,9 +96,9 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-6 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg font-semibold text-center text-white shadow-md"
+                className="block px-6 py-2.5 bg-black rounded-lg font-semibold text-center text-white shadow-md"
               >
-                Free Savings Audit
+                Get Started
               </Link>
             </div>
           </motion.div>
