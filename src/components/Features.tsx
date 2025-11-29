@@ -6,7 +6,7 @@ import { DollarSign, Zap, TrendingUp } from "lucide-react";
 const features = [
   {
     icon: DollarSign,
-    title: "Cut AI system spending by 80-90%",
+    title: "Build and Run AI system for 80-90% less.",
     description: "Why slow your growth by spending massive amounts monthly on your AI agents? Run the same quality models specialized for your client needs for a fraction of the cost and never have runtime issues.",
   },
   {
@@ -43,7 +43,7 @@ export default function Features() {
             Why AI founders choose <span className="gradient-text">Aethon</span>
           </h2>
           <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-            Deploy private AI systems and agents for your clients that cost significantly less in monthly API and hosting fees. 
+            We Build private AI systems and agents for your clients that cost significantly less in monthly API and hosting fees. 
             <span className="font-semibold text-black"> Same quality, drastically lower costs,</span> complete data ownership.
           </p>
         </motion.div>
