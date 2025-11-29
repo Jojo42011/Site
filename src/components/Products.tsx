@@ -12,9 +12,10 @@ import {
   Search,
   Video,
   Headphones,
-  Zap,
-  Shield
+  Shield,
+  ArrowRight
 } from "lucide-react";
+import Link from "next/link";
 
 const products = [
   {
@@ -173,6 +174,10 @@ export default function Products() {
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-white via-gray-50/50 to-white">
       <div className="absolute inset-0 grid-pattern opacity-20" />
+      {/* Light purple accents */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-200/25 rounded-full blur-3xl opacity-35" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-purple-100/20 rounded-full blur-3xl opacity-25" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
@@ -182,22 +187,17 @@ export default function Products() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-black/5 rounded-full mb-6">
-            <Zap className="w-4 h-4 text-black mr-2" />
-            <span className="text-sm font-semibold text-black/70">Production-Ready AI Products</span>
-          </div>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-black">AI Products That</span>{" "}
-            <span className="gradient-text">Scale Your Business</span>
+            <span className="text-black">AI products that scale</span>{" "}
+            <span className="gradient-text">with your business</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Deploy enterprise-grade AI products for your clients. Same quality as cloud providers, 
-            <span className="font-semibold text-black"> 80-90% lower costs</span>, complete ownership.
+            We build enterprise-Grade AI products so you can focus on your client intake. Same quality as cloud providers, fraction of the monthly costs and complete ownership.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {products.map((product, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {products.slice(0, 6).map((product, index) => (
             <motion.div
               key={product.title}
               initial={{ opacity: 0, y: 30 }}
@@ -253,6 +253,23 @@ export default function Products() {
           ))}
         </div>
 
+        {/* See All Products Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-center mb-16"
+        >
+          <Link
+            href="/products"
+            className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow hover:premium-shadow-lg"
+          >
+            See All Products
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
+        </motion.div>
+
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -261,29 +278,26 @@ export default function Products() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-16 bg-black rounded-3xl p-12 text-center premium-shadow-lg"
         >
-          <div className="flex items-center justify-center mb-6">
-            <Shield className="w-8 h-8 text-white mr-3" />
-            <h3 className="text-3xl font-bold text-white">
-              Deploy Any AI Product. Own Everything.
-            </h3>
-          </div>
+          <h3 className="text-3xl font-bold text-white mb-6 text-center">
+            Deploy Any AI Product. Own Everything.
+          </h3>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
             Whether you need call agents, chatbots, or custom AI workflows, we deploy production-ready 
             systems on your infrastructure. Complete ownership, massive savings, enterprise quality.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="/contact"
+            <Link
+              href="/products"
               className="px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
             >
-              Get Started
-            </a>
-            <a
-              href="#calculator"
+              See All Products
+            </Link>
+            <Link
+              href="/contact"
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
             >
-              Calculate Savings
-            </a>
+              Get Started
+            </Link>
           </div>
         </motion.div>
       </div>
