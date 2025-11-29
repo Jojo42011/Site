@@ -55,7 +55,7 @@ export default function Navigation() {
               href="/products"
               className="px-6 py-2.5 bg-black rounded-xl font-bold hover:bg-gray-800 transition-all premium-shadow text-white text-sm"
             >
-              See our Products
+              Get started
             </Link>
           </div>
 
@@ -98,7 +98,7 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-6 py-2.5 bg-black rounded-xl font-bold text-center text-white premium-shadow"
               >
-                See our Products
+                Get started
               </Link>
             </div>
           </motion.div>
