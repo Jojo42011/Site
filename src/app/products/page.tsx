@@ -289,12 +289,12 @@ export default function ProductsPage() {
               >
                 Get Started
               </Link>
-              <a
+              <Link
                 href="/#calculator"
                 className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
               >
                 Calculate Savings
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
