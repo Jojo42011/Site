@@ -23,20 +23,23 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-white to-gray-50/50">
+      <div className="absolute inset-0 grid-pattern opacity-10" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-black">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-black leading-tight">
             Why AI founders choose <span className="gradient-text">Aethon</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We help AI founders deploy private AI systems and agents for their clients that cost significantly less in monthly API and hosting fees. Same quality, drastically lower costs, and complete data ownership. Your agents, your models, your control.
+          <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+            Deploy private AI systems and agents for your clients that cost significantly less in monthly API and hosting fees. 
+            <span className="font-semibold text-black"> Same quality, drastically lower costs,</span> complete data ownership.
           </p>
         </motion.div>
 
@@ -50,12 +53,12 @@ export default function Features() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="bg-white rounded-2xl p-8 h-full border-2 border-gray-200 hover:border-black transition-all duration-300 flex flex-col">
-                <div className="w-16 h-16 rounded-xl bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-8 h-8 text-white" />
+              <div className="bg-white rounded-3xl p-10 h-full premium-border-hover premium-shadow hover:premium-shadow-lg transition-all duration-300 flex flex-col">
+                <div className="w-20 h-20 rounded-2xl bg-black flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <feature.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-black mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-base flex-grow">{feature.description}</p>
+                <h3 className="text-3xl font-bold text-black mb-6 leading-tight">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-lg flex-grow">{feature.description}</p>
               </div>
             </motion.div>
           ))}
