@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingDown, Shield, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
@@ -10,23 +10,13 @@ export default function Hero() {
       {/* Subtle background pattern */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
 
-      {/* Premium geometric accents */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-black/5 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-black/5 rounded-full blur-3xl opacity-50" />
+      {/* Premium geometric accents with light purple */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-3xl opacity-40" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-300/15 rounded-full blur-3xl opacity-30" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 w-full">
         <div className="max-w-5xl">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center px-4 py-2 bg-black/5 rounded-full mb-8"
-          >
-            <TrendingDown className="w-4 h-4 text-black mr-2" />
-            <span className="text-sm font-semibold text-black/70">85-90% Cost Reduction vs Cloud APIs</span>
-          </motion.div>
-
           {/* Main heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -50,42 +40,6 @@ export default function Hero() {
             Deploy production-ready LLMs and AI agents for your clients. 
             <span className="font-semibold text-black"> Same quality, massive savings,</span> complete ownership.
           </motion.p>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex flex-wrap gap-6 mb-12"
-          >
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center">
-                <TrendingDown className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-black">85-90%</div>
-                <div className="text-sm text-gray-600">Cost Savings</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center">
-                <Zap className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-black">2-4 weeks</div>
-                <div className="text-sm text-gray-600">To Production</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-black">100%</div>
-                <div className="text-sm text-gray-600">Data Ownership</div>
-              </div>
-            </div>
-          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div

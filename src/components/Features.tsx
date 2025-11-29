@@ -12,7 +12,7 @@ const features = [
   {
     icon: Zap,
     title: "Deploy with speed",
-    description: "We handle everything: Creating the AI systems tailored for each client, model training, fine-tuning, even deployment. You're up and running with production-ready dedicated AI agents and systems quickly for a fraction of long-term costs.",
+    description: "We handle everything. Creating the AI systems tailored for each client, model training, fine-tuning, even deployment. You're up and running with production-ready dedicated AI agents and systems quickly for a fraction of long-term costs.",
   },
   {
     icon: TrendingUp,
@@ -25,6 +25,9 @@ export default function Features() {
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-white to-gray-50/50">
       <div className="absolute inset-0 grid-pattern opacity-10" />
+      {/* Light purple accents */}
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-purple-200/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute bottom-1/3 left-1/4 w-[400px] h-[400px] bg-purple-300/15 rounded-full blur-3xl opacity-25" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div

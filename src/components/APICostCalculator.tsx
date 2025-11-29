@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { DollarSign, TrendingDown, Calculator, Zap, Info, ChevronDown, ChevronUp } from "lucide-react";
+import { DollarSign, TrendingDown, Calculator, Info, ChevronDown, ChevronUp } from "lucide-react";
 
 // Real API pricing data (as of 2024)
 const apiPricing = {
@@ -74,6 +74,9 @@ export default function APICostCalculator() {
   return (
     <section id="calculator" className="relative py-32 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50">
       <div className="absolute inset-0 grid-pattern opacity-10" />
+      {/* Light purple accents */}
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-300/15 rounded-full blur-3xl opacity-25" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -266,9 +269,8 @@ export default function APICostCalculator() {
 
             {/* Savings Highlight */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 border-2 border-green-200 premium-shadow-lg">
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-4">
                 <h3 className="text-2xl font-bold text-black">Monthly Savings</h3>
-                <Zap className="w-6 h-6 text-green-600" />
               </div>
               <div className="text-black font-bold text-5xl mb-2">
                 ${monthlySavings.toLocaleString()}
@@ -281,42 +283,6 @@ export default function APICostCalculator() {
               </div>
             </div>
 
-            {/* Break-even */}
-            <div className="bg-white rounded-3xl p-8 premium-border premium-shadow">
-              <h3 className="text-xl font-bold text-black mb-4">ROI Timeline</h3>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-black font-bold text-5xl">
-                  {breakEvenMonths}
-                </span>
-                <span className="text-gray-700 text-lg">
-                  {breakEvenMonths === 1 ? "month" : "months"}
-                </span>
-              </div>
-              <div className="mb-4 h-3 bg-gray-200 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${Math.min(100, (breakEvenMonths > 0 ? (setupCost / (monthlySavings * breakEvenMonths)) * 100 : 0))}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="h-full bg-black rounded-full"
-                />
-              </div>
-              <p className="text-sm text-gray-600">
-                Break-even in {breakEvenMonths} {breakEvenMonths === 1 ? "month" : "months"}, 
-                then pure savings every month after
-              </p>
-            </div>
-
-            {/* 12-Month Projection */}
-            <div className="bg-white rounded-3xl p-8 premium-border premium-shadow">
-              <h3 className="text-xl font-bold text-black mb-4">12-Month Net Savings</h3>
-              <div className="text-black font-bold text-4xl mb-2">
-                ${(annualSavings - setupCost).toLocaleString()}
-              </div>
-              <p className="text-sm text-gray-600">
-                After ${setupCost.toLocaleString()} one-time setup cost
-              </p>
-            </div>
           </motion.div>
         </div>
 
