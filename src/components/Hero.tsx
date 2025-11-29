@@ -26,10 +26,10 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black leading-[1.05] mb-8 tracking-tight"
           >
-            Cut AI costs by{" "}
+            Cut AI usage cost by{" "}
             <span className="gradient-text">80-90%</span>
             <br />
-            <span className="text-black">own your infrastructure</span>
+            <span className="text-black">and own your infrastructure</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -39,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl text-gray-600 max-w-4xl leading-relaxed mb-12 font-light"
           >
-            Deploy production-ready LLMs and AI agents for your clients. 
+            We Build production-ready AI systems from scratch for your clients. 
             <span className="font-semibold text-black"> Same quality, massive savings,</span> complete ownership.
           </motion.p>
 
@@ -61,7 +61,7 @@ export default function Hero() {
               href="#calculator"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Calculate Savings
+              See Products
             </a>
           </motion.div>
         </div>
