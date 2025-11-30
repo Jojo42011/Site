@@ -78,9 +78,6 @@ export default function Products() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-black/5 rounded-full mb-6">
-            <span className="text-sm font-semibold text-black">Own Your AI Infrastructure</span>
-          </div>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
             <span className="text-black">AI products you own</span>{" "}
             <span className="gradient-text">not rent</span>
