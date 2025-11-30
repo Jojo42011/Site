@@ -12,8 +12,7 @@ import {
   Key,
   HeadphonesIcon,
   Clock,
-  Check,
-  Zap
+  Check
 } from "lucide-react";
 import Link from "next/link";
 
@@ -21,7 +20,7 @@ const steps = [
   {
     number: "01",
     icon: MessageSquare,
-    title: "Discovery & Consultation",
+    title: "Conversation",
     duration: "Day 1",
     description: "We start with a focused consultation to understand your exact requirements. What does your agent need to do? What systems should it integrate with? What's your use case?",
     details: [
@@ -68,7 +67,7 @@ const steps = [
     icon: Key,
     title: "Ownership Handoff",
     duration: "Day 3",
-    description: "You receive complete ownership of everything. Code, models, data, documentation—it's all yours. No vendor lock-in, no monthly platform fees, no surprises.",
+    description: "You receive complete ownership of everything. Code, models, data, documentation—it's all yours. No vendor lock-in, no high monthly platform fees, no surprises.",
     details: [
       "Full source code and documentation",
       "Admin credentials and access keys",
@@ -133,36 +132,11 @@ export default function HowItWorksPage() {
             className="text-center mb-20"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-black">From Consultation to</span>
-              <br />
-              <span className="gradient-text">Production in Days</span>
+              <span className="gradient-text">From conversation to production in days.</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               We build custom AI agents from scratch—not from templates. Here&apos;s our proven process for delivering premium, production-ready agents in 2-3 days.
             </p>
-          </motion.div>
-
-          {/* Timeline Indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex items-center justify-center mb-16"
-          >
-            <div className="bg-black rounded-2xl px-8 py-4 flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <Zap className="w-5 h-5 text-yellow-400" />
-                <span className="text-white font-bold">Typical Timeline:</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">2-3</div>
-                  <div className="text-xs text-gray-400">Days</div>
-                </div>
-                <div className="w-px h-8 bg-gray-700" />
-                <div className="text-gray-300 text-sm">Based on complexity</div>
-              </div>
-            </div>
           </motion.div>
 
           {/* Process Steps */}
@@ -183,9 +157,6 @@ export default function HowItWorksPage() {
                       <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-4">
                         <step.icon className="w-8 h-8 text-white" />
                       </div>
-                      <div className="px-3 py-1 bg-purple-500/20 rounded-full">
-                        <span className="text-xs font-bold text-purple-300">{step.duration}</span>
-                      </div>
                     </div>
 
                     {/* Content */}
@@ -202,11 +173,6 @@ export default function HowItWorksPage() {
                             <span className="text-gray-700 text-sm">{detail}</span>
                           </div>
                         ))}
-                      </div>
-
-                      <div className="bg-green-50 border border-green-100 rounded-xl px-5 py-3 inline-flex items-center gap-2">
-                        <Check className="w-5 h-5 text-green-600" />
-                        <span className="text-green-800 font-medium">Outcome: {step.outcome}</span>
                       </div>
                     </div>
                   </div>
