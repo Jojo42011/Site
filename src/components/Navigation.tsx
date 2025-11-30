@@ -52,7 +52,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/products"
+              href="/contact"
               className="px-6 py-2.5 bg-black rounded-xl font-bold hover:bg-gray-800 transition-all premium-shadow text-white text-sm"
             >
               Get started
@@ -94,7 +94,7 @@ export default function Navigation() {
                 </Link>
               ))}
               <Link
-                href="/products"
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-6 py-2.5 bg-black rounded-xl font-bold text-center text-white premium-shadow"
               >
