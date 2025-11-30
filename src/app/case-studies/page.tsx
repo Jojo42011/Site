@@ -181,10 +181,6 @@ export default function CaseStudiesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-black/5 rounded-full mb-6">
-              <TrendingUp className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold text-black">Real Results</span>
-            </div>
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="text-black">Success Stories from</span>
               <br />

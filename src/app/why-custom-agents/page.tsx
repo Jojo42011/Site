@@ -168,10 +168,6 @@ export default function WhyCustomAgentsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-black/5 rounded-full mb-6">
-              <Crown className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold text-black">Own vs. Rent</span>
-            </div>
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="text-black">Why Build Custom</span>
               <br />
