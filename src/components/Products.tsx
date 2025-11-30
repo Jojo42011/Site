@@ -3,170 +3,59 @@
 import { motion } from "framer-motion";
 import { 
   Phone, 
-  MessageSquare, 
-  Bot, 
-  FileText, 
-  Code, 
-  BarChart3, 
-  Mail, 
-  Search,
-  Video,
-  Headphones,
+  Database,
+  Check,
+  Crown,
+  Server,
+  TrendingDown,
+  Zap,
+  Lock,
   Shield,
+  Infinity,
   ArrowRight
 } from "lucide-react";
 import Link from "next/link";
 
 const products = [
   {
+    id: "call-agent",
     icon: Phone,
-    title: "AI Call Agents",
-    description: "Intelligent voice agents that handle customer calls 24/7. Natural conversations, call routing, and issue resolution with human-like quality.",
+    badge: "Most Popular",
+    title: "AI Call Agent",
+    tagline: "The Retell & Vapi Alternative You Own",
+    description: "Deploy production-ready AI voice agents on your infrastructure. Human-like conversations, real-time processing, seamless call handling—without the per-minute API fees that drain your margins.",
     features: [
-      "Real-time voice processing",
-      "Multi-language support",
-      "Call transcription & analytics",
-      "Seamless handoff to humans"
+      { icon: Crown, text: "100% Ownership—your code, your data, your infrastructure" },
+      { icon: TrendingDown, text: "80-90% less than Retell/Vapi at scale" },
+      { icon: Zap, text: "Sub-300ms latency with local LLMs" },
+      { icon: Lock, text: "Complete data privacy—calls never leave your servers" }
     ],
-    savings: "85-90% cost reduction",
-    useCase: "Customer support, sales calls, appointment scheduling",
-    monthlyCost: "$300-600/mo",
-    vsCloud: "$8K-15K/mo on cloud APIs"
+    comparison: {
+      competitor: "Retell / Vapi",
+      competitorCost: "$8K-15K/mo",
+      savings: "80-90% Less"
+    },
+    perfectFor: "AI agencies, SaaS founders, and sales teams"
   },
   {
-    icon: MessageSquare,
-    title: "Support Chatbots",
-    description: "Advanced conversational AI for customer support. Handle tickets, answer questions, and resolve issues instantly without human intervention.",
+    id: "rag-agent",
+    icon: Database,
+    badge: "Enterprise Ready",
+    title: "RAG Knowledge Agent",
+    tagline: "Private Knowledge Base on Local LLMs",
+    description: "Build intelligent knowledge systems that search and answer questions from your documents—100% local. No API calls to OpenAI. No data leaving your servers. No per-query costs.",
     features: [
-      "80%+ ticket deflection rate",
-      "Context-aware responses",
-      "Integration with CRM systems",
-      "24/7 availability"
+      { icon: Server, text: "Runs 100% locally—zero external API calls" },
+      { icon: TrendingDown, text: "Zero per-query costs vs cloud RAG" },
+      { icon: Shield, text: "Air-gapped ready for sensitive data" },
+      { icon: Infinity, text: "Unlimited queries—no token limits or throttling" }
     ],
-    savings: "80-85% cost reduction",
-    useCase: "Customer service, help desks, FAQ automation",
-    monthlyCost: "$200-500/mo",
-    vsCloud: "$10K-20K/mo on cloud APIs"
-  },
-  {
-    icon: Bot,
-    title: "AI Agents & Workflows",
-    description: "Autonomous AI agents that execute complex workflows. Data processing, task automation, and intelligent decision-making at scale.",
-    features: [
-      "Multi-step reasoning",
-      "Tool integration (APIs, databases)",
-      "Error handling & retries",
-      "Audit logs & monitoring"
-    ],
-    savings: "85-90% cost reduction",
-    useCase: "Data processing, workflow automation, business intelligence",
-    monthlyCost: "$400-800/mo",
-    vsCloud: "$15K-30K/mo on cloud APIs"
-  },
-  {
-    icon: FileText,
-    title: "Content Generation",
-    description: "High-quality content creation at scale. Blog posts, marketing copy, product descriptions, and social media content with brand consistency.",
-    features: [
-      "Brand voice training",
-      "SEO optimization",
-      "Multi-format output",
-      "Bulk generation"
-    ],
-    savings: "82-88% cost reduction",
-    useCase: "Content marketing, SEO, product descriptions",
-    monthlyCost: "$250-600/mo",
-    vsCloud: "$8K-18K/mo on cloud APIs"
-  },
-  {
-    icon: Code,
-    title: "Code Assistant",
-    description: "GitHub Copilot alternative that runs on your infrastructure. Code generation, review, documentation, and refactoring with complete privacy.",
-    features: [
-      "Multi-language support",
-      "Code review & suggestions",
-      "Documentation generation",
-      "Security scanning"
-    ],
-    savings: "88-92% cost reduction",
-    useCase: "Software development, code review, documentation",
-    monthlyCost: "$300-700/mo",
-    vsCloud: "$12K-25K/mo on cloud APIs"
-  },
-  {
-    icon: BarChart3,
-    title: "Data Analysis & Insights",
-    description: "Intelligent data analysis and reporting. Extract insights from customer data, generate reports, and surface trends without exposing sensitive data.",
-    features: [
-      "Natural language queries",
-      "Automated report generation",
-      "Trend analysis",
-      "Data visualization"
-    ],
-    savings: "80-85% cost reduction",
-    useCase: "Business intelligence, analytics, reporting",
-    monthlyCost: "$350-650/mo",
-    vsCloud: "$10K-20K/mo on cloud APIs"
-  },
-  {
-    icon: Mail,
-    title: "Email Automation",
-    description: "Personalized email campaigns and automation. Outreach, follow-ups, and customer communications at scale with AI-powered personalization.",
-    features: [
-      "Personalization at scale",
-      "A/B testing",
-      "Send time optimization",
-      "Engagement tracking"
-    ],
-    savings: "87-90% cost reduction",
-    useCase: "Email marketing, customer communication, outreach",
-    monthlyCost: "$200-450/mo",
-    vsCloud: "$6K-12K/mo on cloud APIs"
-  },
-  {
-    icon: Search,
-    title: "Document Search & RAG",
-    description: "Private knowledge base with semantic search. Search contracts, documents, and internal wikis with complete data privacy and security.",
-    features: [
-      "Semantic search",
-      "Multi-format support",
-      "Real-time indexing",
-      "Access control"
-    ],
-    savings: "83-87% cost reduction",
-    useCase: "Knowledge bases, document search, internal wikis",
-    monthlyCost: "$300-600/mo",
-    vsCloud: "$9K-18K/mo on cloud APIs"
-  },
-  {
-    icon: Video,
-    title: "Video Content Analysis",
-    description: "AI-powered video analysis and transcription. Extract insights, generate summaries, and create searchable content from video libraries.",
-    features: [
-      "Video transcription",
-      "Scene detection",
-      "Content summarization",
-      "Searchable video library"
-    ],
-    savings: "85-90% cost reduction",
-    useCase: "Video content analysis, training materials, media libraries",
-    monthlyCost: "$400-800/mo",
-    vsCloud: "$15K-30K/mo on cloud APIs"
-  },
-  {
-    icon: Headphones,
-    title: "Voice Assistants",
-    description: "Custom voice assistants for your products. Natural language understanding, voice commands, and conversational interfaces.",
-    features: [
-      "Voice recognition",
-      "Intent understanding",
-      "Multi-modal interactions",
-      "Custom wake words"
-    ],
-    savings: "86-91% cost reduction",
-    useCase: "Smart devices, IoT, voice-controlled applications",
-    monthlyCost: "$350-700/mo",
-    vsCloud: "$12K-25K/mo on cloud APIs"
+    comparison: {
+      competitor: "Cloud RAG APIs",
+      competitorCost: "$5K-15K/mo",
+      savings: "80-90% Less"
+    },
+    perfectFor: "Agencies, SaaS products, and enterprises with sensitive docs"
   }
 ];
 
@@ -187,84 +76,120 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
+          <div className="inline-flex items-center px-4 py-2 bg-black/5 rounded-full mb-6">
+            <span className="text-sm font-semibold text-black">Own Your AI Infrastructure</span>
+          </div>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-black">AI products that scale</span>{" "}
-            <span className="gradient-text">with your business</span>
+            <span className="text-black">AI products you own</span>{" "}
+            <span className="gradient-text">not rent</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We build enterprise-Grade AI products so you can focus on your client intake. Same quality as cloud providers, fraction of the monthly costs and complete ownership.
+            Stop bleeding money on per-minute and per-query cloud fees. Deploy production-ready AI agents on your infrastructure—same quality as Retell, Vapi, and cloud RAG, but you own everything.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {products.slice(0, 6).map((product, index) => (
+        {/* Product Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {products.map((product, index) => (
             <motion.div
-              key={product.title}
+              key={product.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group relative"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
             >
-              <div className="h-full bg-white rounded-2xl p-8 premium-border-hover premium-shadow hover:premium-shadow-lg transition-all duration-300 flex flex-col">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-black flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <product.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="px-3 py-1.5 bg-green-50 border border-green-200 rounded-lg">
-                    <span className="text-xs font-bold text-green-700">{product.savings}</span>
-                  </div>
-                </div>
-
-                <h3 className="text-2xl font-bold text-black mb-3 leading-tight">{product.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 flex-grow">{product.description}</p>
-
-                <div className="space-y-4 pt-6 border-t border-gray-100">
-                  <div>
-                    <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Key Features</h4>
-                    <ul className="space-y-2">
-                      {product.features.slice(0, 2).map((feature, i) => (
-                        <li key={i} className="flex items-start text-sm text-gray-600">
-                          <span className="text-black mr-2 mt-1">•</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-600">With Aethon</span>
-                        <span className="text-sm font-bold text-black">{product.monthlyCost}</span>
+              <div className="h-full bg-white rounded-3xl overflow-hidden premium-shadow hover:premium-shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200">
+                {/* Card Header */}
+                <div className="bg-gradient-to-r from-black via-gray-900 to-black p-6 sm:p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <product.icon className="w-6 h-6 text-white" />
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500 line-through">Cloud APIs</span>
-                        <span className="text-xs text-gray-400 line-through">{product.vsCloud}</span>
+                      <div>
+                        <div className="inline-flex items-center px-2 py-0.5 bg-white/20 rounded-full mb-1">
+                          <span className="text-[10px] font-bold text-white uppercase tracking-wider">{product.badge}</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white">{product.title}</h3>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="bg-green-500/20 border border-green-400/30 rounded-lg px-3 py-2">
+                        <div className="text-green-400 text-[10px] font-medium uppercase tracking-wider">Save</div>
+                        <div className="text-white text-lg font-bold">{product.comparison.savings}</div>
                       </div>
                     </div>
                   </div>
+                  <p className="text-purple-200 text-sm font-medium">{product.tagline}</p>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 sm:p-8">
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {product.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="space-y-3 mb-6">
+                    {product.features.map((feature, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-md bg-black flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <feature.icon className="w-3.5 h-3.5 text-white" />
+                        </div>
+                        <span className="text-sm text-gray-700">{feature.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Cost Comparison */}
+                  <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-xs text-gray-500">{product.comparison.competitor}</div>
+                        <div className="text-lg font-bold text-gray-400 line-through">{product.comparison.competitorCost}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-xs text-gray-500">With Aethon</div>
+                        <div className="text-lg font-bold text-black">{product.comparison.savings}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Perfect For */}
+                  <div className="text-sm text-gray-500 mb-6">
+                    <span className="font-medium text-gray-700">Perfect for:</span> {product.perfectFor}
+                  </div>
+
+                  {/* CTA Button */}
+                  <Link
+                    href="/contact"
+                    className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
+                  >
+                    Order {product.title}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* See All Products Button */}
+        {/* View Full Details */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-16"
         >
           <Link
             href="/products"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow hover:premium-shadow-lg"
           >
-            See All Products
+            View Full Product Details
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </motion.div>
@@ -277,25 +202,24 @@ export default function Products() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-16 bg-black rounded-3xl p-12 text-center premium-shadow-lg"
         >
-          <h3 className="text-3xl font-bold text-white mb-6 text-center">
-            Deploy Any AI Product. Own Everything.
+          <h3 className="text-3xl font-bold text-white mb-4 text-center">
+            Own Your AI. Stop Renting.
           </h3>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Whether you need call agents, chatbots, or custom AI workflows, we deploy production-ready 
-            systems on your infrastructure. Complete ownership, massive savings, enterprise quality.
+            Founders are wasting $8K-15K/month on cloud AI they don&apos;t own. Deploy the same quality AI agents on your infrastructure for 80-90% less—with complete ownership.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/products"
+              href="/contact"
               className="px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
             >
-              See All Products
+              Get Started
             </Link>
             <Link
-              href="/contact"
+              href="/#calculator"
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
             >
-              Get Started
+              Calculate Savings
             </Link>
           </div>
         </motion.div>
