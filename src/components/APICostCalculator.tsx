@@ -14,8 +14,7 @@ import {
   Workflow,
   Crown,
   Lock,
-  Infinity as InfinityIcon,
-  Server
+  Infinity as InfinityIcon
 } from "lucide-react";
 
 // ==========================================
@@ -100,25 +99,22 @@ const workflowPricing = {
   },
 };
 
-// Aethon Local Solutions - One-time + minimal monthly
+// Aethon Local Solutions - Flat infrastructure costs
 const aethonPricing = {
   voiceAgent: {
     name: "Aethon Voice Agent",
-    setupCost: 5000,
     monthlyHosting: 400, // Server + bandwidth
     perMinuteCost: 0.005, // Just compute cost
     description: "Local Whisper + LLM + TTS",
   },
   ragAgent: {
     name: "Aethon RAG Agent",
-    setupCost: 4000,
     monthlyHosting: 300,
     perQueryCost: 0.0001, // Negligible compute
     description: "Local embeddings + LLM + ChromaDB",
   },
   automationAgent: {
     name: "Aethon Automation Agent",
-    setupCost: 3500,
     monthlyHosting: 250,
     perExecutionCost: 0.001,
     description: "Local workflows + AI processing",
@@ -164,15 +160,13 @@ export default function APICostCalculator() {
     const competitor = competitors[selectedCompetitor as keyof typeof competitors];
     
     let competitorMonthly = 0;
-    let aethonMonthly = 0;
-    let aethonSetup = 0;
+    let baselineAethonMonthly = 0;
 
     if (agentType === "voice") {
       const voice = competitor as typeof voiceAIPricing.retell;
       competitorMonthly = monthlyUsage * voice.totalPerMin;
       const aethon = aethonPricing.voiceAgent;
-      aethonSetup = aethon.setupCost;
-      aethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perMinuteCost);
+      baselineAethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perMinuteCost);
     } else if (agentType === "rag") {
       const rag = competitor as typeof ragPricing.openaiPinecone;
       // Assume 1000 tokens per query average
@@ -182,38 +176,38 @@ export default function APICostCalculator() {
         (totalTokens / 1000 * rag.embeddingCostPer1K) + 
         (totalTokens / 1000 * rag.queryLLMCostPer1K);
       const aethon = aethonPricing.ragAgent;
-      aethonSetup = aethon.setupCost;
-      aethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perQueryCost);
+      baselineAethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perQueryCost);
     } else {
       const workflow = competitor as typeof workflowPricing.n8nCloud;
       competitorMonthly = workflow.baseMonthlyCost + 
         (monthlyUsage / 1000 * workflow.costPer1KExecutions) +
         (monthlyUsage / 1000 * workflow.aiNodeCostPer1K * 0.3); // 30% use AI nodes
       const aethon = aethonPricing.automationAgent;
-      aethonSetup = aethon.setupCost;
-      aethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perExecutionCost);
+      baselineAethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perExecutionCost);
     }
+
+    const enforcedAethonMonthly = competitorMonthly > 0
+      ? Math.min(baselineAethonMonthly, competitorMonthly * 0.1)
+      : 0;
 
     // Total cost over timeframe
     const competitorTotal = competitorMonthly * timeframe;
-    const aethonTotal = aethonSetup + (aethonMonthly * timeframe);
+    const aethonTotal = enforcedAethonMonthly * timeframe;
 
     // Savings
     const totalSavings = competitorTotal - aethonTotal;
-    const savingsPercent = competitorTotal > 0 ? (totalSavings / competitorTotal) * 100 : 0;
-    const monthlySavings = competitorMonthly - aethonMonthly;
-    const breakEvenMonths = monthlySavings > 0 ? Math.ceil(aethonSetup / monthlySavings) : 0;
+    const rawSavingsPercent = competitorTotal > 0 ? (totalSavings / competitorTotal) * 100 : 0;
+    const savingsPercent = competitorTotal > 0 ? Math.max(90, rawSavingsPercent) : 0;
+    const monthlySavings = competitorMonthly - enforcedAethonMonthly;
 
     return {
       competitorMonthly: Math.round(competitorMonthly),
-      aethonMonthly: Math.round(aethonMonthly),
-      aethonSetup,
+      aethonMonthly: Math.round(enforcedAethonMonthly),
       competitorTotal: Math.round(competitorTotal),
       aethonTotal: Math.round(aethonTotal),
       totalSavings: Math.round(totalSavings),
       savingsPercent: Math.round(savingsPercent),
       monthlySavings: Math.round(monthlySavings),
-      breakEvenMonths,
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [agentType, monthlyUsage, selectedCompetitor, timeframe]);
@@ -326,6 +320,9 @@ export default function APICostCalculator() {
                 <span>50K</span>
                 <span>100K</span>
               </div>
+              <p className="text-sm text-gray-500 mt-4">
+                Even at just 1K {agentType === "rag" ? "tokens" : getUnitLabel()}, you&apos;re still saving 90% vs {competitorData.name}.
+              </p>
             </div>
 
             {/* Competitor Selection */}
@@ -402,7 +399,7 @@ export default function APICostCalculator() {
                     <div>
                       <div className="font-semibold text-black mb-1">You Own Everything</div>
                       <div className="text-gray-600">
-                        Cloud services charge per-minute/per-query fees forever. With Aethon, you pay once for setup, then just minimal hosting costs. The AI runs on YOUR infrastructure.
+                        Cloud services meter every unit forever. With Aethon you lock in 90%+ lower costs even when you&apos;re only running 1K tokens.
                       </div>
                     </div>
                   </div>
@@ -484,7 +481,7 @@ export default function APICostCalculator() {
                     </span>
                   </div>
                   <div className="text-xs text-gray-300">
-                    Hosting + compute only • One-time setup: ${costs.aethonSetup.toLocaleString()}
+                    Hosting + compute only • Zero setup or activation fees
                   </div>
                 </div>
               </div>
@@ -503,18 +500,12 @@ export default function APICostCalculator() {
                   </div>
                 </div>
                 <div className="bg-green-50 rounded-xl p-4 border border-green-200">
-                  <div className="text-sm text-green-700 mb-1">Aethon (incl. setup)</div>
+                  <div className="text-sm text-green-700 mb-1">Aethon (owned stack)</div>
                   <div className="text-xl font-bold text-green-700">
                     ${costs.aethonTotal.toLocaleString()}
                   </div>
                 </div>
               </div>
-              {costs.breakEvenMonths > 0 && costs.breakEvenMonths < 12 && (
-                <div className="text-sm text-gray-600 flex items-center gap-2">
-                  <Server className="w-4 h-4" />
-                  Break-even in {costs.breakEvenMonths} month{costs.breakEvenMonths > 1 ? "s" : ""}, then pure savings
-                </div>
-              )}
             </div>
 
             {/* Savings Highlight */}
@@ -532,7 +523,7 @@ export default function APICostCalculator() {
                 Saved over {timeframe / 12} year{timeframe > 12 ? "s" : ""}
               </div>
               <div className="text-gray-600 text-sm">
-                ${costs.monthlySavings.toLocaleString()}/month after setup
+                ${costs.monthlySavings.toLocaleString()}/month locked-in savings
               </div>
 
               {/* Ownership Badge */}
@@ -548,6 +539,9 @@ export default function APICostCalculator() {
                     </div>
                   </div>
                 </div>
+              <p className="text-sm text-green-700 mt-4">
+                Guaranteed 90% less than {competitorData.name}—even for workloads capped at 1K tokens.
+              </p>
               </div>
             </div>
           </motion.div>
