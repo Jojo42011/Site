@@ -26,10 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black leading-[1.05] mb-8 tracking-tight"
           >
-            Cut AI usage cost by{" "}
-            <span className="gradient-text">80-90%</span>
-            <br />
-            <span className="text-black">and own your infrastructure</span>
+            Build AI agents that your clients will love
           </motion.h1>
 
           {/* Subtitle */}
@@ -39,8 +36,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl text-gray-600 max-w-4xl leading-relaxed mb-12 font-light"
           >
-            We Build production-ready AI systems from scratch for your clients. 
-            <span className="font-semibold text-black"> Same quality, massive savings,</span> complete ownership.
+            Deploy enterprise-grade agents fast. Fully customizable. Integrate it with any outside app. You own the code, the data, and the margin.
+            <br />
+            No limits. No vendor lock-in. Everything your clients need, to love what you build.
           </motion.p>
 
           {/* CTA Buttons */}
