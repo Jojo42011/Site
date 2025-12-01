@@ -21,12 +21,12 @@ const products = [
     id: "call-agent",
     icon: Phone,
     badge: "Most Popular",
-    title: "AI Call Agent",
-    tagline: "The Retell & Vapi Alternative You Own",
-    description: "Deploy production-ready AI voice agents on your infrastructure. Human-like conversations, real-time processing, seamless call handling—without the per-minute API fees that drain your margins.",
+    title: "Voice Agents",
+    tagline: "For Customer Service, Sales & Support • Deploy in 2-3 days • Built for agencies who want to own their client relationships",
+    description: "Production-ready voice agents that handle calls like humans. Real-time processing, seamless handling, zero per-minute fees. Your clients get: Human-like conversations, 24/7 availability, intelligent routing You get: Complete ownership, 80%+ margins, deployment in days The infrastructure: Sub-300ms latency, 100% local, zero data leaving your servers",
     features: [
       { icon: Crown, text: "100% Ownership—your code, your data, your infrastructure" },
-      { icon: TrendingDown, text: "80-90% less than Retell/Vapi at scale" },
+      { icon: TrendingDown, text: "80%+ margins at scale" },
       { icon: Zap, text: "Sub-300ms latency with local LLMs" },
       { icon: Lock, text: "Complete data privacy—calls never leave your servers" }
     ],
@@ -35,15 +35,15 @@ const products = [
       competitorCost: "$8K-15K/mo",
       savings: "80-90% Less"
     },
-    perfectFor: "AI agencies, SaaS founders, and sales teams"
+    perfectFor: "AI agencies building solutions for enterprise clients"
   },
   {
     id: "rag-agent",
     icon: Database,
     badge: "Enterprise Ready",
-    title: "RAG Knowledge Agent",
-    tagline: "Private Knowledge Base on Local LLMs",
-    description: "Build intelligent knowledge systems that search and answer questions from your documents—100% local. No API calls to OpenAI. No data leaving your servers. No per-query costs.",
+    title: "Knowledge Agents",
+    tagline: "For Document Automation & Compliance • Deploy in 2-3 days • Built for agencies who need air-gapped solutions",
+    description: "Intelligent systems that search and answer from documents. 100% local, zero external API calls, zero per-query costs. Your clients get: Instant document search, compliance-ready, zero data leaving their servers You get: Complete ownership, air-gapped ready, unlimited scalability The infrastructure: 100% local LLMs, no OpenAI calls, no token limits",
     features: [
       { icon: Server, text: "Runs 100% locally—zero external API calls" },
       { icon: TrendingDown, text: "Zero per-query costs vs cloud RAG" },
@@ -55,7 +55,7 @@ const products = [
       competitorCost: "$5K-15K/mo",
       savings: "80-90% Less"
     },
-    perfectFor: "Agencies, SaaS products, and enterprises with sensitive docs"
+    perfectFor: "AI agencies building solutions for enterprise clients"
   }
 ];
 
@@ -79,11 +79,11 @@ export default function Products() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-black">AI products you own</span>{" "}
-            <span className="gradient-text">not rent</span>
+            <span className="text-black">Solutions Your Clients Want</span>{" "}
+            <span className="gradient-text">(Built With Aethon)</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Stop bleeding money on per-minute and per-query cloud fees. Deploy production-ready AI agents on your infrastructure—same quality as Retell, Vapi, and cloud RAG, but you own everything.
+            Voice Agents for customer service, sales, and support Knowledge Agents for document automation and compliance Automation Agents for workflow integration and efficiency We build them in 2-3 days. You sell them to your clients. You own forever.
           </p>
         </motion.div>
 
@@ -101,23 +101,15 @@ export default function Products() {
               <div className="h-full bg-white rounded-3xl overflow-hidden premium-shadow hover:premium-shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200">
                 {/* Card Header */}
                 <div className="bg-gradient-to-r from-black via-gray-900 to-black p-6 sm:p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <product.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="inline-flex items-center px-2 py-0.5 bg-white/20 rounded-full mb-1">
-                          <span className="text-[10px] font-bold text-white uppercase tracking-wider">{product.badge}</span>
-                        </div>
-                        <h3 className="text-2xl font-bold text-white">{product.title}</h3>
-                      </div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <product.icon className="w-6 h-6 text-white" />
                     </div>
-                    <div className="text-right">
-                      <div className="bg-green-500/20 border border-green-400/30 rounded-lg px-3 py-2">
-                        <div className="text-green-400 text-[10px] font-medium uppercase tracking-wider">Save</div>
-                        <div className="text-white text-lg font-bold">{product.comparison.savings}</div>
+                    <div>
+                      <div className="inline-flex items-center px-2 py-0.5 bg-white/20 rounded-full mb-1">
+                        <span className="text-[10px] font-bold text-white uppercase tracking-wider">{product.badge}</span>
                       </div>
+                      <h3 className="text-2xl font-bold text-white">{product.title}</h3>
                     </div>
                   </div>
                   <p className="text-purple-200 text-sm font-medium">{product.tagline}</p>
@@ -141,20 +133,6 @@ export default function Products() {
                     ))}
                   </div>
 
-                  {/* Cost Comparison */}
-                  <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-xs text-gray-500">{product.comparison.competitor}</div>
-                        <div className="text-lg font-bold text-gray-400 line-through">{product.comparison.competitorCost}</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-xs text-gray-500">With Aethon</div>
-                        <div className="text-lg font-bold text-black">{product.comparison.savings}</div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Perfect For */}
                   <div className="text-sm text-gray-500 mb-6">
                     <span className="font-medium text-gray-700">Perfect for:</span> {product.perfectFor}
@@ -165,7 +143,7 @@ export default function Products() {
                     href="/contact"
                     className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
                   >
-                    Order {product.title}
+                    Build Your First Agent
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </div>
@@ -200,23 +178,23 @@ export default function Products() {
           className="mt-16 bg-black rounded-3xl p-12 text-center premium-shadow-lg"
         >
           <h3 className="text-3xl font-bold text-white mb-4 text-center">
-            Own Your AI. Stop Renting.
+            Own Your AI. Own Your Business.
           </h3>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Founders are wasting $8K-15K/month on cloud AI they don&apos;t own. Deploy the same quality AI agents on your infrastructure for 80-90% less—with complete ownership.
+            Build agents your clients love. Own the code. Own the relationship. Own the margin. That&apos;s how you scale.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
               className="px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
             >
-              Get Started
+              Build Your First Agent
             </Link>
             <Link
               href="/#calculator"
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
             >
-              Calculate Savings
+              Schedule Demo
             </Link>
           </div>
         </motion.div>
