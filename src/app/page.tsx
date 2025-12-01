@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import ClientCarousel from "@/components/ClientCarousel";
 import Features from "@/components/Features";
 import Products from "@/components/Products";
 import CTA from "@/components/CTA";
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="relative">
       <Navigation />
       <Hero />
+      <ClientCarousel />
       <Features />
       <Products />
       <CTA />
