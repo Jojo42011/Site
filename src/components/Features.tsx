@@ -6,18 +6,18 @@ import { DollarSign, Zap, TrendingUp } from "lucide-react";
 const features = [
   {
     icon: DollarSign,
-    title: "Build and Run AI system for 80-90% less.",
-    description: "Why slow your growth by spending massive amounts monthly on your AI agents? Run the same quality models specialized for your client needs for a fraction of the cost and never have runtime issues.",
+    title: "Focus on selling. We handle the building.",
+    description: "You focus on your clients. We handle everything else—building, deploying, optimizing. You're back to selling within days.",
   },
   {
     icon: Zap,
-    title: "Deploy with speed",
-    description: "We handle everything. Creating the AI systems tailored for each client, model training, fine-tuning, even deployment. You're up and running with production-ready dedicated AI agents and systems quickly for a fraction of long-term costs.",
+    title: "Deploy With Speed",
+    description: "You focus on your clients. We handle the rest. ✓ Custom agent building (2-3 days) ✓ Full integration with their tech stack ✓ Model training & fine-tuning ✓ Deployment to your infrastructure You're selling within days, not months.",
   },
   {
     icon: TrendingUp,
-    title: "Scaling your AI company",
-    description: "Unlike other agentic creators like n8n and make, there is no hidden fees and API credit costs wasting your revenue monthly so you can scale seamlessly. Along with that, we give you complete ownership of your agents and the data collected to maintain compliance and avoid fines.",
+    title: "Scale Without Limits",
+    description: "No per-minute fees. No API credit surprises. No vendor lock-in. Every agent you build stays profitable. Your clients stay yours. Your margins stay fat.",
   },
 ];
 
@@ -40,11 +40,11 @@ export default function Features() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-black leading-tight">
-            Why AI founders choose <span className="gradient-text">Aethon</span>
+            Why AI Agencies Choose <span className="gradient-text">Aethon</span>
           </h2>
           <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-            We Build private AI systems and agents for your clients that cost significantly less in monthly API and hosting fees. 
-            <span className="font-semibold text-black"> Same quality, drastically lower costs,</span> complete data ownership.
+            We build custom AI agents FOR your clients so you can focus on selling. 
+            <span className="font-semibold text-black"> Deploy production-ready agents in 2-3 days.</span> Own the code, own the relationship, own 80%+ margins.
           </p>
         </motion.div>
 

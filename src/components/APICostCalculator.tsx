@@ -247,10 +247,10 @@ export default function APICostCalculator() {
             <Calculator className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">Calculate Your Savings</span>
+            <span className="gradient-text">Calculate Your Profit</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            See exactly how much you&apos;ll save switching from cloud services like Retell, Vapi, and n8n to owned infrastructure with Aethon.
+            See how much margin you&apos;ll keep when you build with Aethon vs. reselling cloud solutions.
           </p>
         </motion.div>
 
@@ -321,14 +321,14 @@ export default function APICostCalculator() {
                 <span>100K</span>
               </div>
               <p className="text-sm text-gray-500 mt-4">
-                Even at just 1K {agentType === "rag" ? "tokens" : getUnitLabel()}, you&apos;re still saving 90% vs {competitorData.name}.
+                Even at just 1K {agentType === "rag" ? "tokens" : getUnitLabel()}, you&apos;re keeping 90%+ margin vs. reselling cloud solutions.
               </p>
             </div>
 
             {/* Competitor Selection */}
             <div>
               <label className="block text-black font-bold mb-4 text-lg">
-                Compare against
+                Compare against Cloud Solutions (Vapi, Retell, ElevenLabs)
               </label>
               <select
                 value={selectedCompetitor}
@@ -342,7 +342,7 @@ export default function APICostCalculator() {
                 ))}
               </select>
               <p className="mt-2 text-sm text-gray-500">
-                {competitorData.description}
+                Per-minute + API charges = thin margins
               </p>
             </div>
 
@@ -375,7 +375,7 @@ export default function APICostCalculator() {
             >
               <span className="text-sm font-semibold text-black flex items-center">
                 <Info className="w-4 h-4 mr-2" />
-                Why Aethon saves 90% more
+                Your Profit When You Use Aethon vs. Reselling Cloud
               </span>
               {showDetails ? (
                 <ChevronUp className="w-5 h-5 text-gray-600" />
@@ -390,51 +390,27 @@ export default function APICostCalculator() {
                 animate={{ opacity: 1, height: "auto" }}
                 className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 space-y-4"
               >
-                <h4 className="font-bold text-black mb-3">Own vs. Rent: The Real Difference</h4>
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
-                      <Crown className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-black mb-1">You Own Everything</div>
-                      <div className="text-gray-600">
-                        Cloud services meter every unit forever. With Aethon you lock in 90%+ lower costs even when you&apos;re only running 1K tokens.
-                      </div>
+                <h4 className="font-bold text-black mb-3">Scenario: Your client pays $5K/month for custom voice agent</h4>
+                <div className="space-y-4 text-sm">
+                  <div className="bg-red-50 rounded-xl p-4 border-2 border-red-200">
+                    <div className="font-bold text-red-900 mb-2">Option 1: Resell Vapi/Retell</div>
+                    <div className="space-y-1 text-red-700">
+                      <div>Your cost: ~$3,500/month</div>
+                      <div>Your margin: $1,500/month (30%)</div>
+                      <div>Your client owns: Nothing (locked in)</div>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
-                      <TrendingDown className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-black mb-1">No Per-Unit Fees</div>
-                      <div className="text-gray-600">
-                        Retell charges ~$0.19/min. Vapi ~$0.15/min. With local LLMs, your cost is ~$0.005/min—just electricity and compute.
-                      </div>
+                  <div className="bg-green-50 rounded-xl p-4 border-2 border-green-200">
+                    <div className="font-bold text-green-900 mb-2">Option 2: Build with Aethon</div>
+                    <div className="space-y-1 text-green-700">
+                      <div>Your cost: ~$190/month</div>
+                      <div>Your margin: $4,810/month (96%+)</div>
+                      <div>Your client owns: Everything (locked in with you)</div>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
-                      <Lock className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-black mb-1">Complete Data Privacy</div>
-                      <div className="text-gray-600">
-                        Your calls and documents never leave your servers. No third-party data access. Full compliance control.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
-                      <InfinityIcon className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-black mb-1">No Rate Limits or Surprise Bills</div>
-                      <div className="text-gray-600">
-                        Scale to millions of minutes or queries without throttling. Predictable costs, no overage charges.
-                      </div>
-                    </div>
+                  <div className="bg-black rounded-xl p-4 text-white">
+                    <div className="font-bold mb-1">Over 1 year: $32K more profit with Aethon</div>
+                    <div className="text-sm text-gray-300">Plus: Clients can&apos;t leave because they own the agent</div>
                   </div>
                 </div>
               </motion.div>
@@ -533,15 +509,12 @@ export default function APICostCalculator() {
                     <Crown className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-bold text-green-900">Plus: You Own It Forever</div>
+                    <div className="font-bold text-green-900">Plus: Your Clients Own It Forever</div>
                     <div className="text-sm text-green-700">
-                      No vendor lock-in. Full code ownership. Your infrastructure.
+                      No vendor lock-in. Full code ownership. Their infrastructure. Your clients stay with you because they own the agent.
                     </div>
                   </div>
                 </div>
-              <p className="text-sm text-green-700 mt-4">
-                Guaranteed 90% less than {competitorData.name}—even for workloads capped at 1K tokens.
-              </p>
               </div>
             </div>
           </motion.div>
@@ -557,23 +530,23 @@ export default function APICostCalculator() {
         >
           <div className="inline-flex items-center px-4 py-2 bg-green-100 border border-green-200 rounded-full text-green-800 text-sm font-semibold mb-6">
             <DollarSign className="w-4 h-4 mr-2" />
-            Stop paying {competitorData.name} ${costs.competitorMonthly.toLocaleString()}/mo for AI you don&apos;t own
+            Stop Reselling Someone Else&apos;s AI
           </div>
           <p className="text-xl text-gray-600 mb-8 font-medium max-w-2xl mx-auto">
-            Join founders who switched from cloud AI to owned infrastructure and saved {costs.savingsPercent}%+ on their AI costs.
+            Join agencies building custom agents and keeping 80%+ margins.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="/contact"
               className="px-10 py-5 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow"
             >
-              Get Free Savings Audit
+              Schedule Demo
             </a>
             <a
               href="/products"
               className="px-10 py-5 border-2 border-black text-black rounded-xl font-bold text-lg hover:bg-black hover:text-white transition-all"
             >
-              See Our Products
+              Explore Solutions
             </a>
           </div>
         </motion.div>
