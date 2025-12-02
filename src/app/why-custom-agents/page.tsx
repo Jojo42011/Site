@@ -99,7 +99,7 @@ const possibilities = [
   {
     icon: Shield,
     title: "Compliance Ready",
-    description: "HIPAA, SOC2, GDPR—build compliance directly into your agent architecture."
+    description: "HIPAA, SOC2, GDPR—build compliance directly into your system architecture."
   },
   {
     icon: Infinity,
@@ -116,7 +116,7 @@ const painPoints = [
   },
   {
     problem: "Can't customize beyond templates",
-    impact: "Your agent sounds like everyone else's",
+    impact: "Your system behaves like everyone else's",
     solution: "Build exactly what you envision—no compromises"
   },
   {
@@ -388,7 +388,7 @@ export default function WhyCustomAgentsPage() {
               Ready to Own Your AI?
             </h3>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Stop renting AI infrastructure at premium prices. Build custom agents that you own completely—deployed in 2-3 days, saving 80-90% monthly.
+              Stop renting AI infrastructure at premium prices. Build custom systems that you own completely—deployed in 2-3 days, saving 80-90% monthly.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link

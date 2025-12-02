@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aethon | Air-Gapped AI for Critical Institutions",
-  description: "The infrastructure platform for AI agencies. Build custom agents for your clients in 2-3 days. Own the code, own the relationship, own 80%+ margins.",
+  title: "Aethon | Private AI Systems for Builders",
+  description:
+    "The infrastructure studio for agencies and founders. Build custom AI systems in days, own the code, and keep premium margins.",
 };
 
 export default function RootLayout({

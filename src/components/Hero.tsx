@@ -26,7 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black leading-[1.05] mb-8 tracking-tight"
           >
-            Build AI agents that your clients will love
+            Build AI systems your clients can run forever
           </motion.h1>
 
           {/* Subtitle */}
@@ -36,9 +36,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl text-gray-600 max-w-4xl leading-relaxed mb-12 font-light"
           >
-            Deploy enterprise-grade agents fast. Fully customizable. Integrate it with any outside app. You own the code, the data, and the margin.
+            Deploy enterprise-grade systems fast. Fully customizable. Integrate with every workflow. You own the code, the data, and the margins.
             <br />
-            No limits. No vendor lock-in. Everything your clients need, to love what you build.
+            No limits. No vendor lock-in. Everything founders need to love what you build.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -52,14 +52,14 @@ export default function Hero() {
               href="/contact"
               className="group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-black rounded-xl hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow"
             >
-              Build Your First Agent
+              Launch Your System
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/products"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Explore Solutions
+              Explore Systems
             </Link>
           </motion.div>
         </div>

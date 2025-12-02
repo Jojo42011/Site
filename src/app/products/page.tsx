@@ -26,139 +26,141 @@ import Link from "next/link";
 
 const products = [
   {
-    id: "call-agent",
+    id: "conversational-system",
     icon: Phone,
-    badge: "Most Popular",
-    title: "Voice Agents",
+    badge: "Most Requested",
+    title: "Conversational Intelligence System",
     tagline: "Deploy in 2-3 Days",
-    description: "Custom voice agents built for your clients. Full ownership, unlimited customization, and enterprise-grade reliability. Deploy on your client's infrastructure or yours—you own the code, the relationship, and the margins.",
-    problem: "You want to offer voice AI to your clients, but cloud solutions limit your customization and eat your margins. When reselling cloud platforms, you're offering someone else's product at 30% margin. Your clients can buy direct. You don't own the relationship.",
-    solution: "Custom voice agents built in 2-3 days. Deploy on your client's infrastructure or yours. You own the code, you own the relationship, you own the margins. Full customization. Zero limitations.",
+    description:
+      "We architect a complete conversational stack—phone, chat, SMS, and custom surfaces—powered by LLMs you own. Voice automation becomes a module inside a broader system that routes intent, syncs context, and orchestrates follow-up actions automatically.",
+    problem:
+      "Point-solution voice tools force you into templates and per-minute bills. You end up reselling someone else’s receptionist with thin margins and zero differentiation. Clients can buy direct, and you lose the relationship.",
+    solution:
+      "A bespoke conversational system built in 2-3 days, deployed on your infrastructure. Includes telephony, chat, workflow routing, analytics, and governance. You dictate every behavior, and your clients own the code.",
     features: [
       {
         icon: Clock,
-        title: "Deploy in 2-3 Days",
-        description: "Production-ready voice agents delivered fast. No months of development. Start serving clients immediately."
+        title: "Blueprint to Launch in Days",
+        description: "Production-ready conversational stack delivered fast—voice + chat unified under one orchestration layer.",
       },
       {
         icon: Palette,
-        title: "Full Customization",
-        description: "No template limits. Build exactly what your clients need with unlimited feature customization."
+        title: "Channel-Agnostic Customization",
+        description: "Design call flows, chat personalities, escalation logic, and fallbacks without template ceilings.",
       },
       {
         icon: Users,
-        title: "100% Client Ownership",
-        description: "Your clients own the code and infrastructure. Lock them in with you, not a third-party platform."
+        title: "System Ownership",
+        description: "Clients retain the infrastructure and code, keeping them partnered with you—not a platform vendor.",
       },
       {
         icon: TrendingUp,
-        title: "80%+ Profit Margins",
-        description: "Stop reselling at 30% margin. Build custom and keep 80-90% of every deal."
+        title: "Premium Margins",
+        description: "Flat infrastructure cost, unlimited usage. Keep 80%+ margins on every deployment.",
       },
       {
         icon: Lock,
-        title: "Complete Data Privacy",
-        description: "Conversations never leave your servers. Enterprise-ready for healthcare, finance, and regulated industries."
+        title: "Compliance-Ready",
+        description: "Traffic never leaves your environment. HIPAA, SOC, and finance-ready out of the box.",
       },
       {
         icon: Tag,
-        title: "White-Label Ready",
-        description: "Rebrand completely as your own solution. Your clients see your brand, not ours."
-      }
+        title: "White-Label Everything",
+        description: "Brand the full experience as your own—from dashboards to voice personalities.",
+      },
     ],
-    capabilitiesIntro: "Fully customizable voice agents with unlimited features",
+    capabilitiesIntro: "Conversational AI is only one feature. The full system includes:",
     capabilities: [
-      "Real-time voice processing with sub-300ms latency",
-      "Multi-language support (20+ languages)",
-      "Call transcription & sentiment analysis",
-      "Seamless handoff to human agents",
-      "Custom voice cloning & personalities",
-      "CRM & calendar integrations",
-      "Call recording & analytics dashboard",
-      "Outbound & inbound call handling"
+      "Voice automation, call routing, and outbound campaigns",
+      "Chat copilots embedded in products, portals, and CRM records",
+      "Unified context store shared across every touchpoint",
+      "Human handoff tools with live context and coaching",
+      "Real-time analytics, compliance logging, and QA",
+      "Plug-ins for CRMs, calendars, ticketing, IVRs, and data warehouses",
     ],
     margin: {
       clientPays: "$5K/month",
-      clientPaysLabel: "for custom voice agent",
+      clientPaysLabel: "for a conversational intelligence system",
       yourCost: "~$500/month",
-      yourCostLabel: "deployment + hosting",
+      yourCostLabel: "infrastructure + monitoring",
       yourMargin: "$4,500/month",
-      yourMarginPercent: "90%+"
+      yourMarginPercent: "90%+",
     },
     perfectFor: [
-      "AI agencies building premium voice solutions for enterprise clients",
-      "SaaS platforms with white-label voice needs",
-      "Agencies in healthcare/finance (regulated industries)",
-      "Teams that need air-gapped, private deployments"
-    ]
+      "AI agencies building signature CX systems",
+      "Founders replacing Vapi/Retell with owned infrastructure",
+      "Regulated industries needing private communications",
+      "Teams layering chat + voice into existing apps",
+    ],
   },
   {
-    id: "rag-agent",
+    id: "knowledge-system",
     icon: Database,
     badge: "Enterprise Ready",
-    title: "Knowledge Agents",
+    title: "Knowledge Operating System",
     tagline: "Deploy in 2-3 Days",
-    description: "Custom knowledge systems built for your enterprise clients. 100% local, zero external API calls. Your clients own the infrastructure, the data, and the solution. Air-gapped ready and fully customizable.",
-    problem: "You're building RAG solutions for enterprise clients, but cloud options limit customization and data privacy. Per-query costs scale unpredictably. Your clients worry about their data. You can't truly own the solution.",
-    solution: "Custom knowledge agents built in 2-3 days. 100% local, zero external API calls. Your clients own the infrastructure, the data, and the solution. Air-gapped ready. Fully customizable.",
+    description:
+      "RAG is just one ingredient. We ship an entire knowledge fabric that ingests every document, note, BI table, and workflow. The system governs access, cites sources, triggers automations, and keeps every answer compliant.",
+    problem:
+      "Cloud RAG pilots feel impressive but become impossible to scale. Costs spike per query, data leaves secure environments, and you’re still dependent on vendor APIs. Clients want control, reliability, and real ownership.",
+    solution:
+      "A fully local knowledge operating system. Retrieval, reasoning, workflow triggers, and observability live on the same stack. Your clients gain infinite querying with zero per-token fees and complete data sovereignty.",
     features: [
       {
         icon: Clock,
-        title: "Deploy in 2-3 Days",
-        description: "Production-ready knowledge agents delivered fast. No months of development. Start serving clients immediately."
+        title: "Rapid Implementation",
+        description: "Document ingestion, embeddings, and policy setup completed in 2-3 days.",
       },
       {
         icon: Palette,
-        title: "Full Customization",
-        description: "No template limits. Build exactly what your clients need with unlimited integrations and features."
+        title: "Schema-Aware Customization",
+        description: "Tailor pipelines per client: compliance review, research, underwriting, or support ops.",
       },
       {
         icon: Users,
-        title: "100% Client Ownership",
-        description: "Your clients own the code and infrastructure. Lock them in with you, not a third-party platform."
+        title: "Multi-Tenant Ownership",
+        description: "Roll out dedicated workspaces per client or business unit with full isolation.",
       },
       {
         icon: TrendingUp,
-        title: "80%+ Profit Margins",
-        description: "Stop reselling at 30% margin. Build custom and keep 80-90% of every deal."
+        title: "Unlimited Queries",
+        description: "Flat infrastructure cost vs. $5K-$15K/mo RAG APIs. The more they use it, the better your margins.",
       },
       {
         icon: Shield,
-        title: "Complete Data Privacy",
-        description: "Documents never leave your servers. Air-gapped ready for the most sensitive enterprise data."
+        title: "Governance + Audit",
+        description: "Role-based access, redaction rules, and full audit logs keep legal teams confident.",
       },
       {
         icon: Tag,
-        title: "White-Label Ready",
-        description: "Rebrand completely as your own solution. Your clients see your brand, not ours."
-      }
+        title: "Extensible Playbooks",
+        description: "Add downstream automations—create tickets, send briefs, update CRMs—without rewrites.",
+      },
     ],
-    capabilitiesIntro: "Fully customizable knowledge systems with unlimited integrations",
+    capabilitiesIntro: "Knowledge automation becomes a system with:",
     capabilities: [
-      "Semantic search across all document types",
-      "PDF, Word, Excel, PowerPoint support",
-      "Real-time document indexing",
-      "Multi-tenant architecture",
-      "Fine-grained access controls",
-      "Citation & source tracking",
-      "Conversational follow-up queries",
-      "API & webhook integrations"
+      "ETL pipelines for PDFs, EHRs, contracts, tickets, and BI tables",
+      "Retrieval-augmented responses with citations & source links",
+      "Question routing to domain-specific models",
+      "Evaluation harnesses for accuracy and drift",
+      "APIs & webhooks to trigger workflows or alerts",
+      "Observability dashboards for stakeholders and compliance teams",
     ],
     margin: {
       clientPays: "$4K/month",
-      clientPaysLabel: "for custom knowledge system",
+      clientPaysLabel: "for a knowledge operating system",
       yourCost: "~$400/month",
-      yourCostLabel: "deployment + hosting",
+      yourCostLabel: "infrastructure + monitoring",
       yourMargin: "$3,600/month",
-      yourMarginPercent: "90%+"
+      yourMarginPercent: "90%+",
     },
     perfectFor: [
-      "AI agencies building custom knowledge bases for enterprise clients",
-      "SaaS platforms with white-label document Q&A needs",
-      "Agencies serving clients with sensitive internal documents",
-      "Teams in legal, compliance, or regulated industries"
-    ]
-  }
+      "Agencies delivering RAG-powered client portals",
+      "SaaS platforms embedding private copilots",
+      "Enterprises needing air-gapped knowledge access",
+      "Firms automating research, legal, or compliance reviews",
+    ],
+  },
 ];
 
 export default function ProductsPage() {
@@ -204,7 +206,7 @@ export default function ProductsPage() {
               <span className="gradient-text">Your Clients Love</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Deploy enterprise-grade agents in 2-3 days. Your clients own the code, the data, and the relationship. You keep 80%+ margins.
+              Deploy enterprise-grade systems in 2-3 days. Your clients own the code, the data, and the relationship. You keep 80%+ margins.
             </p>
           </motion.div>
 
@@ -363,7 +365,7 @@ export default function ProductsPage() {
                         href="/contact"
                         className="inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:scale-[1.02] transform"
                       >
-                        Build Your First Agent
+                        Launch Your System
                         <ArrowRight className="ml-2 w-5 h-5" />
                       </Link>
                       <Link
@@ -458,7 +460,7 @@ export default function ProductsPage() {
                 href="/contact"
                 className="px-10 py-5 bg-white text-black rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
               >
-                Build Your First Agent
+                Launch Your System
               </Link>
               <Link
                 href="/#calculator"

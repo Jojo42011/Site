@@ -37,7 +37,7 @@ const aiAgencies: ClientLogo[] = [
   },
   {
     name: "PulseWorks",
-    tagline: "Scaled fleets of fine-tuned agents for retail",
+    tagline: "Scaled fleets of fine-tuned systems for retail",
     initials: "PW",
     segment: "AI Agency",
     result: "7 new markets launched",
@@ -61,7 +61,7 @@ const saasPlatforms: ClientLogo[] = [
   },
   {
     name: "OrbitOps",
-    tagline: "Agentic monitoring for complex logistics clouds",
+    tagline: "System intelligence for complex logistics clouds",
     initials: "OO",
     segment: "SaaS Platform",
     result: "Latency down 43%",

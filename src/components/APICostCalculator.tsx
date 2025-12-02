@@ -101,38 +101,38 @@ const workflowPricing = {
 
 // Aethon Local Solutions - Flat infrastructure costs
 const aethonPricing = {
-  voiceAgent: {
-    name: "Aethon Voice Agent",
+  voiceSystem: {
+    name: "Aethon Conversational System",
     monthlyHosting: 400, // Server + bandwidth
     perMinuteCost: 0.005, // Just compute cost
     description: "Local Whisper + LLM + TTS",
   },
-  ragAgent: {
-    name: "Aethon RAG Agent",
+  knowledgeSystem: {
+    name: "Aethon Knowledge System",
     monthlyHosting: 300,
     perQueryCost: 0.0001, // Negligible compute
     description: "Local embeddings + LLM + ChromaDB",
   },
-  automationAgent: {
-    name: "Aethon Automation Agent",
+  automationSystem: {
+    name: "Aethon Automation Fabric",
     monthlyHosting: 250,
     perExecutionCost: 0.001,
     description: "Local workflows + AI processing",
   },
 };
 
-type AgentType = "voice" | "rag" | "automation";
+type SystemType = "voice" | "rag" | "automation";
 
 export default function APICostCalculator() {
-  const [agentType, setAgentType] = useState<AgentType>("voice");
+  const [systemType, setSystemType] = useState<SystemType>("voice");
   const [monthlyUsage, setMonthlyUsage] = useState(10000); // 10K mins/queries/executions
   const [selectedCompetitor, setSelectedCompetitor] = useState("retell");
   const [showDetails, setShowDetails] = useState(false);
   const [timeframe, setTimeframe] = useState<12 | 24 | 36>(12); // months
 
-  // Get competitor options based on agent type
+  // Get competitor options based on system type
   const getCompetitorOptions = () => {
-    switch (agentType) {
+    switch (systemType) {
       case "voice":
         return voiceAIPricing;
       case "rag":
@@ -144,7 +144,7 @@ export default function APICostCalculator() {
 
   // Get unit label
   const getUnitLabel = () => {
-    switch (agentType) {
+    switch (systemType) {
       case "voice":
         return "minutes";
       case "rag":
@@ -162,12 +162,12 @@ export default function APICostCalculator() {
     let competitorMonthly = 0;
     let baselineAethonMonthly = 0;
 
-    if (agentType === "voice") {
+    if (systemType === "voice") {
       const voice = competitor as typeof voiceAIPricing.retell;
       competitorMonthly = monthlyUsage * voice.totalPerMin;
-      const aethon = aethonPricing.voiceAgent;
+      const aethon = aethonPricing.voiceSystem;
       baselineAethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perMinuteCost);
-    } else if (agentType === "rag") {
+    } else if (systemType === "rag") {
       const rag = competitor as typeof ragPricing.openaiPinecone;
       // Assume 1000 tokens per query average
       const tokensPerQuery = 1000;
@@ -175,14 +175,14 @@ export default function APICostCalculator() {
       competitorMonthly = rag.vectorDBMonthly + 
         (totalTokens / 1000 * rag.embeddingCostPer1K) + 
         (totalTokens / 1000 * rag.queryLLMCostPer1K);
-      const aethon = aethonPricing.ragAgent;
+      const aethon = aethonPricing.knowledgeSystem;
       baselineAethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perQueryCost);
     } else {
       const workflow = competitor as typeof workflowPricing.n8nCloud;
       competitorMonthly = workflow.baseMonthlyCost + 
         (monthlyUsage / 1000 * workflow.costPer1KExecutions) +
         (monthlyUsage / 1000 * workflow.aiNodeCostPer1K * 0.3); // 30% use AI nodes
-      const aethon = aethonPricing.automationAgent;
+      const aethon = aethonPricing.automationSystem;
       baselineAethonMonthly = aethon.monthlyHosting + (monthlyUsage * aethon.perExecutionCost);
     }
 
@@ -210,11 +210,11 @@ export default function APICostCalculator() {
       monthlySavings: Math.round(monthlySavings),
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [agentType, monthlyUsage, selectedCompetitor, timeframe]);
+  }, [systemType, monthlyUsage, selectedCompetitor, timeframe]);
 
-  // Update competitor when agent type changes
-  const handleAgentTypeChange = (type: AgentType) => {
-    setAgentType(type);
+  // Update competitor when system type changes
+  const handleSystemTypeChange = (type: SystemType) => {
+    setSystemType(type);
     if (type === "voice") setSelectedCompetitor("retell");
     else if (type === "rag") setSelectedCompetitor("openaiPinecone");
     else setSelectedCompetitor("n8nCloud");
@@ -235,7 +235,6 @@ export default function APICostCalculator() {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -263,22 +262,22 @@ export default function APICostCalculator() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-3xl p-8 space-y-6 premium-border premium-shadow-lg"
           >
-            {/* Agent Type Selection */}
+            {/* System Type Selection */}
             <div>
               <label className="block text-black font-bold mb-4 text-lg">
-                What type of AI agent do you need?
+                What type of AI system do you need?
               </label>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { type: "voice" as AgentType, icon: Phone, label: "Voice AI" },
-                  { type: "rag" as AgentType, icon: Database, label: "RAG / Knowledge" },
-                  { type: "automation" as AgentType, icon: Workflow, label: "Automation" },
+                  { type: "voice" as SystemType, icon: Phone, label: "Conversational" },
+                  { type: "rag" as SystemType, icon: Database, label: "Knowledge" },
+                  { type: "automation" as SystemType, icon: Workflow, label: "Automation" },
                 ].map(({ type, icon: Icon, label }) => (
                   <button
                     key={type}
-                    onClick={() => handleAgentTypeChange(type)}
+                    onClick={() => handleSystemTypeChange(type)}
                     className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all ${
-                      agentType === type
+                      systemType === type
                         ? "border-black bg-black text-white"
                         : "border-gray-200 bg-gray-50 text-gray-700 hover:border-gray-300"
                     }`}
@@ -321,7 +320,7 @@ export default function APICostCalculator() {
                 <span>100K</span>
               </div>
               <p className="text-sm text-gray-500 mt-4">
-                Even at just 1K {agentType === "rag" ? "tokens" : getUnitLabel()}, you&apos;re keeping 90%+ margin vs. reselling cloud solutions.
+                Even at just 1K {systemType === "rag" ? "tokens" : getUnitLabel()}, you&apos;re keeping 90%+ margin vs. reselling cloud solutions.
               </p>
             </div>
 
@@ -390,7 +389,7 @@ export default function APICostCalculator() {
                 animate={{ opacity: 1, height: "auto" }}
                 className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 space-y-4"
               >
-                <h4 className="font-bold text-black mb-3">Scenario: Your client pays $5K/month for custom voice agent</h4>
+                <h4 className="font-bold text-black mb-3">Scenario: Your client pays $5K/month for a conversational system</h4>
                 <div className="space-y-4 text-sm">
                   <div className="bg-red-50 rounded-xl p-4 border-2 border-red-200">
                     <div className="font-bold text-red-900 mb-2">Option 1: Resell Vapi/Retell</div>
@@ -410,7 +409,7 @@ export default function APICostCalculator() {
                   </div>
                   <div className="bg-black rounded-xl p-4 text-white">
                     <div className="font-bold mb-1">Over 1 year: $32K more profit with Aethon</div>
-                    <div className="text-sm text-gray-300">Plus: Clients can&apos;t leave because they own the agent</div>
+                    <div className="text-sm text-gray-300">Plus: Clients can&apos;t leave because they own the system</div>
                   </div>
                 </div>
               </motion.div>
@@ -511,7 +510,7 @@ export default function APICostCalculator() {
                   <div>
                     <div className="font-bold text-green-900">Plus: Your Clients Own It Forever</div>
                     <div className="text-sm text-green-700">
-                      No vendor lock-in. Full code ownership. Their infrastructure. Your clients stay with you because they own the agent.
+                      No vendor lock-in. Full code ownership. Their infrastructure. Your clients stay with you because they own the system.
                     </div>
                   </div>
                 </div>
@@ -533,7 +532,7 @@ export default function APICostCalculator() {
             Stop Reselling Someone Else&apos;s AI
           </div>
           <p className="text-xl text-gray-600 mb-8 font-medium max-w-2xl mx-auto">
-            Join agencies building custom agents and keeping 80%+ margins.
+            Join agencies building custom systems and keeping 80%+ margins.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
