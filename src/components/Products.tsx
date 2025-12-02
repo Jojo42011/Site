@@ -18,45 +18,59 @@ import Link from "next/link";
 
 const products = [
   {
-    id: "call-agent",
+    id: "conversational-system",
     icon: Phone,
-    badge: "Most Popular",
-    title: "Voice Agents",
-    tagline: "For Customer Service, Sales & Support • Deploy in 2-3 days • Built for agencies who want to own their client relationships",
-    description: "Production-ready voice agents that handle calls like humans. Real-time processing, seamless handling, zero per-minute fees. Your clients get: Human-like conversations, 24/7 availability, intelligent routing You get: Complete ownership, 80%+ margins, deployment in days The infrastructure: Sub-300ms latency, 100% local, zero data leaving your servers",
+    badge: "Conversational AI",
+    title: "Conversational Intelligence System",
+    tagline: "Voice + chat experiences deployed in 2-3 days",
+    description:
+      "Design, train, and deploy premium conversational layers that blend phones, chat, SMS, and custom UI surfaces. Voice automation becomes one feature inside a broader system that routes intent, syncs context, and keeps every interaction on infrastructure you control.",
     features: [
-      { icon: Crown, text: "100% Ownership—your code, your data, your infrastructure" },
-      { icon: TrendingDown, text: "80%+ margins at scale" },
-      { icon: Zap, text: "Sub-300ms latency with local LLMs" },
-      { icon: Lock, text: "Complete data privacy—calls never leave your servers" }
+      { icon: Crown, text: "System-grade ownership—your stack, your telemetry, your brand" },
+      { icon: TrendingDown, text: "Predictable economics with flat infrastructure costs" },
+      { icon: Zap, text: "Sub-300ms latency across voice + chat channels" },
+      { icon: Lock, text: "Compliance-ready—traffic never leaves your environment" },
     ],
     comparison: {
-      competitor: "Retell / Vapi",
+      competitor: "Retell / Vapi bundles",
       competitorCost: "$8K-15K/mo",
-      savings: "80-90% Less"
+      savings: "80-90% Less",
     },
-    perfectFor: "AI agencies building solutions for enterprise clients"
+    perfectFor: "Agencies and founders building premium CX systems for regulated clients",
+    featureHighlights: [
+      "Voice automation, reception, and outbound campaigns",
+      "Chat copilots embedded in apps, portals, and products",
+      "Unified orchestration that chooses the best LLM per channel",
+      "Plug-and-play integrations with CRMs, calendars, IVRs, and data sources",
+    ],
   },
   {
-    id: "rag-agent",
+    id: "knowledge-system",
     icon: Database,
-    badge: "Enterprise Ready",
-    title: "Knowledge Agents",
-    tagline: "For Document Automation & Compliance • Deploy in 2-3 days • Built for agencies who need air-gapped solutions",
-    description: "Intelligent systems that search and answer from documents. 100% local, zero external API calls, zero per-query costs. Your clients get: Instant document search, compliance-ready, zero data leaving their servers You get: Complete ownership, air-gapped ready, unlimited scalability The infrastructure: 100% local LLMs, no OpenAI calls, no token limits",
+    badge: "Knowledge Automation",
+    title: "Knowledge Operating System",
+    tagline: "Document intelligence + workflow automation in a single fabric",
+    description:
+      "We install a knowledge fabric that ingests every doc, CRM note, wiki, and database you care about. Retrieval-augmented generation becomes one capability inside a larger operating system that enforces governance, citations, and downstream actions.",
     features: [
-      { icon: Server, text: "Runs 100% locally—zero external API calls" },
-      { icon: TrendingDown, text: "Zero per-query costs vs cloud RAG" },
-      { icon: Shield, text: "Air-gapped ready for sensitive data" },
-      { icon: Infinity, text: "Unlimited queries—no token limits or throttling" }
+      { icon: Server, text: "Runs 100% locally on Ollama + ChromaDB" },
+      { icon: TrendingDown, text: "Zero per-query costs even at enterprise volume" },
+      { icon: Shield, text: "Granular access controls, audit logs, and policy rails" },
+      { icon: Infinity, text: "Unlimited queries, pipelines, and automations" },
     ],
     comparison: {
       competitor: "Cloud RAG APIs",
       competitorCost: "$5K-15K/mo",
-      savings: "80-90% Less"
+      savings: "80-90% Less",
     },
-    perfectFor: "AI agencies building solutions for enterprise clients"
-  }
+    perfectFor: "Teams replacing piecemeal RAG pilots with durable systems",
+    featureHighlights: [
+      "Ingest + normalize PDFs, EHRs, tickets, transcripts, and BI tables",
+      "Task-specific copilots with citations & source links",
+      "Workflow automation that can trigger emails, tickets, or code",
+      "Observability layer to monitor drift, quality, and compliance",
+    ],
+  },
 ];
 
 export default function Products() {
@@ -79,11 +93,11 @@ export default function Products() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-black">Solutions Your Clients Want</span>{" "}
+            <span className="text-black">Systems Your Clients Depend On</span>{" "}
             <span className="gradient-text">(Built With Aethon)</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Voice Agents for customer service, sales, and support Knowledge Agents for document automation and compliance Automation Agents for workflow integration and efficiency We build them in 2-3 days. You sell them to your clients. You own forever.
+            Conversational intelligence, knowledge automation, and orchestration layers—delivered as full systems, not single-purpose bots. We build them in 2-3 days. You sell them to your clients. You keep the upside forever.
           </p>
         </motion.div>
 
@@ -99,7 +113,6 @@ export default function Products() {
               className="group"
             >
               <div className="h-full bg-white rounded-3xl overflow-hidden premium-shadow hover:premium-shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200">
-                {/* Card Header */}
                 <div className="bg-gradient-to-r from-black via-gray-900 to-black p-6 sm:p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -133,17 +146,33 @@ export default function Products() {
                     ))}
                   </div>
 
-                  {/* Perfect For */}
                   <div className="text-sm text-gray-500 mb-6">
                     <span className="font-medium text-gray-700">Perfect for:</span> {product.perfectFor}
                   </div>
+
+                  {/* Feature Highlights */}
+                  {product.featureHighlights && (
+                    <div className="mb-6">
+                      <div className="text-sm font-semibold text-gray-700 mb-3">System capabilities include:</div>
+                      <div className="space-y-2">
+                        {product.featureHighlights.map((item) => (
+                          <div key={item} className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <Check className="w-3 h-3 text-white" />
+                            </div>
+                            <span className="text-sm text-gray-600">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* CTA Button */}
                   <Link
                     href="/contact"
                     className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
                   >
-                    Build Your First Agent
+                    Launch This System
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </div>
@@ -164,7 +193,7 @@ export default function Products() {
             href="/products"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow hover:premium-shadow-lg"
           >
-            View Full Product Details
+            View System Catalog
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </motion.div>
@@ -181,14 +210,14 @@ export default function Products() {
             Own Your AI. Own Your Business.
           </h3>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Build agents your clients love. Own the code. Own the relationship. Own the margin. That&apos;s how you scale.
+            Build systems your clients rely on. Own the code. Own the relationship. Own the margin. That&apos;s how you scale.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
               className="px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
             >
-              Build Your First Agent
+              Launch Your System
             </Link>
             <Link
               href="/#calculator"

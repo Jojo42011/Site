@@ -25,11 +25,11 @@ export default function CTA() {
         >
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight">
             <span className="text-black">Ready to Own Your</span>{" "}
-            <span className="gradient-text">AI Business?</span>
+            <span className="gradient-text">AI Systems?</span>
           </h2>
 
           <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            Join agencies building custom agents and keeping 80%+ margins. Book a free 15-minute consultation
+            Join agencies rolling out custom systems and keeping 80%+ margins. Book a free 15-minute consultation
             and see how much you could be making.
           </p>
 
@@ -38,14 +38,14 @@ export default function CTA() {
               href="/products"
               className="group px-10 py-5 bg-black rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow flex items-center space-x-2 text-white"
             >
-              <span>Explore Solutions</span>
+              <span>Explore Systems</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/contact"
               className="px-10 py-5 border-2 border-black rounded-xl font-bold text-lg text-black hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Partner With Us
+              Build With Us
             </Link>
           </div>
 

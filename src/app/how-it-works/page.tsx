@@ -22,7 +22,7 @@ const steps = [
     icon: MessageSquare,
     title: "Conversation",
     duration: "Day 1",
-    description: "We start with a focused consultation to understand your exact requirements. What does your agent need to do? What systems should it integrate with? What's your use case?",
+    description: "We start with a focused consultation to understand your exact requirements. What does your system need to run? Which workflows and tools must it connect to? What's your use case?",
     details: [
       "Deep dive into your business requirements",
       "Identify integration points (CRMs, calendars, databases)",
@@ -35,9 +35,9 @@ const steps = [
   {
     number: "02",
     icon: Wrench,
-    title: "Custom Agent Building",
+    title: "Custom System Building",
     duration: "Days 1-2",
-    description: "Unlike template-based platforms, we build your agent from scratch. Every component is custom-crafted to your specifications—no compromises, no 'that feature isn't available.'",
+    description: "Unlike template-based platforms, we build your system from scratch. Every component is custom-crafted to your specifications—no compromises, no 'that feature isn't available.'",
     details: [
       "Custom conversation logic and decision trees",
       "Voice training and personality configuration",
@@ -45,14 +45,14 @@ const steps = [
       "Fine-tuning for your industry terminology",
       "Quality assurance and conversation testing"
     ],
-    outcome: "Production-ready custom AI agent"
+    outcome: "Production-ready custom AI system"
   },
   {
     number: "03",
     icon: Server,
     title: "Local Model Deployment",
     duration: "Day 2-3",
-    description: "We deploy your agent on infrastructure you control. Your models run locally—no data leaves your environment. This is what makes the 80-90% cost savings possible.",
+    description: "We deploy your system on infrastructure you control. Your models run locally—no data leaves your environment. This is what makes the 80-90% cost savings possible.",
     details: [
       "Local LLM deployment optimized for your hardware",
       "Vector database setup for RAG capabilities",
@@ -135,7 +135,7 @@ export default function HowItWorksPage() {
               <span className="gradient-text">From conversation to production in days.</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We build custom AI agents from scratch—not from templates. Here&apos;s our proven process for delivering premium, production-ready agents in 2-3 days.
+              We build custom AI systems from scratch—not from templates. Here&apos;s our proven process for delivering premium, production-ready systems in 2-3 days.
             </p>
           </motion.div>
 
@@ -223,7 +223,7 @@ export default function HowItWorksPage() {
               Ready to Get Started?
             </h3>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Book a free consultation and let&apos;s discuss your requirements. In 2-3 days, you could have a custom AI agent running on your infrastructure.
+              Book a free consultation and let&apos;s discuss your requirements. In 2-3 days, you could have a custom AI system running on your infrastructure.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link

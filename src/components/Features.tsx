@@ -6,18 +6,18 @@ import { DollarSign, Zap, TrendingUp } from "lucide-react";
 const features = [
   {
     icon: DollarSign,
-    title: "Focus on selling. We handle the building.",
-    description: "You focus on your clients. We handle everything else—building, deploying, optimizing. You're back to selling within days.",
+    title: "Focus on selling. We build the system.",
+    description: "You focus on your clients. We handle everything else—architecting, deploying, optimizing. You're back to selling within days.",
   },
   {
     icon: Zap,
-    title: "Deploy With Speed",
-    description: "You focus on your clients. We handle the rest. ✓ Custom agent building (2-3 days) ✓ Full integration with their tech stack ✓ Model training & fine-tuning ✓ Deployment to your infrastructure You're selling within days, not months.",
+    title: "Deploy Systems With Speed",
+    description: "You focus on your clients. We handle the rest. ✓ Custom system blueprints (2-3 days) ✓ Full integration with their tech stack ✓ Model training & fine-tuning ✓ Deployment to your infrastructure You're shipping within days, not months.",
   },
   {
     icon: TrendingUp,
     title: "Scale Without Limits",
-    description: "No per-minute fees. No API credit surprises. No vendor lock-in. Every agent you build stays profitable. Your clients stay yours. Your margins stay fat.",
+    description: "No per-minute fees. No API credit surprises. No vendor lock-in. Every system you launch stays profitable. Your clients stay yours. Your margins stay fat.",
   },
 ];
 
@@ -43,8 +43,8 @@ export default function Features() {
             Why AI Agencies Choose <span className="gradient-text">Aethon</span>
           </h2>
           <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-            We build custom AI agents FOR your clients so you can focus on selling. 
-            <span className="font-semibold text-black"> Deploy production-ready agents in 2-3 days.</span> Own the code, own the relationship, own 80%+ margins.
+            We architect custom AI systems for your clients so you can focus on selling.
+            <span className="font-semibold text-black"> Deploy production-ready systems in 2-3 days.</span> Own the code, own the relationship, own 80%+ margins.
           </p>
         </motion.div>
 

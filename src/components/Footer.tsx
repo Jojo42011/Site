@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="text-3xl font-bold text-black">Aethon</span>
             </div>
             <p className="text-gray-600 text-base leading-relaxed max-w-md">
-              The infrastructure platform for AI agencies. Build custom agents for your clients in 2-3 days. Own the code, own the relationship, own 80%+ margins.
+              The infrastructure studio for AI agencies. Build custom systems for your clients in 2-3 days. Own the code, own the relationship, own 80%+ margins.
             </p>
           </div>
 

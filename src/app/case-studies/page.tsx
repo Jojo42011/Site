@@ -25,10 +25,10 @@ const caseStudies = [
     id: "ai-agency",
     icon: Building2,
     industry: "AI Agency",
-    title: "Voice AI Agency Cuts Client Costs by 85%",
-    subtitle: "How an AI agency transformed their service offering with custom agents",
-    challenge: "An AI agency was building voice agents for clients using Vapi. Each client deployment cost $2,000-4,000/month in API fees, making it hard to maintain margins while staying competitive on pricing.",
-    solution: "We built a white-label voice agent platform running on local LLMs. The agency now deploys unlimited agents for clients with a single infrastructure cost, customizing each deployment to client specifications.",
+    title: "Conversational Systems Cut Client Costs by 85%",
+    subtitle: "How an AI agency transformed their service offering with custom systems",
+    challenge: "An AI agency was stitching together voice tools to serve clients. Each deployment cost $2,000-4,000/month in API fees, eroding margins and limiting customization.",
+    solution: "We built a white-label conversational system running on local LLMs. The agency now deploys unlimited instances with a single infrastructure cost, tailoring every workflow per client.",
     results: [
       {
         metric: "$156K",
@@ -64,9 +64,9 @@ const caseStudies = [
     icon: Users,
     industry: "SaaS Founder",
     title: "SaaS Startup Adds AI Features Without API Costs",
-    subtitle: "How a growing SaaS added RAG-powered features at scale",
-    challenge: "A B2B SaaS startup wanted to add an AI-powered document search feature. Initial estimates using cloud RAG APIs showed costs of $8K-12K/month at their projected user volume—killing the feature's viability.",
-    solution: "We built a custom RAG system running entirely on their infrastructure. Users can search across uploaded documents, get AI-powered answers with citations, and the SaaS pays zero per-query fees.",
+    subtitle: "How a growing SaaS added a knowledge operating system at scale",
+    challenge: "A B2B SaaS startup needed document intelligence, but cloud RAG APIs would cost $8K-12K/month at projected volume—killing the feature's viability.",
+    solution: "We built a custom knowledge system running entirely on their infrastructure. Users search across uploads, receive cited answers, and the SaaS pays zero per-query fees.",
     results: [
       {
         metric: "$96K",
@@ -102,8 +102,8 @@ const caseStudies = [
     icon: Shield,
     industry: "Enterprise",
     title: "Healthcare Company Deploys Air-Gapped AI",
-    subtitle: "HIPAA-compliant AI agents without cloud dependencies",
-    challenge: "A healthcare services company needed AI call agents but couldn't use cloud platforms due to HIPAA requirements. Patient data absolutely could not leave their environment.",
+    subtitle: "HIPAA-compliant AI systems without cloud dependencies",
+    challenge: "A healthcare services company needed conversational triage but couldn't use cloud platforms due to HIPAA requirements. Patient data absolutely could not leave their environment.",
     solution: "We deployed a complete AI voice system in their air-gapped environment. Custom-trained on medical terminology, integrated with their EHR system, with full audit logging for compliance.",
     results: [
       {
@@ -187,7 +187,7 @@ export default function CaseStudiesPage() {
               <span className="gradient-text">Custom AI Deployments</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Real examples of how agencies, SaaS founders, and enterprises have saved hundreds of thousands by switching to custom AI agents.
+              Real examples of how agencies, SaaS founders, and enterprises have saved hundreds of thousands by switching to custom AI systems.
             </p>
           </motion.div>
 
@@ -332,7 +332,7 @@ export default function CaseStudiesPage() {
                   <div className="w-14 h-14 rounded-xl bg-black flex items-center justify-center mb-3">
                     <Phone className="w-7 h-7 text-white" />
                   </div>
-                  <div className="font-semibold text-black">Voice Agents</div>
+                  <div className="font-semibold text-black">Conversational Systems</div>
                   <div className="text-sm text-gray-500">Save 80-90% on call costs</div>
                 </div>
                 <div className="flex flex-col items-center">
