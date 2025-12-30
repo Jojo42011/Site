@@ -26,7 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black leading-[1.05] mb-8 tracking-tight"
           >
-            Build AI systems your clients can run forever
+            AI Voice Infrastructure for Agencies
           </motion.h1>
 
           {/* Subtitle */}
@@ -36,9 +36,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl text-gray-600 max-w-4xl leading-relaxed mb-12 font-light"
           >
-            Deploy enterprise-grade systems fast. Fully customizable. Integrate with every workflow. You own the code, the data, and the margins.
-            <br />
-            No limits. No vendor lock-in. Everything founders need to love what you build.
+            Build and sell voice automations <span className="font-semibold text-black">60% cheaper</span> than Retell or Vapi.
+            We handle the tech, you handle the sales. Fully white-labeled at just <span className="font-semibold text-black">$0.06/minute</span>.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -52,15 +51,36 @@ export default function Hero() {
               href="/contact"
               className="group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-black rounded-xl hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow"
             >
-              Launch Your System
+              Become a Partner
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/products"
+              href="/pricing"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Explore Systems
+              Browse Templates
             </Link>
+          </motion.div>
+
+          {/* Quick stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-12 flex flex-wrap gap-8 text-gray-600"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full" />
+              <span className="font-medium">$0.06/min vs $0.15-0.20/min</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full" />
+              <span className="font-medium">Native Integrations</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full" />
+              <span className="font-medium">100% White-Labeled</span>
+            </div>
           </motion.div>
         </div>
       </div>
