@@ -9,15 +9,18 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
-    phone: "",
-    message: "",
+    agency: "",
+    website: "",
+    services: "",
+    clients: "",
+    interest: "",
+    model: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -27,7 +30,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -38,7 +41,7 @@ export default function ContactPage() {
   return (
     <main className="relative min-h-screen bg-white">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-white via-gray-50/50 to-white">
         {/* Premium purple background designs */}
@@ -46,9 +49,7 @@ export default function ContactPage() {
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,11 +58,11 @@ export default function ContactPage() {
             className="text-center mb-12"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-black">Get Started with</span>{" "}
-              <span className="gradient-text">Private AI</span>
+              <span className="text-black">Become a</span>{" "}
+              <span className="gradient-text">Partner</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Fill out the form below and we&apos;ll get in touch to discuss how we can help you cut your AI costs by 80-90%.
+              Apply for partnership or request a template. Tell us about your agency and what you&apos;re looking to build.
             </p>
           </motion.div>
 
@@ -76,18 +77,18 @@ export default function ContactPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold text-black mb-4">Thank You!</h2>
+              <h2 className="text-3xl font-bold text-black mb-4">Application Received!</h2>
               <p className="text-gray-600 text-lg mb-8">
-                We&apos;ve received your information and will contact you shortly.
+                We&apos;ll review your application and get back to you within 24-48 hours.
               </p>
               <button
                 onClick={() => {
                   setIsSubmitted(false);
-                  setFormData({ name: "", email: "", company: "", phone: "", message: "" });
+                  setFormData({ name: "", email: "", agency: "", website: "", services: "", clients: "", interest: "", model: "" });
                 }}
                 className="px-8 py-4 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition-all premium-shadow"
               >
-                Submit Another Form
+                Submit Another Application
               </button>
             </motion.div>
           ) : (
@@ -101,7 +102,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
-                      Full Name *
+                      Your Name *
                     </label>
                     <input
                       type="text"
@@ -127,55 +128,113 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black placeholder-gray-400"
-                      placeholder="john@company.com"
+                      placeholder="john@agency.com"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-semibold text-gray-900 mb-2">
-                      Company Name
+                    <label htmlFor="agency" className="block text-sm font-semibold text-gray-900 mb-2">
+                      Agency Name *
                     </label>
                     <input
                       type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
+                      id="agency"
+                      name="agency"
+                      required
+                      value={formData.agency}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black placeholder-gray-400"
-                      placeholder="Your Company"
+                      placeholder="Your Agency LLC"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
-                      Phone Number
+                    <label htmlFor="website" className="block text-sm font-semibold text-gray-900 mb-2">
+                      Website
                     </label>
                     <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
+                      type="url"
+                      id="website"
+                      name="website"
+                      value={formData.website}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black placeholder-gray-400"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="https://youragency.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Tell us about your needs
+                  <label htmlFor="services" className="block text-sm font-semibold text-gray-900 mb-2">
+                    Current Services Offered *
+                  </label>
+                  <input
+                    type="text"
+                    id="services"
+                    name="services"
+                    required
+                    value={formData.services}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black placeholder-gray-400"
+                    placeholder="Marketing, AI automation, lead gen, etc."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="clients" className="block text-sm font-semibold text-gray-900 mb-2">
+                      How Many Clients Do You Serve?
+                    </label>
+                    <select
+                      id="clients"
+                      name="clients"
+                      value={formData.clients}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black"
+                    >
+                      <option value="">Select...</option>
+                      <option value="1-5">1-5 clients</option>
+                      <option value="6-15">6-15 clients</option>
+                      <option value="16-30">16-30 clients</option>
+                      <option value="30+">30+ clients</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="model" className="block text-sm font-semibold text-gray-900 mb-2">
+                      Preferred Model *
+                    </label>
+                    <select
+                      id="model"
+                      name="model"
+                      required
+                      value={formData.model}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black"
+                    >
+                      <option value="">Select...</option>
+                      <option value="templates">Templates (one-time purchase)</option>
+                      <option value="partnership">Full Partnership (custom builds)</option>
+                      <option value="both">Both / Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="interest" className="block text-sm font-semibold text-gray-900 mb-2">
+                    What Automations Are You Interested In Offering? *
                   </label>
                   <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
+                    id="interest"
+                    name="interest"
+                    rows={4}
+                    required
+                    value={formData.interest}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 transition-all bg-white text-black placeholder-gray-400 resize-none"
-                    placeholder="What AI products are you interested in? What's your current monthly AI spend? Any specific requirements?"
+                    placeholder="Outbound sales agents, inbound booking, follow-up systems, etc. Any specific use cases for your clients?"
                   />
                 </div>
 
@@ -185,12 +244,12 @@ export default function ContactPage() {
                     disabled={isSubmitting}
                     className="w-full px-8 py-4 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? "Submitting..." : "Submit Information"}
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
                   </button>
                 </div>
 
                 <p className="text-sm text-gray-500 text-center">
-                  By submitting this form, you agree to be contacted by Aethon. We respect your privacy and will never share your information.
+                  We&apos;ll review your application and get back to you within 24-48 hours.
                 </p>
               </form>
             </motion.div>

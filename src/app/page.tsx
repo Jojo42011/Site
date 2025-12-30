@@ -1,10 +1,10 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import ClientCarousel from "@/components/ClientCarousel";
 import Features from "@/components/Features";
+import UseCases from "@/components/UseCases";
 import Products from "@/components/Products";
 import CTA from "@/components/CTA";
-import APICostCalculator from "@/components/APICostCalculator";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -12,13 +12,11 @@ export default function Home() {
     <main className="relative">
       <Navigation />
       <Hero />
-      <ClientCarousel />
       <Features />
+      <UseCases />
       <Products />
       <CTA />
-      <div id="calculator">
-        <APICostCalculator />
-      </div>
+      <FAQ />
       <Footer />
     </main>
   );

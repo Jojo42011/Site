@@ -6,11 +6,9 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
-  { name: "Products", href: "/products" },
+  { name: "Templates", href: "/pricing" },
   { name: "How It Works", href: "/how-it-works" },
-  { name: "Why Systems", href: "/why-custom-agents" },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "Calculator", href: "/#calculator" },
+  { name: "Partnership", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -58,7 +56,7 @@ export default function Navigation() {
               href="/contact"
               className="px-6 py-2.5 bg-black rounded-xl font-bold hover:bg-gray-800 transition-all premium-shadow text-white text-sm"
             >
-              Get started
+              Become a Partner
             </Link>
           </div>
 
@@ -101,7 +99,7 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-6 py-2.5 bg-black rounded-xl font-bold text-center text-white premium-shadow"
               >
-                Get started
+                Become a Partner
               </Link>
             </div>
           </motion.div>

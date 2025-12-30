@@ -1,16 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Phone, 
-  Database,
+import {
+  FileCode,
+  Handshake,
   Check,
-  Crown,
-  Server,
-  TrendingDown,
   Zap,
-  Lock,
-  Shield,
+  Clock,
   Infinity,
   ArrowRight
 } from "lucide-react";
@@ -18,58 +14,54 @@ import Link from "next/link";
 
 const products = [
   {
-    id: "conversational-system",
-    icon: Phone,
-    badge: "Conversational AI",
-    title: "Conversational Intelligence System",
-    tagline: "Voice + chat experiences deployed in 2-3 days",
+    id: "templates",
+    icon: FileCode,
+    badge: "Move Fast",
+    title: "Template Licenses",
+    tagline: "One-time purchase, unlimited deployments",
+    price: "$500 - $1,000",
+    priceLabel: "per template",
     description:
-      "Design, train, and deploy premium conversational layers that blend phones, chat, SMS, and custom UI surfaces. Voice automation becomes one feature inside a broader system that routes intent, syncs context, and keeps every interaction on infrastructure you control.",
+      "Pre-built automation templates for common use cases. Purchase once, deploy to unlimited clients. Get started same-day with proven automation workflows.",
     features: [
-      { icon: Crown, text: "System-grade ownership—your stack, your telemetry, your brand" },
-      { icon: TrendingDown, text: "Predictable economics with flat infrastructure costs" },
-      { icon: Zap, text: "Sub-300ms latency across voice + chat channels" },
-      { icon: Lock, text: "Compliance-ready—traffic never leaves your environment" },
+      { icon: Zap, text: "Same-day deployment to clients" },
+      { icon: Infinity, text: "Unlimited client deployments" },
+      { icon: Clock, text: "30 days setup support included" },
     ],
-    comparison: {
-      competitor: "Retell / Vapi bundles",
-      competitorCost: "$8K-15K/mo",
-      savings: "80-90% Less",
-    },
-    perfectFor: "Agencies and founders building premium CX systems for regulated clients",
-    featureHighlights: [
-      "Voice automation, reception, and outbound campaigns",
-      "Chat copilots embedded in apps, portals, and products",
-      "Unified orchestration that chooses the best LLM per channel",
-      "Plug-and-play integrations with CRMs, calendars, IVRs, and data sources",
+    includes: [
+      "Complete automation workflow",
+      "Setup guide & deployment docs",
+      "Integration configuration",
+      "White-label ready",
     ],
+    bestFor: "Agencies wanting to move fast with proven templates",
+    cta: "Browse Templates",
+    ctaLink: "/pricing",
   },
   {
-    id: "knowledge-system",
-    icon: Database,
-    badge: "Knowledge Automation",
-    title: "Knowledge Operating System",
-    tagline: "Document intelligence + workflow automation in a single fabric",
+    id: "partnership",
+    icon: Handshake,
+    badge: "Full Flexibility",
+    title: "Full Partnership",
+    tagline: "Revenue share or monthly retainer",
+    price: "Custom",
+    priceLabel: "based on volume",
     description:
-      "We install a knowledge fabric that ingests every doc, CRM note, wiki, and database you care about. Retrieval-augmented generation becomes one capability inside a larger operating system that enforces governance, citations, and downstream actions.",
+      "We build any custom automation you need. You sell to your clients, we handle all backend tech, integrations, and infrastructure. Unlimited custom builds with full support.",
     features: [
-      { icon: Server, text: "Runs 100% locally on Ollama + ChromaDB" },
-      { icon: TrendingDown, text: "Zero per-query costs even at enterprise volume" },
-      { icon: Shield, text: "Granular access controls, audit logs, and policy rails" },
-      { icon: Infinity, text: "Unlimited queries, pipelines, and automations" },
+      { icon: Infinity, text: "Unlimited custom automations" },
+      { icon: Zap, text: "Custom integrations with any API" },
+      { icon: Clock, text: "Full technical support included" },
     ],
-    comparison: {
-      competitor: "Cloud RAG APIs",
-      competitorCost: "$5K-15K/mo",
-      savings: "80-90% Less",
-    },
-    perfectFor: "Teams replacing piecemeal RAG pilots with durable systems",
-    featureHighlights: [
-      "Ingest + normalize PDFs, EHRs, tickets, transcripts, and BI tables",
-      "Task-specific copilots with citations & source links",
-      "Workflow automation that can trigger emails, tickets, or code",
-      "Observability layer to monitor drift, quality, and compliance",
+    includes: [
+      "Any custom automation built",
+      "Native integrations (no middleware)",
+      "White-label everything",
+      "Priority support & updates",
     ],
+    bestFor: "Agencies wanting full flexibility and custom solutions",
+    cta: "Become a Partner",
+    ctaLink: "/contact",
   },
 ];
 
@@ -81,9 +73,7 @@ export default function Products() {
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
       <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -93,11 +83,12 @@ export default function Products() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-black">Systems Your Clients Depend On</span>{" "}
-            <span className="gradient-text">(Built With Aethon)</span>
+            <span className="text-black">Two Ways to</span>{" "}
+            <span className="gradient-text">Partner With Us</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Conversational intelligence, knowledge automation, and orchestration layers—delivered as full systems, not single-purpose bots. We build them in 2-3 days. You sell them to your clients. You keep the upside forever.
+            Whether you want ready-made templates or fully custom solutions, we&apos;ve got you covered.
+            Choose the model that fits your agency.
           </p>
         </motion.div>
 
@@ -125,7 +116,11 @@ export default function Products() {
                       <h3 className="text-2xl font-bold text-white">{product.title}</h3>
                     </div>
                   </div>
-                  <p className="text-purple-200 text-sm font-medium">{product.tagline}</p>
+                  <p className="text-purple-200 text-sm font-medium mb-4">{product.tagline}</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold text-white">{product.price}</span>
+                    <span className="text-gray-400">{product.priceLabel}</span>
+                  </div>
                 </div>
 
                 {/* Card Body */}
@@ -146,33 +141,31 @@ export default function Products() {
                     ))}
                   </div>
 
-                  <div className="text-sm text-gray-500 mb-6">
-                    <span className="font-medium text-gray-700">Perfect for:</span> {product.perfectFor}
+                  {/* Includes */}
+                  <div className="mb-6">
+                    <div className="text-sm font-semibold text-gray-700 mb-3">Includes:</div>
+                    <div className="space-y-2">
+                      {product.includes.map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check className="w-3 h-3 text-green-600" />
+                          </div>
+                          <span className="text-sm text-gray-600">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Feature Highlights */}
-                  {product.featureHighlights && (
-                    <div className="mb-6">
-                      <div className="text-sm font-semibold text-gray-700 mb-3">System capabilities include:</div>
-                      <div className="space-y-2">
-                        {product.featureHighlights.map((item) => (
-                          <div key={item} className="flex items-start gap-3">
-                            <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <Check className="w-3 h-3 text-white" />
-                            </div>
-                            <span className="text-sm text-gray-600">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="text-sm text-gray-500 mb-6">
+                    <span className="font-medium text-gray-700">Best for:</span> {product.bestFor}
+                  </div>
 
                   {/* CTA Button */}
                   <Link
-                    href="/contact"
+                    href={product.ctaLink}
                     className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
                   >
-                    Launch This System
+                    {product.cta}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </div>
@@ -180,23 +173,6 @@ export default function Products() {
             </motion.div>
           ))}
         </div>
-
-        {/* View Full Details */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center mb-16"
-        >
-          <Link
-            href="/products"
-            className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow hover:premium-shadow-lg"
-          >
-            View System Catalog
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-        </motion.div>
 
         {/* Bottom CTA */}
         <motion.div
@@ -207,23 +183,23 @@ export default function Products() {
           className="mt-16 bg-black rounded-3xl p-12 text-center premium-shadow-lg"
         >
           <h3 className="text-3xl font-bold text-white mb-4 text-center">
-            Own Your AI. Own Your Business.
+            Not Sure Which Model Is Right for You?
           </h3>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Build systems your clients rely on. Own the code. Own the relationship. Own the margin. That&apos;s how you scale.
+            Book a quick call and we&apos;ll help you figure out the best approach for your agency. No pressure, just clarity.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
               className="px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
             >
-              Launch Your System
+              Schedule a Call
             </Link>
             <Link
-              href="/#calculator"
+              href="/pricing"
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
             >
-              Schedule Demo
+              View All Templates
             </Link>
           </div>
         </motion.div>

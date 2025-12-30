@@ -7,15 +7,37 @@ export default function Footer() {
   return (
     <footer className="relative border-t premium-border bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
               <span className="text-3xl font-bold text-black">Aethon</span>
             </div>
             <p className="text-gray-600 text-base leading-relaxed max-w-md">
-              The infrastructure studio for AI agencies. Build custom systems for your clients in 2-3 days. Own the code, own the relationship, own 80%+ margins.
+              AI voice infrastructure for agencies. Build and sell voice automations 60% cheaper than competitors. We handle the tech, you keep the margins.
             </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-black font-bold text-lg mb-6">Quick Links</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/pricing" className="text-gray-600 hover:text-black transition-colors font-medium">
+                  Browse Templates
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-it-works" className="text-gray-600 hover:text-black transition-colors font-medium">
+                  How It Works
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-600 hover:text-black transition-colors font-medium">
+                  Become a Partner
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Contact */}
@@ -43,7 +65,7 @@ export default function Footer() {
                   <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
                     <Calendar className="w-5 h-5" />
                   </div>
-                  <span className="font-medium">Schedule Demo</span>
+                  <span className="font-medium">Schedule a Call</span>
                 </a>
               </li>
             </ul>

@@ -3,15 +3,12 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { 
+import {
   ArrowLeft,
   ArrowRight,
-  MessageSquare,
+  MousePointer,
   Wrench,
-  Server,
-  Key,
-  HeadphonesIcon,
-  Clock,
+  Rocket,
   Check
 } from "lucide-react";
 import Link from "next/link";
@@ -19,79 +16,43 @@ import Link from "next/link";
 const steps = [
   {
     number: "01",
-    icon: MessageSquare,
-    title: "Conversation",
-    duration: "Day 1",
-    description: "We start with a focused consultation to understand your exact requirements. What does your system need to run? Which workflows and tools must it connect to? What's your use case?",
+    icon: MousePointer,
+    title: "Choose",
+    subtitle: "Templates for speed OR Partnership for flexibility",
+    description: "Pick your path based on what you need. Templates let you start selling same-day. Full partnership gives you unlimited custom automations built to spec.",
     details: [
-      "Deep dive into your business requirements",
-      "Identify integration points (CRMs, calendars, databases)",
-      "Define voice personality, tone, and conversation flows",
-      "Scope custom features and capabilities",
-      "Establish success metrics and KPIs"
+      "Browse our template library for common use cases",
+      "Or apply for partnership for custom builds",
+      "Templates: $500-1,000 one-time, deploy unlimited times",
+      "Partnership: Revenue share or monthly retainer",
     ],
-    outcome: "Crystal clear specification document"
   },
   {
     number: "02",
     icon: Wrench,
-    title: "Custom System Building",
-    duration: "Days 1-2",
-    description: "Unlike template-based platforms, we build your system from scratch. Every component is custom-crafted to your specifications—no compromises, no 'that feature isn't available.'",
+    title: "Deploy",
+    subtitle: "We handle setup, integrations, and technical work",
+    description: "We do all the heavy lifting. Templates come with setup guides for same-day deployment. Custom builds are ready in 3-7 days with native integrations.",
     details: [
-      "Custom conversation logic and decision trees",
-      "Voice training and personality configuration",
-      "Integration development for your specific tools",
-      "Fine-tuning for your industry terminology",
-      "Quality assurance and conversation testing"
+      "Direct API integrations (no Zapier/n8n needed)",
+      "CRM, calendar, payment system connections",
+      "White-label configuration",
+      "Quality testing before handoff",
     ],
-    outcome: "Production-ready custom AI system"
   },
   {
     number: "03",
-    icon: Server,
-    title: "Local Model Deployment",
-    duration: "Day 2-3",
-    description: "We deploy your system on infrastructure you control. Your models run locally—no data leaves your environment. This is what makes the 80-90% cost savings possible.",
+    icon: Rocket,
+    title: "Sell",
+    subtitle: "White-label to your clients, keep premium margins",
+    description: "Start selling to your clients immediately. It's your brand, your relationship, your recurring revenue. We're invisible infrastructure.",
     details: [
-      "Local LLM deployment optimized for your hardware",
-      "Vector database setup for RAG capabilities",
-      "API endpoints and webhook configurations",
-      "Performance optimization and load testing",
-      "Security hardening and access controls"
+      "Zero Aethon branding visible to clients",
+      "You set your own pricing",
+      "$0.06/min cost means massive margins",
+      "We handle support and maintenance",
     ],
-    outcome: "Fully deployed, running on your infrastructure"
   },
-  {
-    number: "04",
-    icon: Key,
-    title: "Ownership Handoff",
-    duration: "Day 3",
-    description: "You receive complete ownership of everything. Code, models, data, documentation—it's all yours. No vendor lock-in, no high monthly platform fees, no surprises.",
-    details: [
-      "Full source code and documentation",
-      "Admin credentials and access keys",
-      "Training session for your team",
-      "Customization guide for future modifications",
-      "Architecture documentation for scaling"
-    ],
-    outcome: "100% ownership transferred to you"
-  },
-  {
-    number: "05",
-    icon: HeadphonesIcon,
-    title: "Support & Maintenance",
-    duration: "Ongoing",
-    description: "We don't disappear after deployment. Our team remains available for support, updates, and optimizations. Your success is our success.",
-    details: [
-      "Priority technical support",
-      "Performance monitoring and alerts",
-      "Model updates and improvements",
-      "Feature additions on request",
-      "Scaling assistance as you grow"
-    ],
-    outcome: "Long-term partnership for continuous improvement"
-  }
 ];
 
 export default function HowItWorksPage() {
@@ -104,9 +65,7 @@ export default function HowItWorksPage() {
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-3xl opacity-40" />
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-100/25 rounded-full blur-3xl opacity-25" />
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-400/15 rounded-full blur-3xl opacity-20" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl opacity-25" />
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
           {/* Back button */}
           <motion.div
@@ -132,10 +91,10 @@ export default function HowItWorksPage() {
             className="text-center mb-20"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="gradient-text">From conversation to production in days.</span>
+              <span className="gradient-text">Three Simple Steps</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We build custom AI systems from scratch—not from templates. Here&apos;s our proven process for delivering premium, production-ready systems in 2-3 days.
+              From choosing your path to selling voice agents. We handle the tech, you handle the sales.
             </p>
           </motion.div>
 
@@ -161,10 +120,11 @@ export default function HowItWorksPage() {
 
                     {/* Content */}
                     <div className="md:col-span-10 p-8 sm:p-10">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">{step.title}</h3>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-black mb-2">{step.title}</h3>
+                      <p className="text-purple-600 font-medium mb-4">{step.subtitle}</p>
                       <p className="text-gray-600 text-lg leading-relaxed mb-6">{step.description}</p>
-                      
-                      <div className="grid sm:grid-cols-2 gap-4 mb-6">
+
+                      <div className="grid sm:grid-cols-2 gap-4">
                         {step.details.map((detail, i) => (
                           <div key={i} className="flex items-start gap-3">
                             <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -190,24 +150,24 @@ export default function HowItWorksPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="bg-gradient-to-r from-gray-50 to-purple-50/30 rounded-3xl p-8 sm:p-12 mb-20 border border-gray-100"
           >
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-5xl font-bold text-black mb-2">2-3</div>
-                <div className="text-gray-600 font-medium">Days to Deploy</div>
-                <div className="text-sm text-gray-500 mt-1">Based on complexity</div>
+                <div className="text-5xl font-bold text-black mb-2">Same Day</div>
+                <div className="text-gray-600 font-medium">Template Deployment</div>
+                <div className="text-sm text-gray-500 mt-1">Start selling immediately</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-bold text-black mb-2">100%</div>
-                <div className="text-gray-600 font-medium">Your Ownership</div>
-                <div className="text-sm text-gray-500 mt-1">Code, models, data—all yours</div>
+                <div className="text-5xl font-bold text-black mb-2">3-7 Days</div>
+                <div className="text-gray-600 font-medium">Custom Builds</div>
+                <div className="text-sm text-gray-500 mt-1">Full partnership projects</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-bold text-black mb-2">80-90%</div>
+                <div className="text-5xl font-bold text-black mb-2">60%</div>
                 <div className="text-gray-600 font-medium">Cost Savings</div>
-                <div className="text-sm text-gray-500 mt-1">vs. cloud AI platforms</div>
+                <div className="text-sm text-gray-500 mt-1">vs. Retell/Vapi</div>
               </div>
             </div>
           </motion.div>
@@ -216,28 +176,28 @@ export default function HowItWorksPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="bg-black rounded-3xl p-12 text-center premium-shadow-lg"
           >
             <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Ready to Get Started?
             </h3>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Book a free consultation and let&apos;s discuss your requirements. In 2-3 days, you could have a custom AI system running on your infrastructure.
+              Choose templates for speed or partnership for flexibility. Either way, you&apos;ll be selling voice agents within days.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
                 className="px-10 py-5 bg-white text-black rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl flex items-center"
               >
-                Start Your Project
+                Become a Partner
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
-                href="/products"
+                href="/pricing"
                 className="px-10 py-5 border-2 border-white/30 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all"
               >
-                View Products
+                Browse Templates
               </Link>
             </div>
           </motion.div>
