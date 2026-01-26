@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="text-3xl font-bold text-black">Aethon</span>
             </div>
             <p className="text-gray-600 text-base leading-relaxed max-w-md">
-              AI voice infrastructure for agencies. Build and sell voice automations 60% cheaper than competitors. We handle the tech, you keep the margins.
+              Build or create custom voice automations with built-in integrations. Configure however you want. Deploy in minutes, start selling today. Built for agency owners.
             </p>
           </div>
 
@@ -24,17 +24,22 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href="/pricing" className="text-gray-600 hover:text-black transition-colors font-medium">
-                  Browse Templates
+                  Browse Voice Automations
                 </Link>
+              </li>
+              <li>
+                <a
+                  href="https://renovated-detailing-voice-agent.fly.dev/demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-black transition-colors font-medium"
+                >
+                  Try Demo
+                </a>
               </li>
               <li>
                 <Link href="/how-it-works" className="text-gray-600 hover:text-black transition-colors font-medium">
                   How It Works
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-600 hover:text-black transition-colors font-medium">
-                  Become a Partner
                 </Link>
               </li>
             </ul>

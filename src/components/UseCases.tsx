@@ -1,32 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PhoneOutgoing, CalendarCheck, MessageSquare, HeadphonesIcon } from "lucide-react";
+import { PhoneOutgoing, HeadphonesIcon, Shield } from "lucide-react";
 
 const useCases = [
   {
-    icon: PhoneOutgoing,
-    title: "Outbound Sales Agents",
-    description: "Connect to Meta ads, run cold calling campaigns, and automate lead follow-up. Convert more leads with instant, human-like outreach.",
-    features: ["Meta Ads integration", "Cold calling campaigns", "Lead follow-up automation", "CRM sync"],
-  },
-  {
-    icon: CalendarCheck,
-    title: "Inbound Booking Agents",
-    description: "Handle appointment scheduling, answer FAQs, and qualify leads 24/7. Never miss a booking opportunity again.",
-    features: ["Calendar integration", "Lead qualification", "FAQ handling", "24/7 availability"],
-  },
-  {
-    icon: MessageSquare,
-    title: "Sales Follow-Up Systems",
-    description: "Automated nurture sequences via voice + SMS for warm leads. Keep prospects engaged until they convert.",
-    features: ["Voice + SMS sequences", "Warm lead nurturing", "Automated reminders", "Conversion tracking"],
-  },
-  {
     icon: HeadphonesIcon,
-    title: "Customer Support Agents",
-    description: "Handle common questions, route complex issues to humans. Reduce support costs while improving response times.",
-    features: ["FAQ automation", "Smart routing", "Human handoff", "Multi-language support"],
+    title: "Voice Receptionist",
+    description: "24/7 AI receptionist for calls. Answers, routes, schedules, and qualifies leads. Never miss a call.",
+    features: ["24/7 call answering", "Appointment scheduling", "Calendar integration", "Lead qualification & FAQ handling"],
+  },
+  {
+    icon: Shield,
+    title: "Spam Filter",
+    description: "Screen and block spam, robocalls, and unwanted callers before they reach your team.",
+    features: ["Spam & robocall detection", "Custom allow/block lists", "Call screening & routing", "Analytics on blocked calls"],
+  },
+  {
+    icon: PhoneOutgoing,
+    title: "Outbound Sales Agent",
+    description: "Cold calling, lead follow-up, and Meta Ads integration. Convert more leads with instant outreach.",
+    features: ["Meta Ads lead integration", "Cold calling campaigns", "CRM sync", "Call recording & analytics"],
   },
 ];
 

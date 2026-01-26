@@ -26,7 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black leading-[1.05] mb-8 tracking-tight"
           >
-            AI Voice Infrastructure for Agencies
+            Create Custom Automations That <span className="gradient-text">Sell</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -36,8 +36,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl text-gray-600 max-w-4xl leading-relaxed mb-12 font-light"
           >
-            Build and sell voice automations <span className="font-semibold text-black">60% cheaper</span> than Retell or Vapi.
-            We handle the tech, you handle the sales. Fully white-labeled at just <span className="font-semibold text-black">$0.06/minute</span>.
+            Build voice automations that have been proven to sell. Connect everything on one dashboard and deploy in minutes. 
           </motion.p>
 
           {/* CTA Buttons */}
@@ -47,18 +46,20 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Link
-              href="/contact"
+            <a
+              href="https://renovated-detailing-voice-agent.fly.dev/demo"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-black rounded-xl hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow"
             >
-              Become a Partner
+              Try Demo
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Browse Templates
+              Browse Voice Automations
             </Link>
           </motion.div>
 
@@ -71,15 +72,15 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="font-medium">$0.06/min vs $0.15-0.20/min</span>
+              <span className="font-medium">Proven to Sell</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="font-medium">Native Integrations</span>
+              <span className="font-medium">Deploy in Minutes</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="font-medium">100% White-Labeled</span>
+              <span className="font-medium">No Zapier, No n8n</span>
             </div>
           </motion.div>
         </div>

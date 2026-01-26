@@ -6,9 +6,8 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
-  { name: "Templates", href: "/pricing" },
+  { name: "Voice Automations", href: "/pricing" },
   { name: "How It Works", href: "/how-it-works" },
-  { name: "Partnership", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -52,12 +51,14 @@ export default function Navigation() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
-            <Link
-              href="/contact"
+            <a
+              href="https://renovated-detailing-voice-agent.fly.dev/demo"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2.5 bg-black rounded-xl font-bold hover:bg-gray-800 transition-all premium-shadow text-white text-sm"
             >
-              Become a Partner
-            </Link>
+              Try Demo
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,13 +95,15 @@ export default function Navigation() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/contact"
+              <a
+                href="https://renovated-detailing-voice-agent.fly.dev/demo"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-6 py-2.5 bg-black rounded-xl font-bold text-center text-white premium-shadow"
               >
-                Become a Partner
-              </Link>
+                Try Demo
+              </a>
             </div>
           </motion.div>
         )}

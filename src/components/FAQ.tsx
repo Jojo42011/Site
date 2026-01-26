@@ -6,8 +6,8 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "How is this different from Retell or Vapi?",
-    answer: "Retell and Vapi charge $0.15-0.20 per minute plus platform fees. Our voice agents cost just $0.06 per minute—60% cheaper. Plus, we build custom integrations directly into any system without needing Zapier or n8n middleware. You get full white-label control and keep the relationship with your clients."
+    question: "How is this different from building automations myself?",
+    answer: "create custom automations that sell. Start with proven templates or build your own from scratch. Configure everything on the dashboard—easy, affordable, everything in one place. Calendar, CRM, and Twilio integrations are built-in—no Zapier or n8n needed. Configure in minutes, deploy same-day, start selling."
   },
   {
     question: "Do I need developers on my team?",
@@ -26,8 +26,8 @@ const faqs = [
     answer: "We build it natively. Because we build from scratch, we can integrate directly with any API—calendars (Google, Outlook), CRMs (HubSpot, Salesforce, Go High Level), payment systems (Stripe), scheduling tools, or custom proprietary systems. No middleware limitations."
   },
   {
-    question: "What's the difference between Templates and Partnership?",
-    answer: "Templates are one-time purchases ($500-1,000) for specific automation types you can deploy unlimited times. Partnership is a revenue share or retainer model where we build any custom automation you need with full support. Templates for speed, partnership for flexibility."
+    question: "How quickly can I start selling?",
+    answer: "You can deploy to your first client same-day. Build your own automation or start with a template (Voice Receptionist, Spam Filter, or Outbound Sales Agent). Configure everything on the dashboard however you want—easy, affordable, everything in one place. No weeks of development, no middleware setup—just configure and go."
   }
 ];
 

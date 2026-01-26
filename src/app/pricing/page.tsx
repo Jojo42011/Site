@@ -4,58 +4,42 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Check, ArrowRight, PhoneOutgoing, CalendarCheck, MessageSquare, HeadphonesIcon } from "lucide-react";
+import { Check, ArrowRight, PhoneOutgoing, HeadphonesIcon, Shield } from "lucide-react";
 
 const templates = [
   {
+    name: "Voice Receptionist",
+    icon: HeadphonesIcon,
+    description: "24/7 AI receptionist for calls. Answers, routes, schedules, and qualifies leads. Never miss a call.",
+    features: [
+      "24/7 call answering",
+      "Appointment scheduling",
+      "Calendar integration (Google, Outlook)",
+      "Lead qualification & FAQ handling",
+      "White-label ready",
+    ],
+  },
+  {
+    name: "Spam Filter",
+    icon: Shield,
+    description: "Screen and block spam, robocalls, and unwanted callers before they reach your team.",
+    features: [
+      "Spam & robocall detection",
+      "Custom allow/block lists",
+      "Call screening & routing",
+      "Analytics on blocked calls",
+      "White-label ready",
+    ],
+  },
+  {
     name: "Outbound Sales Agent",
     icon: PhoneOutgoing,
-    price: "$750",
     description: "Cold calling, lead follow-up, and Meta Ads integration. Convert more leads with instant outreach.",
     features: [
       "Meta Ads lead integration",
       "Cold calling campaigns",
       "CRM sync (HubSpot, Salesforce, GHL)",
       "Call recording & analytics",
-      "White-label ready",
-    ],
-  },
-  {
-    name: "Inbound Booking Agent",
-    icon: CalendarCheck,
-    price: "$600",
-    description: "24/7 appointment scheduling, FAQ handling, and lead qualification.",
-    features: [
-      "Calendar integration (Google, Outlook)",
-      "Lead qualification flows",
-      "FAQ handling",
-      "SMS confirmations",
-      "White-label ready",
-    ],
-  },
-  {
-    name: "Sales Follow-Up System",
-    icon: MessageSquare,
-    price: "$850",
-    description: "Automated voice + SMS sequences to nurture warm leads until they convert.",
-    features: [
-      "Voice + SMS sequences",
-      "Warm lead nurturing",
-      "Automated reminders",
-      "Conversion tracking",
-      "White-label ready",
-    ],
-  },
-  {
-    name: "Customer Support Agent",
-    icon: HeadphonesIcon,
-    price: "$500",
-    description: "Handle FAQs, route complex issues, and reduce support costs.",
-    features: [
-      "FAQ automation",
-      "Smart routing to humans",
-      "Multi-language support",
-      "Ticket creation",
       "White-label ready",
     ],
   },
@@ -73,15 +57,6 @@ export default function PricingPage() {
         <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-3xl opacity-30" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="inline-flex items-center px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-600 text-sm font-semibold mb-6"
-          >
-            <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
-            Templates + Partnership Options
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,8 +70,8 @@ export default function PricingPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-600 max-w-3xl mx-auto mb-8"
           >
-            One-time purchase, unlimited deployments. Deploy to your clients same-day.
-            All templates run at just <span className="font-semibold text-black">$0.06/minute</span>—60% cheaper than competitors.
+            Build or create custom automations that sell. Configure however you want on the dashboard. Deploy in minutes, start selling today.
+            Calendar, CRM, and Twilio—all in one dashboard. <span className="font-semibold text-black">Easy, affordable, everything in one place</span>.
           </motion.p>
         </div>
       </section>
@@ -104,7 +79,7 @@ export default function PricingPage() {
       {/* Templates Grid */}
       <section className="relative py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {templates.map((template, index) => (
               <motion.div
                 key={template.name}
@@ -115,19 +90,12 @@ export default function PricingPage() {
                 className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-xl transition-all duration-300"
               >
                 <div className="p-8">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center">
-                        <template.icon className="w-7 h-7 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900">{template.name}</h3>
-                        <p className="text-gray-500 text-sm">One-time purchase</p>
-                      </div>
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center flex-shrink-0">
+                      <template.icon className="w-7 h-7 text-white" />
                     </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold text-black">{template.price}</div>
-                      <div className="text-sm text-gray-500">one-time</div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">{template.name}</h3>
                     </div>
                   </div>
 
@@ -240,7 +208,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Cost Comparison */}
+      {/* Value Proposition */}
       <section className="relative py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -250,10 +218,10 @@ export default function PricingPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Why We&apos;re <span className="gradient-text">60% Cheaper</span>
+              Why <span className="gradient-text">Agency Owners</span> Choose Us
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              We build from scratch instead of reselling. You keep the savings.
+              Build or create custom automations that sell. Configure however you want. Built-in integrations. Deploy in minutes.
             </p>
           </motion.div>
 
@@ -265,19 +233,19 @@ export default function PricingPage() {
           >
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-gray-400 text-sm font-medium mb-2">Retell / Vapi</div>
-                <div className="text-3xl font-bold text-red-400">$0.15-0.20</div>
-                <div className="text-gray-500 text-sm mt-1">per minute</div>
+                <div className="text-gray-400 text-sm font-medium mb-2">Templates</div>
+                <div className="text-3xl font-bold text-green-400">Proven</div>
+                <div className="text-gray-500 text-sm mt-1">to sell to businesses</div>
               </div>
               <div>
-                <div className="text-gray-400 text-sm font-medium mb-2">Aethon</div>
-                <div className="text-3xl font-bold text-green-400">$0.06</div>
-                <div className="text-gray-500 text-sm mt-1">per minute</div>
+                <div className="text-gray-400 text-sm font-medium mb-2">Setup Time</div>
+                <div className="text-3xl font-bold text-white">Minutes</div>
+                <div className="text-gray-500 text-sm mt-1">not weeks</div>
               </div>
               <div>
-                <div className="text-gray-400 text-sm font-medium mb-2">Your Savings</div>
-                <div className="text-3xl font-bold text-white">60%+</div>
-                <div className="text-gray-500 text-sm mt-1">more profit</div>
+                <div className="text-gray-400 text-sm font-medium mb-2">Integrations</div>
+                <div className="text-3xl font-bold text-green-400">Built-in</div>
+                <div className="text-gray-500 text-sm mt-1">no middleware</div>
               </div>
             </div>
           </motion.div>
@@ -295,12 +263,14 @@ export default function PricingPage() {
               Get a template today or apply for partnership. Either way, you&apos;ll be selling within days.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
+              <a
+                href="https://renovated-detailing-voice-agent.fly.dev/demo"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-black rounded-xl font-semibold text-lg text-white hover:bg-gray-800 transition-all"
               >
-                Become a Partner
-              </Link>
+                Try Demo
+              </a>
               <Link
                 href="/how-it-works"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 rounded-xl font-semibold text-lg text-gray-900 hover:border-purple-300 hover:bg-purple-50 transition-all"

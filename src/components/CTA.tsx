@@ -29,38 +29,40 @@ export default function CTA() {
           </h2>
 
           <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            Join agencies selling voice automations at 60% lower cost. Templates for speed, partnerships for flexibility.
-            Either way, you keep the margins.
+            Join agency owners building custom voice automations. Configure however you want on the dashboard. Deploy in minutes, start selling today.
+            Built-in integrations—no middleware needed. Easy, affordable, everything in one place.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <Link
-              href="/contact"
+            <a
+              href="https://renovated-detailing-voice-agent.fly.dev/demo"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group px-10 py-5 bg-black rounded-xl font-bold text-lg hover:bg-gray-800 transition-all premium-shadow-lg hover:premium-shadow flex items-center space-x-2 text-white"
             >
-              <span>Become a Partner</span>
+              <span>Try Demo</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="px-10 py-5 border-2 border-black rounded-xl font-bold text-lg text-black hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Browse Templates
+              Browse Voice Automations
             </Link>
           </div>
 
           <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-base text-gray-600">
             <div className="flex items-center space-x-3">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="font-medium">$0.06/min Voice Agents</span>
+              <span className="font-medium">Proven Templates</span>
             </div>
             <div className="flex items-center space-x-3">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="font-medium">Same-Day Deployment</span>
+              <span className="font-medium">Deploy in Minutes</span>
             </div>
             <div className="flex items-center space-x-3">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="font-medium">100% White-Labeled</span>
+              <span className="font-medium">Built-in Integrations</span>
             </div>
           </div>
         </motion.div>

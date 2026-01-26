@@ -1,8 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import Integrations from "@/components/Integrations";
 import Features from "@/components/Features";
 import UseCases from "@/components/UseCases";
-import Products from "@/components/Products";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -12,9 +12,9 @@ export default function Home() {
     <main className="relative">
       <Navigation />
       <Hero />
+      <Integrations />
       <Features />
       <UseCases />
-      <Products />
       <CTA />
       <FAQ />
       <Footer />

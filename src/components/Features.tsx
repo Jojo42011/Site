@@ -5,15 +5,15 @@ import { DollarSign, Plug, Tag, TrendingUp } from "lucide-react";
 
 const features = [
   {
-    icon: DollarSign,
-    title: "60% Lower Cost",
-    description: "Our voice agents cost $0.06/min vs $0.15-0.20/min on Retell/Vapi. For an agency with 20 clients, that's $2,000-4,000/month more profit in your pocket.",
-    highlight: "$0.06/min",
+    icon: TrendingUp,
+    title: "Proven to Sell",
+    description: "Build custom automations that sell. Start with proven templates or create your own. Configure everything on the dashboard—easy, affordable, everything in one place.",
+    highlight: "Validated",
   },
   {
     icon: Plug,
-    title: "Native Integrations",
-    description: "Built from scratch means we integrate directly with any tool—calendars, CRMs, payment systems, custom APIs. No Zapier or n8n middleware needed.",
+    title: "Built-in Integrations",
+    description: "Calendar, CRM, and Twilio—all in one dashboard. No Zapier, no n8n, no middleware. Configure once, deploy in minutes. Built for agency owners who want to move fast.",
     highlight: "No middleware",
   },
   {
@@ -23,10 +23,10 @@ const features = [
     highlight: "Your brand",
   },
   {
-    icon: TrendingUp,
-    title: "Revenue-Focused Automations",
-    description: "We specialize in automations that drive sales—outbound callers, booking agents, follow-up systems. Not just support bots, but revenue generators.",
-    highlight: "Sales-driving",
+    icon: DollarSign,
+    title: "Deploy in Minutes",
+    description: "Build your automation on the dashboard, configure it however you want, and deploy same-day. No weeks of setup, no complex development. Easy, affordable, everything in one place.",
+    highlight: "Same-day",
   },
 ];
 
@@ -49,11 +49,11 @@ export default function Features() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-black leading-tight">
-            Why Agencies Partner With <span className="gradient-text">Aethon</span>
+            Built for <span className="gradient-text">Agency Owners</span>
           </h2>
           <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-            We provide the infrastructure. You sell to your clients.
-            <span className="font-semibold text-black"> Keep the margins, own the relationship.</span>
+            Build or create custom automations that sell. Configure however you want on the dashboard. Deploy in minutes, start selling today.
+            <span className="font-semibold text-black"> No Zapier, no n8n—everything in one place.</span>
           </p>
         </motion.div>
 
@@ -81,7 +81,7 @@ export default function Features() {
           ))}
         </div>
 
-        {/* Cost comparison callout */}
+        {/* Value proposition callout */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,19 +91,19 @@ export default function Features() {
         >
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-gray-400 text-sm font-medium mb-2">Retell / Vapi Cost</div>
-              <div className="text-3xl font-bold text-red-400">$0.15-0.20/min</div>
-              <div className="text-gray-500 text-sm mt-1">+ platform fees</div>
+              <div className="text-gray-400 text-sm font-medium mb-2">Custom Automations</div>
+              <div className="text-3xl font-bold text-green-400">Easy</div>
+              <div className="text-gray-500 text-sm mt-1">to configure on dashboard</div>
             </div>
             <div>
-              <div className="text-gray-400 text-sm font-medium mb-2">Aethon Cost</div>
-              <div className="text-3xl font-bold text-green-400">$0.06/min</div>
-              <div className="text-gray-500 text-sm mt-1">all-inclusive</div>
+              <div className="text-gray-400 text-sm font-medium mb-2">Deployment Time</div>
+              <div className="text-3xl font-bold text-white">Minutes</div>
+              <div className="text-gray-500 text-sm mt-1">not weeks</div>
             </div>
             <div>
-              <div className="text-gray-400 text-sm font-medium mb-2">Your Extra Profit</div>
-              <div className="text-3xl font-bold text-white">$2,000-4,000/mo</div>
-              <div className="text-gray-500 text-sm mt-1">per 20 clients</div>
+              <div className="text-gray-400 text-sm font-medium mb-2">Integrations</div>
+              <div className="text-3xl font-bold text-green-400">Built-in</div>
+              <div className="text-gray-500 text-sm mt-1">no middleware needed</div>
             </div>
           </div>
         </motion.div>

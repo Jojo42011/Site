@@ -35,7 +35,7 @@ const products = [
       "White-label ready",
     ],
     bestFor: "Agencies wanting to move fast with proven templates",
-    cta: "Browse Templates",
+    cta: "Browse Voice Automations",
     ctaLink: "/pricing",
   },
   {
@@ -60,8 +60,8 @@ const products = [
       "Priority support & updates",
     ],
     bestFor: "Agencies wanting full flexibility and custom solutions",
-    cta: "Become a Partner",
-    ctaLink: "/contact",
+    cta: "Try Demo",
+    ctaLink: "https://renovated-detailing-voice-agent.fly.dev/demo",
   },
 ];
 
@@ -161,13 +161,25 @@ export default function Products() {
                   </div>
 
                   {/* CTA Button */}
-                  <Link
-                    href={product.ctaLink}
-                    className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
-                  >
-                    {product.cta}
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
+                  {product.ctaLink.startsWith("http") ? (
+                    <a
+                      href={product.ctaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
+                    >
+                      {product.cta}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={product.ctaLink}
+                      className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all group-hover:scale-[1.02] transform"
+                    >
+                      {product.cta}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -199,7 +211,7 @@ export default function Products() {
               href="/pricing"
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
             >
-              View All Templates
+              View All Voice Automations
             </Link>
           </div>
         </motion.div>
