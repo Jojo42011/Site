@@ -18,6 +18,8 @@ const templates = [
       "Lead qualification & FAQ handling",
       "White-label ready",
     ],
+    cta: "Go to Dashboard",
+    ctaHref: "https://renovated-detailing-voice-agent.fly.dev/",
   },
   {
     name: "Spam Filter",
@@ -30,6 +32,8 @@ const templates = [
       "Analytics on blocked calls",
       "White-label ready",
     ],
+    cta: "Coming Soon",
+    ctaHref: null,
   },
   {
     name: "Outbound Sales Agent",
@@ -42,6 +46,8 @@ const templates = [
       "Call recording & analytics",
       "White-label ready",
     ],
+    cta: "Coming Soon",
+    ctaHref: null,
   },
 ];
 
@@ -112,13 +118,21 @@ export default function PricingPage() {
                     ))}
                   </div>
 
-                  <Link
-                    href="/contact"
-                    className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all"
-                  >
-                    Get This Template
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
+                  {template.ctaHref ? (
+                    <a
+                      href={template.ctaHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all"
+                    >
+                      {template.cta}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  ) : (
+                    <span className="w-full inline-flex items-center justify-center px-6 py-4 bg-gray-200 text-gray-500 rounded-xl font-bold cursor-not-allowed">
+                      {template.cta}
+                    </span>
+                  )}
                 </div>
               </motion.div>
             ))}

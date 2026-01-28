@@ -59,7 +59,7 @@ export default function Hero() {
               href="/pricing"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white border-2 border-black rounded-xl hover:bg-black hover:text-white transition-all premium-shadow"
             >
-              Browse Voice Automations
+              Browse Dashboards
             </Link>
           </motion.div>
 
