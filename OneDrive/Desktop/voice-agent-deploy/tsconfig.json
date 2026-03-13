@@ -32,25 +32,13 @@
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
   },
   "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
     "src/context/MicrophoneContextProvider.tsx"
   ],
   "exclude": [
     "node_modules"
-  ],
-  "plugins": [
-    {
-      "name": "next"
-    }
   ]
 }
